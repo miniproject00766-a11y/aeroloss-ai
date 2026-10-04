@@ -479,6 +479,44 @@
     }
 
     function renderDashboard(data) {
+      if (data.is_valid_blade_image === false || data.status === "REJECTED_OUT_OF_DOMAIN") {
+        document.getElementById("detected-tag-label").innerText = "🛑 REJECTED: NON-BLADE IMAGE";
+        document.getElementById("detected-tag-label").className = "text-xs font-black text-rose-600 bg-rose-50 px-2.5 py-1 rounded border border-rose-300";
+
+        const heroCard = document.getElementById("hero-decision-card");
+        const heroTitle = document.getElementById("hero-action-title");
+        const heroUrgency = document.getElementById("hero-urgency-badge");
+
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-amber-600 via-orange-600 to-rose-700";
+        heroTitle.innerText = "🛑 REJECTED: UNFAMILIAR / NON-BLADE IMAGE";
+        heroUrgency.innerText = "GUARDRAIL INTERVENTION";
+        heroUrgency.className = "px-3 py-1 bg-black/40 text-white text-xs font-black rounded-full border border-white/20 uppercase tracking-wider";
+
+        const reasonBox = document.getElementById("hero-reasoning-container");
+        reasonBox.innerHTML = `
+          <p class="font-bold text-amber-100">⚠️ Domain Guardrail Activated:</p>
+          <p class="text-xs text-white/90">• ${data.error || 'Image is not recognized as a wind turbine blade.'}</p>
+          <p class="text-xs text-white/90">• <strong>Reason:</strong> ${data.rejection_reason || 'Unfamiliar texture or high color saturation.'}</p>
+          <p class="text-xs text-amber-200 mt-2 font-semibold">• ${data.advice || 'Please upload an authentic wind turbine blade inspection photograph.'}</p>
+        `;
+
+        document.getElementById("metric-defect-name").innerText = "INVALID IMAGE";
+        document.getElementById("metric-confidence").innerText = `${data.confidence_pct || '0%'} Confidence`;
+        document.getElementById("metric-severity-val").innerText = "N/A";
+        document.getElementById("metric-area-val").innerText = "N/A";
+        document.getElementById("metric-energy-loss").innerText = "0 kWh / d";
+        if (document.getElementById("metric-annual-energy")) {
+          document.getElementById("metric-annual-energy").innerText = "0 MWh / yr";
+        }
+        document.getElementById("metric-aep-loss").innerText = "0.00% AEP Impact";
+        document.getElementById("metric-daily-loss").innerText = "₹ 0 / d";
+        if (document.getElementById("metric-annual-loss")) {
+          document.getElementById("metric-annual-loss").innerText = "₹ 0.00 Lakhs / yr";
+        }
+        document.getElementById("metric-payback-days").innerText = "Payback: N/A";
+        return;
+      }
+
       const det = data.visual_detection;
       const char = data.characterization;
       const phys = data.physics_aerodynamics;
@@ -487,6 +525,7 @@
       const dec = data.maintenance_decision;
 
       document.getElementById("detected-tag-label").innerText = `${det.detected_class.toUpperCase()} (${det.confidence_pct})`;
+      document.getElementById("detected-tag-label").className = "text-xs font-black text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200";
 
       const heroCard = document.getElementById("hero-decision-card");
       const heroTitle = document.getElementById("hero-action-title");

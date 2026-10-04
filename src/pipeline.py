@@ -63,6 +63,36 @@ class AeroLossPipeline:
         else:
             self.ml_decision_model = None
 
+    def validate_blade_domain(self, pil_img, probs, confidence, threshold=0.70):
+        """
+        Out-of-Distribution (OOD) Domain Guardrail.
+        Rejects non-blade imagery (dogs, pets, cars, faces, random scenes)
+        based on softmax confidence threshold, Shannon entropy uncertainty, and color saturation profile.
+        """
+        # 1. Softmax Confidence Threshold
+        if confidence < threshold:
+            return False, f"Low classification confidence ({confidence*100:.1f}% < {threshold*100:.0f}%). Visual pattern is unfamiliar or ambiguous."
+
+        # 2. Shannon Entropy of Softmax distribution
+        probs_clamped = np.clip(probs, 1e-7, 1.0)
+        entropy = -float(np.sum(probs_clamped * np.log(probs_clamped)))
+        max_possible_entropy = np.log(len(probs))
+        normalized_entropy = entropy / max_possible_entropy if max_possible_entropy > 0 else 0.0
+
+        if normalized_entropy > 0.65:
+            return False, f"High prediction uncertainty / entropy ({normalized_entropy:.2f}). Model cannot reliably identify aerodynamic blade surface features."
+
+        # 3. Domain Color Saturation Filter
+        # Wind turbine blades are predominantly non-saturated composite (white, light gray, gelcoat, matte black).
+        # Unfamiliar photos (animals, clothing, household items, nature) typically have high saturation.
+        np_img = np.array(pil_img)
+        if len(np_img.shape) == 3 and np_img.shape[2] == 3:
+            saturation = float(np.mean(np.max(np_img, axis=2) - np.min(np_img, axis=2)))
+            if saturation > 85.0:
+                return False, f"Color saturation anomaly ({saturation:.1f} > 85.0). Industrial turbine blades exhibit low-saturation fiberglass/gelcoat reflectance."
+
+        return True, "Valid wind turbine blade surface."
+
     def analyze_image(self, image_input, r_R=None, area_pct=None, wind_speed=7.56, rated_kw=3600.0, tariff=4.50, repair_cost=40000.0):
         """
         Runs the full 7-stage AeroLoss pipeline on a blade defect image.
@@ -89,6 +119,21 @@ class AeroLossPipeline:
             pred_class = 'surface_injure'
             confidence = 0.90
             all_probs = {pred_class: confidence}
+            probs = np.array([0.90])
+
+        # 2.1 Out-of-Distribution (OOD) Domain Guardrail Check
+        is_valid, validation_msg = self.validate_blade_domain(pil_img, probs, confidence, threshold=0.70)
+        if not is_valid:
+            return {
+                'is_valid_blade_image': False,
+                'status': 'REJECTED_OUT_OF_DOMAIN',
+                'error': 'Uploaded image is not recognized as a wind turbine blade.',
+                'rejection_reason': validation_msg,
+                'confidence': round(confidence, 4),
+                'confidence_pct': f"{confidence*100:.1f}%",
+                'detected_candidate': pred_class,
+                'advice': 'Please upload an authentic, clear drone or borescope photograph of an industrial wind turbine blade surface.'
+            }
 
         # 3. Damage Characterization Proxy
         base_sev_map = {
@@ -160,6 +205,8 @@ class AeroLossPipeline:
         final_decision = rule_decision['decision']
 
         return {
+            'is_valid_blade_image': True,
+            'status': 'SUCCESS',
             'visual_detection': {
                 'detected_class': pred_class,
                 'confidence': round(confidence, 4),

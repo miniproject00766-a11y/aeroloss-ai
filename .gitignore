@@ -40,3 +40,7 @@ scratch/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Heavy raw datasets
+data/external/
+
