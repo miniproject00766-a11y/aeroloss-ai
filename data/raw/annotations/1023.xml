@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>690.jpg</filename>
+	<path>C:\Users\dell\Desktop\1\3\JPEGImages\690.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>thunderstrike</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>56</xmin>
+			<ymin>627</ymin>
+			<xmax>562</xmax>
+			<ymax>797</ymax>
+		</bndbox>
+	</object>
+</annotation>

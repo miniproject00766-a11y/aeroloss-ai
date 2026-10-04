@@ -1,0 +1,67 @@
+[
+  {
+    "has_drone_cv": true,
+    "has_polar_degradation": true,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_deficit_calculation": false,
+    "has_payback_engine": false,
+    "has_prescriptive_decision": false,
+    "system_category": "Partial Hybrid / Inspection Tool",
+    "novelty_gap_confirmed": true,
+    "name": "BladeYOLO (GitHub Open-Source CV)",
+    "type": "Open-Source GitHub Repository",
+    "url": "https://github.com/fqiu-yu/BladeYOLO"
+  },
+  {
+    "has_drone_cv": false,
+    "has_polar_degradation": true,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_deficit_calculation": false,
+    "has_payback_engine": false,
+    "has_prescriptive_decision": false,
+    "system_category": "Pure Aerodynamic Simulation (No Camera/Image)",
+    "novelty_gap_confirmed": true,
+    "name": "NREL WOMBAT (GitHub Open-Source O&M)",
+    "type": "Open-Source Simulation Tool",
+    "url": "https://github.com/NLRWindSystems/WOMBAT"
+  },
+  {
+    "has_drone_cv": true,
+    "has_polar_degradation": false,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_deficit_calculation": false,
+    "has_payback_engine": false,
+    "has_prescriptive_decision": false,
+    "system_category": "Pure Computer Vision (Visual Only)",
+    "novelty_gap_confirmed": true,
+    "name": "Patent US11118573B2 (GE Wind Blade In-Situ Repair)",
+    "type": "Granted Patent (GE Vernova)",
+    "url": "https://patents.google.com/patent/US11118573B2/en"
+  },
+  {
+    "has_drone_cv": true,
+    "has_polar_degradation": false,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_deficit_calculation": false,
+    "has_payback_engine": false,
+    "has_prescriptive_decision": false,
+    "system_category": "Pure Computer Vision (Visual Only)",
+    "novelty_gap_confirmed": true,
+    "name": "Patent US20210095642A1 (Vestas Drone Inspection)",
+    "type": "Patent Application (Vestas)",
+    "url": "https://patents.google.com/patent/US20210095642A1/en"
+  },
+  {
+    "has_drone_cv": true,
+    "has_polar_degradation": false,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_deficit_calculation": false,
+    "has_payback_engine": false,
+    "has_prescriptive_decision": false,
+    "system_category": "Pure Computer Vision (Visual Only)",
+    "novelty_gap_confirmed": true,
+    "name": "Patent US10619623B2 (Sulzer & Schmid Drone Inspection)",
+    "type": "Granted Patent (Sulzer & Schmid)",
+    "url": "https://patents.google.com/patent/US10619623B2/en"
+  }
+]

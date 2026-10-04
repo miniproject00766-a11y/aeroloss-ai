@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AeroLoss AI — Blade Maintenance Decision Platform</title>
+  
+  <!-- Stitch Design System Dependencies -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..700,0..1,0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "stitch-primary": "#004ac6",
+            "stitch-primary-hover": "#003aa0",
+            "stitch-bg": "#F8FAFC",
+            "stitch-surface": "#ffffff",
+            "stitch-border": "#e2e8f0",
+            "stitch-text": "#0b1c30",
+            "stitch-muted": "#475569",
+            "stitch-success": "#10b981",
+            "stitch-warning": "#f59e0b",
+            "stitch-danger": "#ef4444",
+            "stitch-purple": "#8b5cf6"
+          },
+          fontFamily: {
+            headline: ["'Hanken Grotesk'", "sans-serif"],
+            body: ["'Inter'", "sans-serif"]
+          },
+          boxShadow: {
+            'stitch': '0 2px 8px -2px rgba(15, 23, 42, 0.06), 0 1px 4px -1px rgba(15, 23, 42, 0.04)',
+            'stitch-card': '0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03)',
+            'stitch-glow': '0 12px 28px -6px rgba(0, 74, 198, 0.18)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F8FAFC;
+      color: #0b1c30;
+      font-size: 15px;
+    }
+    h1, h2, h3, h4, .font-headline { font-family: 'Hanken Grotesk', sans-serif; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24; }
+    
+    .chip-btn {
+      transition: all 0.15s ease-in-out;
+    }
+    .chip-btn.active {
+      background-color: #eff6ff;
+      border-color: #2563eb;
+      color: #1d4ed8;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+    .chip-btn:hover:not(.active) {
+      border-color: #cbd5e1;
+      background-color: #f8fafc;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-stitch-bg antialiased text-slate-800">
+
+  <!-- Top Global Header -->
+  <header class="bg-white border-b border-slate-200/90 w-full shadow-xs sticky top-0 z-50">
+    <div class="w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
+          <span class="material-symbols-outlined text-2xl">cyclone</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-headline font-black text-xl sm:text-2xl text-slate-900 tracking-tight">AeroLoss<span class="text-stitch-primary">.AI</span></span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-50 text-stitch-primary border border-blue-200">Decision Platform</span>
+          </div>
+          <p class="text-xs text-slate-500 font-medium hidden md:block">AI Defect Vision • FFA-W3-241 Airfoil Physics • Daily Lost Generation • Financial Payback Support</p>
+        </div>
+      </div>
+
+      <!-- Engine Status & Profile -->
+      <div class="flex items-center gap-5">
+        <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-800">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          IEA Task 46 & FFA-W3-241 Physics Active
+        </div>
+        <div class="flex items-center gap-3 border-l border-slate-200 pl-4">
+          <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black text-xs shadow-xs">
+            OP
+          </div>
+          <div class="text-left text-xs hidden lg:block">
+            <div class="font-extrabold text-slate-900 leading-tight">Offshore Asset Manager</div>
+            <div class="text-slate-400 font-medium text-[11px]">Cluster WTG-04B</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Full-Width Fluid Responsive Workspace -->
+  <main class="w-full px-4 sm:px-6 lg:px-8 py-5 space-y-5">
+    
+    <!-- Operational Parameter Control Bar -->
+    <section class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-stitch">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5 items-end">
+        <div class="lg:col-span-3">
+          <label class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-1.5">Turbine Preset</label>
+          <select id="cfg-turbine" class="w-full text-sm font-bold rounded-xl border-slate-200 bg-slate-50/80 py-2.5 px-3 text-slate-800 focus:ring-stitch-primary focus:border-stitch-primary">
+            <option value="3600" selected>Offshore 3.6 MW (T1 SCADA Reference)</option>
+            <option value="15000">IEA 15 MW Reference Turbine</option>
+            <option value="2500">Fuhrländer FL2500 (2.5 MW)</option>
+            <option value="2000">Onshore 2.0 MW Turbine</option>
+          </select>
+        </div>
+        <div class="lg:col-span-3">
+          <div class="flex justify-between items-center mb-1.5">
+            <label class="text-xs font-black uppercase tracking-wider text-slate-500">Wind Speed</label>
+            <span id="cfg-wind-val" class="text-xs font-black text-stitch-primary bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">7.6 m/s</span>
+          </div>
+          <input id="cfg-wind" type="range" min="3" max="22" step="0.2" value="7.56" class="w-full accent-stitch-primary h-2 bg-slate-200 rounded-lg cursor-pointer">
+        </div>
+        <div class="lg:col-span-2">
+          <label class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-1.5">Electricity Tariff</label>
+          <div class="flex items-center gap-1.5 bg-slate-50/80 border border-slate-200 rounded-xl px-3 py-2">
+            <span class="text-slate-400 text-sm font-extrabold">₹</span>
+            <input id="cfg-tariff" type="number" step="0.1" value="4.50" class="w-full bg-transparent border-0 p-0 text-sm font-bold text-slate-800 focus:ring-0">
+            <span class="text-slate-400 text-xs font-bold">/kWh</span>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <label class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-1.5">Repair Mobilization</label>
+          <div class="flex items-center gap-1.5 bg-slate-50/80 border border-slate-200 rounded-xl px-3 py-2">
+            <span class="text-slate-400 text-sm font-extrabold">₹</span>
+            <input id="cfg-repair" type="number" step="5000" value="40000" class="w-full bg-transparent border-0 p-0 text-sm font-bold text-slate-800 focus:ring-0">
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <button id="btn-recalculate" class="w-full py-2.5 px-4 rounded-xl bg-stitch-primary hover:bg-stitch-primary-hover text-white font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <span class="material-symbols-outlined text-lg">sync</span>
+            Run Impact Analysis
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace Bento Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+      
+      <!-- LEFT COLUMN: Inspection Input & Image Viewport (5 cols) -->
+      <section class="lg:col-span-5 space-y-4">
+        
+        <!-- Inspection Frame Card -->
+        <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="font-headline font-black text-base text-slate-900 flex items-center gap-2">
+              <span class="material-symbols-outlined text-stitch-primary text-xl">photo_camera</span>
+              1. Drone Visual Inspection
+            </h2>
+            <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">1024 × 1024 RGB</span>
+          </div>
+
+          <!-- Quick Defect Sample Chips (All 6 Classes Prominently Displayed) -->
+          <div>
+            <label class="block text-[11px] font-black text-slate-400 uppercase tracking-wider mb-1.5">Test Defect Scenarios (Click to Inspect)</label>
+            <div id="sample-chips-container" class="grid grid-cols-3 gap-1.5">
+              <!-- Populated dynamically with all 6 defect classes -->
+            </div>
+          </div>
+
+          <!-- Image Display Viewport (Full Inspection Resolution) -->
+          <div class="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-950 h-[260px] sm:h-[280px] flex items-center justify-center shadow-inner group">
+            <img id="active-blade-img" src="" alt="Blade Defect Inspection View" class="w-full h-full object-cover">
+            <div id="img-loading-spinner" class="hidden absolute inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center text-white">
+              <span class="material-symbols-outlined animate-spin text-4xl">progress_activity</span>
+            </div>
+            <!-- Bounding Box Annotation Tag -->
+            <div id="bbox-overlay-tag" class="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-xl bg-slate-900/90 backdrop-blur-md text-white text-xs font-bold flex items-center gap-2 border border-white/20 shadow-lg">
+              <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
+              <span id="detected-tag-label">Loading Defect...</span>
+            </div>
+          </div>
+
+          <!-- Spanwise Radial Location (r/R) with Interactive Slider Embedded Below Image -->
+          <div class="bg-slate-50/90 rounded-xl p-3 border border-slate-200/80 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-slate-700 flex items-center gap-1.5 uppercase tracking-wider">
+                <span class="material-symbols-outlined text-stitch-primary text-base">straighten</span>
+                Spanwise Location (r/R)
+              </span>
+              <div class="flex items-center gap-1.5">
+                <span id="spanwise-speed-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-200/80 text-slate-700">
+                  Speed: ~245 km/h
+                </span>
+                <span id="spanwise-val-badge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-stitch-primary border border-blue-200">
+                  r/R = 0.88 (Outboard Tip)
+                </span>
+              </div>
+            </div>
+
+            <!-- Visual Radial Blade Graphic -->
+            <div class="relative pt-3 pb-1">
+              <div class="h-6 w-full rounded-full bg-gradient-to-r from-slate-200 via-amber-100 to-rose-300 relative overflow-hidden flex items-center justify-between px-3 text-[10px] font-black text-slate-700 shadow-inner">
+                <span>ROOT (0.10)</span>
+                <span>MID-SPAN (0.50)</span>
+                <span class="text-rose-900">TIP (1.0)</span>
+              </div>
+              <div id="blade-pin-marker" class="absolute top-0 transition-all duration-200 transform -translate-x-1/2 flex flex-col items-center pointer-events-none" style="left: 88%;">
+                <span class="material-symbols-outlined text-slate-900 text-xl drop-shadow-md">location_on</span>
+              </div>
+            </div>
+
+            <!-- Interactive Spanwise Range Slider -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between text-[10px] font-bold text-slate-400">
+                <span>0.10 (Root Hub)</span>
+                <span class="text-stitch-primary font-bold flex items-center gap-0.5">
+                  <span class="material-symbols-outlined text-xs">drag_indicator</span>
+                  Drag slider to test any blade position
+                </span>
+                <span>0.98 (Tip)</span>
+              </div>
+              <input type="range" id="cfg-spanwise-slider" min="0.10" max="0.98" step="0.01" value="0.88" class="w-full accent-stitch-primary cursor-pointer h-2 bg-slate-200 rounded-lg">
+            </div>
+
+            <div class="text-[11px] text-slate-500 bg-blue-50/70 border border-blue-100/80 rounded-lg p-2 leading-tight flex items-start gap-1.5">
+              <span class="material-symbols-outlined text-stitch-primary text-sm shrink-0 mt-0.5">insights</span>
+              <span><strong>Physics Scaling:</strong> Aerodynamic penalty scales as <strong class="text-slate-800">(r/R)<sup>6.7</sup></strong>. Outboard tip speeds exceed 250 km/h resulting in <strong>₹2,000–₹4,500/day</strong> loss, whereas identical damage at mid-span costs only <strong>₹150/day</strong>.</span>
+            </div>
+          </div>
+
+          <!-- File Upload Dropzone -->
+          <div class="border border-dashed border-slate-200 hover:border-stitch-primary rounded-xl p-3 text-center cursor-pointer transition-all bg-slate-50/50 relative">
+            <input type="file" id="file-uploader" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+            <div class="flex items-center justify-center gap-2 text-slate-600">
+              <span class="material-symbols-outlined text-xl text-slate-400">upload_file</span>
+              <span class="text-xs font-bold">Upload Custom Drone Inspection Photo (JPG / PNG)</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- RIGHT COLUMN: Decision Action, 4 Metric Cards & Side-by-Side Charts (7 cols) -->
+      <section class="lg:col-span-7 space-y-4">
+
+        <!-- HERO DECISION BANNER (High-Impact, Vibrant, Clear) -->
+        <div id="hero-decision-card" class="rounded-2xl p-5 sm:p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-red-600 via-rose-600 to-red-700">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/80">
+                <span class="material-symbols-outlined text-base">verified</span>
+                Maintenance Decision Support Recommendation
+              </div>
+              <h1 id="hero-action-title" class="font-headline text-2xl sm:text-3xl font-black tracking-tight mt-1">
+                ACTION: REPAIR NOW
+              </h1>
+            </div>
+            <div id="hero-urgency-badge" class="px-4 py-1.5 rounded-full bg-white/25 backdrop-blur-md text-white font-black text-xs uppercase tracking-wider self-start sm:self-center border border-white/30 shadow-xs">
+              Urgency: Critical
+            </div>
+          </div>
+
+          <!-- Traceable Engineering Reasoning Bullets -->
+          <div class="mt-3.5 pt-3.5 border-t border-white/20 space-y-1 text-xs sm:text-sm text-white/95" id="hero-reasoning-container">
+            <p>• High outboard aerodynamic penalty at r/R = 0.89 with severity Level 4.</p>
+            <p>• Rapid repair payback period justifies scheduled maintenance.</p>
+          </div>
+        </div>
+
+        <!-- 4 EXECUTIVE METRIC CARDS -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+          <!-- Card 1: Defect Type -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch text-center">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Defect Type</span>
+            <div id="metric-defect-name" class="font-headline font-black text-xl text-slate-800 mt-1">CRACK</div>
+            <div id="metric-confidence" class="text-xs font-bold text-stitch-primary mt-0.5">100.0% Confidence</div>
+          </div>
+
+          <!-- Card 2: Severity -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch text-center">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Severity & Area</span>
+            <div id="metric-severity-val" class="font-headline font-black text-xl text-amber-600 mt-1">Level 4 / 5</div>
+            <div id="metric-area-val" class="text-xs font-bold text-slate-500 mt-0.5">4.5% Blade Area</div>
+          </div>
+
+          <!-- Card 3: Energy Deficit (Daily + Annual) -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-stitch text-center flex flex-col justify-between">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Energy Impact</span>
+            <div class="my-auto py-1">
+              <div id="metric-energy-loss" class="font-headline font-black text-xl text-rose-600">683 kWh / d</div>
+              <div id="metric-annual-energy" class="text-xs font-bold text-slate-600 mt-0.5">249.3 MWh / yr</div>
+            </div>
+            <div id="metric-aep-loss" class="text-[11px] font-bold text-rose-500">-2.2% AEP Impact</div>
+          </div>
+
+          <!-- Card 4: Financial Loss / Payback (Dual: Daily Rate + Annualized Lakhs) -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-stitch text-center flex flex-col justify-between">
+            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Revenue Impact</span>
+            <div class="my-auto py-1">
+              <div id="metric-daily-loss" class="font-headline font-black text-xl text-slate-900">₹3,077 / d</div>
+              <div id="metric-annual-loss" class="text-xs font-black text-rose-600 mt-0.5">₹11.23 Lakhs / yr</div>
+            </div>
+            <div id="metric-payback-days" class="text-[11px] font-bold text-emerald-600">Payback: 13.0 days</div>
+          </div>
+        </div>
+
+        <!-- TWO SIDE-BY-SIDE ANALYTICS CHARTS (Comfortable Height) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Chart 1: Power Curve Degradation -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 class="font-headline font-bold text-xs text-slate-900 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-stitch-primary text-base">trending_down</span>
+                Power Curve: Clean vs. Degraded
+              </h3>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-stitch-primary border border-blue-200">BEM Physics</span>
+            </div>
+            <div class="h-60 w-full" style="height: 250px;">
+              <canvas id="chart-power-curve"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Repair Payback Timeline -->
+          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 class="font-headline font-bold text-xs text-slate-900 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-emerald-600 text-base">payments</span>
+                Payback Timeline: Loss vs. Fix Cost
+              </h3>
+              <span id="crossover-tag" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Crossover: Day 13</span>
+            </div>
+            <div class="h-60 w-full" style="height: 250px;">
+              <canvas id="chart-payback-curve"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Export & Record Action Bar -->
+        <div class="flex items-center justify-between p-3.5 px-5 bg-white rounded-2xl border border-slate-200/90 text-xs text-slate-600 shadow-stitch">
+          <span class="font-medium">Turbine Record: <strong class="text-slate-800">WTG-04B</strong> • Blade Inspection: <strong class="text-slate-800">#2026-FLIGHT-12</strong></span>
+          <button id="btn-export-json" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold flex items-center gap-1.5 shadow-xs transition-all cursor-pointer text-xs">
+            <span class="material-symbols-outlined text-base">download</span>
+            Export Official JSON Assessment
+          </button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Enterprise Operational Footer -->
+  <footer class="border-t border-slate-200/80 bg-white/90 backdrop-blur-sm py-4 px-6 text-xs text-slate-500 mt-4">
+    <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="flex items-center gap-1.5 text-slate-700 font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          AeroLoss AI Enterprise v2.4
+        </span>
+        <span class="text-slate-300">|</span>
+        <span>FFA-W3-241 Airfoil (Sandia / IEA Wind Task 46)</span>
+        <span class="text-slate-300">|</span>
+        <span>SCADA 3.6 MW Offshore Reference</span>
+      </div>
+      <div class="text-slate-400 font-medium text-[11px]">
+        Autonomous Physics-Informed Wind Turbine Decision Support System
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Dashboard Controller Scripts -->
+  <script>
+    let activeAnalysisData = null;
+    let powerChart = null;
+    let paybackChart = null;
+    let currentSampleClass = "corrosion";
+    let currentSampleFile = "patch_00384.jpg";
+
+    async function loadSamples() {
+      try {
+        const res = await fetch("/api/samples");
+        const data = await res.json();
+        const container = document.getElementById("sample-chips-container");
+        container.innerHTML = "";
+
+        data.samples.forEach((s, idx) => {
+          const btn = document.createElement("button");
+          const isTip = s.zone && (s.zone.includes("Tip") || s.r_R >= 0.80);
+          const isMid = s.zone && (s.zone.includes("Mid") || s.r_R < 0.70);
+          const badgeColor = isTip
+            ? "bg-rose-100 text-rose-700 border-rose-200"
+            : (isMid ? "bg-amber-100 text-amber-800 border-amber-200" : "bg-blue-100 text-blue-700 border-blue-200");
+
+          btn.className = `chip-btn p-2 text-left rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
+            idx === 0 ? "active" : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
+          }`;
+          btn.innerHTML = `
+            <span class="text-xs font-bold leading-tight text-slate-900 truncate">${s.label}</span>
+            <span class="text-[10px] font-black px-1.5 py-0.5 rounded ${badgeColor} border mt-1 w-fit">${s.badge || ('r/R ' + s.r_R.toFixed(2))}</span>
+          `;
+          btn.onclick = () => {
+            document.querySelectorAll("#sample-chips-container button").forEach(b => {
+              b.classList.remove("active");
+              b.classList.add("border-slate-200", "bg-white", "text-slate-700");
+            });
+            btn.classList.add("active");
+            btn.classList.remove("border-slate-200", "bg-white", "text-slate-700");
+            currentSampleClass = s.class_name;
+            currentSampleFile = s.filename;
+            document.getElementById("active-blade-img").src = s.preview_url;
+            runAnalysis(null);
+          };
+          container.appendChild(btn);
+
+          if (idx === 0) {
+            currentSampleClass = s.class_name;
+            currentSampleFile = s.filename;
+            document.getElementById("active-blade-img").src = s.preview_url;
+          }
+        });
+
+        runAnalysis(null);
+      } catch (err) {
+        console.error("Failed to load samples", err);
+      }
+    }
+
+    async function runAnalysis(custom_r_R = null) {
+      const spinner = document.getElementById("img-loading-spinner");
+      spinner.classList.remove("hidden");
+
+      const wind = parseFloat(document.getElementById("cfg-wind").value);
+      const rated = parseFloat(document.getElementById("cfg-turbine").value);
+      const tariff = parseFloat(document.getElementById("cfg-tariff").value);
+      const repair = parseFloat(document.getElementById("cfg-repair").value);
+
+      const payload = {
+        sample_class: currentSampleClass,
+        sample_file: currentSampleFile,
+        wind_speed: wind,
+        rated_kw: rated,
+        tariff: tariff,
+        repair_cost: repair
+      };
+
+      if (custom_r_R !== null && custom_r_R !== undefined) {
+        payload.r_R = custom_r_R;
+      }
+
+      try {
+        const res = await fetch("/api/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        activeAnalysisData = data;
+        renderDashboard(data);
+      } catch (err) {
+        console.error("Analysis failed", err);
+      } finally {
+        spinner.classList.add("hidden");
+      }
+    }
+
+    function renderDashboard(data) {
+      const det = data.visual_detection;
+      const char = data.characterization;
+      const phys = data.physics_aerodynamics;
+      const en = data.energy_impact;
+      const fin = data.financial_impact;
+      const dec = data.maintenance_decision;
+
+      document.getElementById("detected-tag-label").innerText = `${det.detected_class.toUpperCase()} (${det.confidence_pct})`;
+
+      const heroCard = document.getElementById("hero-decision-card");
+      const heroTitle = document.getElementById("hero-action-title");
+      const heroUrgency = document.getElementById("hero-urgency-badge");
+
+      if (dec.recommended_action === "REPAIR") {
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-red-600 via-rose-600 to-red-700";
+        heroTitle.innerText = "ACTION: REPAIR NOW";
+      } else if (dec.recommended_action === "MONITOR") {
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700";
+        heroTitle.innerText = "ACTION: MONITOR";
+      } else {
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800";
+        heroTitle.innerText = "ACTION: ENGINEERING ASSESSMENT";
+      }
+      heroUrgency.innerText = `Urgency: ${dec.urgency}`;
+
+      const reasonBox = document.getElementById("hero-reasoning-container");
+      reasonBox.innerHTML = "";
+      dec.reasoning.forEach(r => {
+        const p = document.createElement("p");
+        p.innerText = `• ${r}`;
+        reasonBox.appendChild(p);
+      });
+
+      document.getElementById("metric-defect-name").innerText = det.detected_class.replace('_', ' ').toUpperCase();
+      document.getElementById("metric-confidence").innerText = `${det.confidence_pct} Confidence`;
+
+      document.getElementById("metric-severity-val").innerText = `Level ${char.severity_proxy} / 5`;
+      document.getElementById("metric-area-val").innerText = `${char.damage_area_pct}% Blade Area`;
+
+      // Dual Energy Metrics (Daily + Annual)
+      document.getElementById("metric-energy-loss").innerText = `${Math.round(en.daily_energy_loss_kwh).toLocaleString()} kWh / d`;
+      if (document.getElementById("metric-annual-energy")) {
+        document.getElementById("metric-annual-energy").innerText = `${(en.annual_energy_loss_kwh / 1000).toFixed(1)} MWh / yr`;
+      }
+      document.getElementById("metric-aep-loss").innerText = `-${en.aep_loss_pct}% AEP Impact`;
+
+      // Dual Financial Metrics (Daily Rate + Annual Lakhs)
+      document.getElementById("metric-daily-loss").innerText = `₹${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / d`;
+      const annualLakhs = (fin.annual_financial_loss_inr / 100000).toFixed(2);
+      if (document.getElementById("metric-annual-loss")) {
+        document.getElementById("metric-annual-loss").innerText = `₹${annualLakhs} Lakhs / yr`;
+      }
+      document.getElementById("metric-payback-days").innerText = `Payback: ${fin.payback_days.toFixed(1)} days`;
+
+      // Update Spanwise Blade Graphic & Slider
+      const r_R = char.spanwise_position_r_R;
+      const pinPct = Math.min(98, Math.max(10, r_R * 100));
+      document.getElementById("blade-pin-marker").style.left = `${pinPct}%`;
+      document.getElementById("cfg-spanwise-slider").value = r_R;
+      document.getElementById("spanwise-val-badge").innerText = `r/R = ${r_R.toFixed(2)} (${char.blade_region})`;
+
+      const bladeSpeedKmh = Math.round(r_R * 280);
+      if (document.getElementById("spanwise-speed-badge")) {
+        document.getElementById("spanwise-speed-badge").innerText = `Speed: ~${bladeSpeedKmh} km/h`;
+      }
+
+      const rated = parseFloat(document.getElementById("cfg-turbine").value);
+      renderPowerChart(phys.baseline_power_kw, phys.estimated_power_loss_kw, rated);
+      renderPaybackChart(fin.daily_financial_loss_inr, fin.repair_cost_inr, fin.payback_days);
+    }
+
+    function renderPowerChart(baseKw, lossKw, ratedKw) {
+      const ctx = document.getElementById("chart-power-curve").getContext("2d");
+      if (powerChart) powerChart.destroy();
+
+      const rKw = ratedKw || 3600.0;
+      const ws = [3, 5, 7, 8, 9, 10, 11.5, 13, 15, 20];
+      const baseCurve = ws.map(v => {
+        if (v < 3.0) return 0;
+        if (v >= 11.5) return Math.round(rKw);
+        return Math.round(rKw * Math.pow((v - 3.0) / (11.5 - 3.0), 3.0));
+      });
+      const damCurve = baseCurve.map((p, idx) => {
+        const v = ws[idx];
+        if (v < 3.0) return 0;
+        const lossRatio = Math.min(0.35, Math.max(0, lossKw / Math.max(baseKw, 10)));
+        return Math.round(Math.max(0, p * (1 - lossRatio)));
+      });
+
+      powerChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ws.map(v => `${v} m/s`),
+          datasets: [
+            { label: 'Baseline Clean Power (kW)', data: baseCurve, borderColor: '#10b981', borderWidth: 2.5, tension: 0.3, fill: false },
+            { label: 'Degraded Operating Power (kW)', data: damCurve, borderColor: '#ef4444', borderWidth: 2, borderDash: [5, 5], tension: 0.3, fill: false }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { family: 'Inter', size: 11, weight: 'bold' } } } },
+          scales: { y: { title: { display: true, text: 'Generator Power (kW)' } } }
+        }
+      });
+    }
+
+    function renderPaybackChart(dailyLoss, repairCost, paybackDays) {
+      const ctx = document.getElementById("chart-payback-curve").getContext("2d");
+      if (paybackChart) paybackChart.destroy();
+
+      const maxDays = Math.min(365, Math.max(45, Math.ceil(paybackDays * 1.35)));
+      const steps = [1, Math.round(maxDays*0.25), Math.round(maxDays*0.5), Math.round(maxDays*0.75), maxDays];
+      if (!steps.includes(Math.round(paybackDays)) && paybackDays <= maxDays) {
+        steps.push(Math.round(paybackDays));
+        steps.sort((a,b)=>a-b);
+      }
+
+      const lossPoints = steps.map(d => Math.round(d * dailyLoss));
+      const repairPoints = steps.map(() => repairCost);
+
+      if (paybackDays > 365) {
+        document.getElementById("crossover-tag").innerText = `Payback: > 1 Year (Monitor)`;
+        document.getElementById("crossover-tag").className = "text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800";
+      } else {
+        document.getElementById("crossover-tag").innerText = `Payback Crossover: Day ${paybackDays.toFixed(1)}`;
+        document.getElementById("crossover-tag").className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800";
+      }
+
+      paybackChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: steps.map(d => `Day ${d}`),
+          datasets: [
+            { label: 'Cumulative Revenue Loss (₹)', data: lossPoints, borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.08)', fill: true, tension: 0.1 },
+            { label: 'One-Time Repair Cost (₹)', data: repairPoints, borderColor: '#2563eb', borderWidth: 2, borderDash: [4, 4], fill: false }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { family: 'Inter', size: 11, weight: 'bold' } } } },
+          scales: { y: { title: { display: true, text: 'Amount (₹)' } } }
+        }
+      });
+    }
+
+    // Interactive Spanwise Slider Live Calculation
+    let sliderDebounce = null;
+    document.getElementById("cfg-spanwise-slider").addEventListener("input", (e) => {
+      const val = parseFloat(e.target.value);
+      const pinPct = Math.min(98, Math.max(10, val * 100));
+      document.getElementById("blade-pin-marker").style.left = `${pinPct}%`;
+      const region = val >= 0.80 ? "Outboard Tip" : (val >= 0.50 ? "Mid-Span" : "Root/Inboard");
+      document.getElementById("spanwise-val-badge").innerText = `r/R = ${val.toFixed(2)} (${region})`;
+      const bladeSpeedKmh = Math.round(val * 280);
+      if (document.getElementById("spanwise-speed-badge")) {
+        document.getElementById("spanwise-speed-badge").innerText = `Speed: ~${bladeSpeedKmh} km/h`;
+      }
+
+      clearTimeout(sliderDebounce);
+      sliderDebounce = setTimeout(() => {
+        runAnalysis(val);
+      }, 120);
+    });
+
+    document.getElementById("cfg-wind").addEventListener("input", (e) => {
+      document.getElementById("cfg-wind-val").innerText = `${e.target.value} m/s`;
+    });
+    document.getElementById("btn-recalculate").addEventListener("click", runAnalysis);
+
+    document.getElementById("btn-export-json").addEventListener("click", () => {
+      if (!activeAnalysisData) return;
+      const blob = new Blob([JSON.stringify(activeAnalysisData, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `aeroloss_inspection_${Date.now()}.json`;
+      a.click();
+    });
+
+    document.getElementById("file-uploader").addEventListener("change", async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const spinner = document.getElementById("img-loading-spinner");
+      spinner.classList.remove("hidden");
+
+      const wind = parseFloat(document.getElementById("cfg-wind").value);
+      const rated = parseFloat(document.getElementById("cfg-turbine").value);
+      const tariff = parseFloat(document.getElementById("cfg-tariff").value);
+      const repair = parseFloat(document.getElementById("cfg-repair").value);
+
+      const reader = new FileReader();
+      reader.onload = async (re) => {
+        const base64Data = re.target.result;
+        document.getElementById("active-blade-img").src = base64Data;
+
+        const payload = {
+          image_base64: base64Data,
+          wind_speed: wind,
+          rated_kw: rated,
+          tariff: tariff,
+          repair_cost: repair
+        };
+
+        try {
+          const res = await fetch("/api/analyze", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          activeAnalysisData = data;
+          renderDashboard(data);
+        } catch (err) {
+          console.error("Upload failed", err);
+        } finally {
+          spinner.classList.add("hidden");
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+
+    window.addEventListener("DOMContentLoaded", loadSamples);
+  </script>
+</body>
+</html>

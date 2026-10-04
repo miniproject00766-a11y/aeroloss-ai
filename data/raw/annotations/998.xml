@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages2</folder>
+	<filename>998.jpg</filename>
+	<path>C:\Users\dell\Desktop\2\JPEGImages2\998.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>corrosion</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>369</xmin>
+			<ymin>442</ymin>
+			<xmax>494</xmax>
+			<ymax>992</ymax>
+		</bndbox>
+	</object>
+</annotation>

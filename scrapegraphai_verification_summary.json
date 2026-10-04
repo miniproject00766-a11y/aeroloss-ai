@@ -1,0 +1,32 @@
+[
+  {
+    "source_title": "Target Document",
+    "has_drone_vision": true,
+    "has_aerodynamic_polar_degradation": true,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_power_loss_calculation": false,
+    "has_financial_payback_engine": false,
+    "has_prescriptive_decision_support": false,
+    "novelty_gap_confirmed": true
+  },
+  {
+    "source_title": "Target Document",
+    "has_drone_vision": true,
+    "has_aerodynamic_polar_degradation": true,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_power_loss_calculation": false,
+    "has_financial_payback_engine": true,
+    "has_prescriptive_decision_support": false,
+    "novelty_gap_confirmed": true
+  },
+  {
+    "source_title": "Target Document",
+    "has_drone_vision": true,
+    "has_aerodynamic_polar_degradation": true,
+    "has_spanwise_r_R_scaling": false,
+    "has_kwh_power_loss_calculation": false,
+    "has_financial_payback_engine": true,
+    "has_prescriptive_decision_support": false,
+    "novelty_gap_confirmed": true
+  }
+]

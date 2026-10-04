@@ -1,0 +1,54 @@
+{
+  "vision_model": {
+    "architecture": "MobileNetV3-Small (Transfer Learning with Data Augmentation)",
+    "test_accuracy": 0.916,
+    "test_weighted_f1": 0.9175,
+    "classes": [
+      "corrosion",
+      "crack",
+      "craze",
+      "hide_craze",
+      "surface_injure",
+      "thunderstrike"
+    ],
+    "per_class_f1": {
+      "corrosion": 0.8505747126436781,
+      "crack": 0.9846153846153847,
+      "craze": 0.9230769230769231,
+      "hide_craze": 0.9,
+      "surface_injure": 0.9333333333333333,
+      "thunderstrike": 0.9230769230769231
+    }
+  },
+  "physics_models": {
+    "power_loss_kw": {
+      "r2_score": 0.9793,
+      "mae": 2.3112,
+      "rmse": 4.6518,
+      "mean_actual": 16.9339
+    },
+    "aep_loss_pct": {
+      "r2_score": 0.9995,
+      "mae": 0.0148,
+      "rmse": 0.0269,
+      "mean_actual": 0.9537
+    },
+    "daily_energy_loss_kwh": {
+      "r2_score": 0.9983,
+      "mae": 7.2394,
+      "rmse": 13.5,
+      "mean_actual": 249.0705
+    }
+  },
+  "decision_model": {
+    "algorithm": "Random Forest Multi-Class Decision Support Classifier",
+    "accuracy": 0.9972,
+    "weighted_f1": 0.9972,
+    "roc_auc_ovr": 1.0,
+    "decision_classes": [
+      "ENGINEERING_ASSESSMENT",
+      "MONITOR",
+      "REPAIR"
+    ]
+  }
+}

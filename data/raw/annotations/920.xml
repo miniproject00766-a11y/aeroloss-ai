@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages2</folder>
+	<filename>920.jpg</filename>
+	<path>C:\Users\dell\Desktop\2\JPEGImages2\920.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>corrosion</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>2</xmin>
+			<ymin>602</ymin>
+			<xmax>283</xmax>
+			<ymax>677</ymax>
+		</bndbox>
+	</object>
+</annotation>

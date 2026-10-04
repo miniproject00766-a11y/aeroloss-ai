@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>518.jpg</filename>
+	<path>C:\Users\dell\Desktop\1\3\JPEGImages\518.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>craze</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>236</xmin>
+			<ymin>319</ymin>
+			<xmax>1024</xmax>
+			<ymax>672</ymax>
+		</bndbox>
+	</object>
+</annotation>

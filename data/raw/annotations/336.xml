@@ -1,0 +1,26 @@
+<annotation>
+	<folder>JPEGImages</folder>
+	<filename>336.jpg</filename>
+	<path>E:\py--study\ssd\VOCdevkit\VOC2012\JPEGImages\336.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>thunderstrike</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>655</xmin>
+			<ymin>499</ymin>
+			<xmax>708</xmax>
+			<ymax>599</ymax>
+		</bndbox>
+	</object>
+</annotation>
