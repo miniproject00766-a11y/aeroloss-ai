@@ -1,0 +1,89 @@
+{
+  "imputation": {
+    "mean_features": [
+      "confidence",
+      "wind_speed"
+    ],
+    "median_features": [
+      "area_pct"
+    ],
+    "mode_features": [
+      "defect_class"
+    ]
+  },
+  "iqr_outliers": {
+    "area_pct": {
+      "Q1": 2.08,
+      "Q3": 6.415,
+      "IQR": 4.335,
+      "lower_bound": -4.422,
+      "upper_bound": 12.918,
+      "outliers_detected": 0
+    },
+    "aspect_ratio": {
+      "Q1": 1.252,
+      "Q3": 2.715,
+      "IQR": 1.463,
+      "lower_bound": -0.943,
+      "upper_bound": 4.91,
+      "outliers_detected": 0
+    },
+    "wind_speed": {
+      "Q1": 7.46,
+      "Q3": 10.74,
+      "IQR": 3.28,
+      "lower_bound": 2.54,
+      "upper_bound": 15.66,
+      "outliers_detected": 0
+    }
+  },
+  "encoding": {
+    "one_hot_columns": [
+      "class_onehot_corrosion",
+      "class_onehot_crack",
+      "class_onehot_craze",
+      "class_onehot_hide_craze",
+      "class_onehot_surface_injure",
+      "class_onehot_thunderstrike"
+    ],
+    "label_encoding_decision": {
+      "ENGINEERING_ASSESSMENT": 0,
+      "MONITOR": 1,
+      "REPAIR": 2
+    },
+    "target_guided_ordinal_ranks": {
+      "thunderstrike": 0,
+      "crack": 1,
+      "surface_injure": 2,
+      "corrosion": 3,
+      "hide_craze": 4,
+      "craze": 5
+    }
+  },
+  "smote_balance": {
+    "original_samples": 3600,
+    "resampled_balanced_samples": 3600,
+    "balance_ratio": "1:1:1 across all 3 decision classes"
+  },
+  "retrained_models": {
+    "decision_accuracy": 0.9958,
+    "decision_weighted_f1": 0.9958,
+    "physics_metrics": {
+      "power_loss_kw": {
+        "r2_score": 0.9419,
+        "mae": 2.9701,
+        "rmse": 7.7977
+      },
+      "aep_loss_pct": {
+        "r2_score": 0.9992,
+        "mae": 0.0165,
+        "rmse": 0.0339
+      },
+      "daily_energy_loss_kwh": {
+        "r2_score": 0.9982,
+        "mae": 7.5148,
+        "rmse": 14.1313
+      }
+    }
+  }
+}
