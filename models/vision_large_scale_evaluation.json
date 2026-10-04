@@ -1,0 +1,44 @@
+{
+  "training_scope": "LARGE_SCALE_CONSOLIDATED",
+  "total_images_indexed": 6079,
+  "test_accuracy": 0.9221,
+  "test_weighted_f1": 0.922,
+  "confusion_matrix": [
+    [
+      257,
+      38
+    ],
+    [
+      33,
+      584
+    ]
+  ],
+  "classification_report": {
+    "Normal/Dirt": {
+      "precision": 0.8862068965517241,
+      "recall": 0.8711864406779661,
+      "f1-score": 0.8786324786324786,
+      "support": 295.0
+    },
+    "Blade Damage": {
+      "precision": 0.9389067524115756,
+      "recall": 0.946515397082658,
+      "f1-score": 0.9426957223567393,
+      "support": 617.0
+    },
+    "accuracy": 0.9221491228070176,
+    "macro avg": {
+      "precision": 0.9125568244816499,
+      "recall": 0.908850918880312,
+      "f1-score": 0.910664100494609,
+      "support": 912.0
+    },
+    "weighted avg": {
+      "precision": 0.921860198158663,
+      "recall": 0.9221491228070176,
+      "f1-score": 0.9219735108450541,
+      "support": 912.0
+    }
+  },
+  "checkpoint": "C:\\Users\\akhil\\.gemini\\antigravity\\scratch\\aeroloss_ai\\models\\blade_defect_classifier_large_scale.pth"
+}
