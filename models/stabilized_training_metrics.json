@@ -1,0 +1,98 @@
+{
+  "status": "STABILIZED_AND_RETRAINED",
+  "dataset_scope": {
+    "total_images_in_system": 17530,
+    "training_samples_balanced": 3600,
+    "features_engineered": 17
+  },
+  "decision_model": {
+    "algorithm": "RandomForest (200 Trees, Max Depth 12)",
+    "accuracy": 0.9944,
+    "weighted_f1": 0.9945,
+    "confusion_matrix": [
+      [
+        239,
+        0,
+        1
+      ],
+      [
+        2,
+        238,
+        0
+      ],
+      [
+        1,
+        0,
+        239
+      ]
+    ],
+    "classes": [
+      "ENGINEERING_ASSESSMENT",
+      "MONITOR",
+      "REPAIR"
+    ],
+    "classification_report": {
+      "ENGINEERING_ASSESSMENT": {
+        "precision": 0.987603305785124,
+        "recall": 0.9958333333333333,
+        "f1-score": 0.991701244813278,
+        "support": 240.0
+      },
+      "MONITOR": {
+        "precision": 1.0,
+        "recall": 0.9916666666666667,
+        "f1-score": 0.99581589958159,
+        "support": 240.0
+      },
+      "REPAIR": {
+        "precision": 0.9958333333333333,
+        "recall": 0.9958333333333333,
+        "f1-score": 0.9958333333333333,
+        "support": 240.0
+      },
+      "accuracy": 0.9944444444444445,
+      "macro avg": {
+        "precision": 0.9944788797061523,
+        "recall": 0.9944444444444445,
+        "f1-score": 0.9944501592427338,
+        "support": 720.0
+      },
+      "weighted avg": {
+        "precision": 0.9944788797061525,
+        "recall": 0.9944444444444445,
+        "f1-score": 0.9944501592427337,
+        "support": 720.0
+      }
+    }
+  },
+  "physics_surrogates": {
+    "power_loss_kw": {
+      "r2_score": 0.9486,
+      "mae": 2.4191,
+      "rmse": 7.3391,
+      "mean_val": 16.9339
+    },
+    "aep_loss_pct": {
+      "r2_score": 0.9995,
+      "mae": 0.0126,
+      "rmse": 0.0271,
+      "mean_val": 0.9537
+    },
+    "daily_energy_loss_kwh": {
+      "r2_score": 0.9984,
+      "mae": 6.4073,
+      "rmse": 13.3386,
+      "mean_val": 249.0705
+    }
+  },
+  "feature_engineering_techniques_applied": [
+    "Mean Imputation (confidence, wind_speed)",
+    "Median Imputation (area_pct)",
+    "Mode Imputation (defect_class)",
+    "IQR Outlier Capping (area_pct, aspect_ratio, wind_speed)",
+    "One-Hot Nominal Encoding (6 defect classes)",
+    "Label Encoding (maintenance decisions)",
+    "Target-Guided Ordinal Encoding (ranked by mean power loss kW)",
+    "SMOTE Balancing (1:1:1 across all classes)"
+  ]
+}
