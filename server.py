@@ -5,6 +5,7 @@ import base64
 import io
 import mimetypes
 import sqlite3
+from datetime import datetime
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 from PIL import Image
@@ -81,7 +82,51 @@ class AeroLossAPIHandler(BaseHTTPRequestHandler):
         elif path == '/api/turbines':
             conn = get_db_connection()
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM turbines ORDER BY turbine_id ASC;")
+            cursor.execute("""
+            SELECT 
+                t.turbine_id,
+                t.turbine_name,
+                t.turbine_model,
+                t.rated_power_kw,
+                t.rotor_diameter,
+                t.blade_count,
+                t.hub_height,
+                t.blade_length,
+                t.airfoil_mapping,
+                t.tariff,
+                t.capacity_factor,
+                t.repair_cost,
+                t.location,
+                t.inspection_date,
+                t.health_status,
+                t.severity_grade,
+                t.defect_summary,
+                t.r_R_summary,
+                t.sample_class,
+                t.sample_file,
+                t.explainability,
+                i.inspection_id,
+                i.detected_class,
+                i.confidence,
+                i.damage_area_pct,
+                i.r_R,
+                i.severity,
+                i.aep_loss_pct,
+                i.daily_energy_loss_kwh,
+                i.daily_financial_loss_inr,
+                i.repair_cost_inr,
+                i.payback_days,
+                i.recommended_action,
+                i.urgency,
+                i.reasoning
+            FROM turbines t
+            LEFT JOIN (
+                SELECT * FROM inspections WHERE rowid IN (
+                    SELECT MAX(rowid) FROM inspections GROUP BY turbine_id
+                )
+            ) i ON t.turbine_id = i.turbine_id
+            ORDER BY t.turbine_id ASC;
+            """)
             rows = cursor.fetchall()
             conn.close()
 
@@ -382,10 +427,11 @@ class AeroLossAPIHandler(BaseHTTPRequestHandler):
 
                 # Save inspection record to database
                 insp_id = f"INSP-{turbine_id}-{int(np.random.randint(1000, 9999))}"
+                now_str = datetime.now().strftime("%Y-%m-%d")
                 cursor.execute("""
                 INSERT OR REPLACE INTO inspections VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
                 """, (
-                    insp_id, turbine_id, "2026-10-04", char['primary_defect'], char.get('confidence', 0.90),
+                    insp_id, turbine_id, now_str, char['primary_defect'], char.get('confidence', 0.90),
                     char['damage_area_pct'], char['spanwise_position_r_R'], char['severity_proxy'],
                     phys['power_baseline_kw'], phys['power_damaged_kw'], phys['power_loss_kw'], phys['aep_loss_pct'],
                     phys['daily_energy_loss_kwh'], fin['daily_loss_inr'], fin['repair_cost_inr'], fin['payback_days'],
@@ -393,14 +439,22 @@ class AeroLossAPIHandler(BaseHTTPRequestHandler):
                 ))
                 
                 # Update turbine live status in database
-                health_map = {'REPAIR': 'Critical' if char['severity_proxy'] >= 4 else 'High Risk', 'MONITOR': 'Monitor', 'ENGINEERING_ASSESSMENT': 'Monitor'}
+                health_map = {
+                    'REPAIR': 'Critical' if char['severity_proxy'] >= 4 else 'High Risk',
+                    'MONITOR': 'Monitor' if char['severity_proxy'] > 0 else 'Healthy',
+                    'ENGINEERING_ASSESSMENT': 'Critical' if char['severity_proxy'] >= 4 else 'High Risk'
+                }
                 cursor.execute("""
-                UPDATE turbines SET health_status = ?, severity_grade = ?, defect_summary = ?, explainability = ? WHERE turbine_id = ?;
+                UPDATE turbines 
+                SET health_status = ?, severity_grade = ?, defect_summary = ?, r_R_summary = ?, explainability = ?, inspection_date = ? 
+                WHERE turbine_id = ?;
                 """, (
                     health_map.get(dec['decision'], 'Monitor'),
                     f"Level {char['severity_proxy']} / 5",
                     char['primary_defect'].replace('_', ' ').title(),
+                    f"{char['spanwise_position_r_R']:.2f} ({char['blade_region']})",
                     " ".join(dec['reasons']),
+                    now_str,
                     turbine_id
                 ))
                 conn.commit()

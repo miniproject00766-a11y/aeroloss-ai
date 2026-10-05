@@ -153,7 +153,10 @@ def seed_history(cursor):
         ("INSP-06A-01", "WTG-06A", "2026-08-15", "crack", 0.90, 2.1, 0.84, 2, 1450.0, 1425.0, 25.0, 1.0, 300.0, 1350.0, 40000.0, 29.6, "MONITOR", "Low", "Minor structural flaw at r/R=0.84."),
         ("INSP-06A-02", "WTG-06A", "2026-10-04", "crack", 0.94, 3.8, 0.84, 3, 1450.0, 1388.0, 62.0, 2.1, 592.0, 2665.0, 40000.0, 15.0, "REPAIR", "High", "Outboard crack expanded. Boundary layer detachment creates torque penalty."),
 
-        ("INSP-03B-01", "WTG-03B", "2026-10-04", "surface_injure", 0.89, 2.4, 0.76, 2, 1450.0, 1427.0, 23.0, 0.7, 219.0, 985.0, 40000.0, 40.6, "MONITOR", "Medium", "Surface pitting at mid-outboard span.")
+        ("INSP-03B-01", "WTG-03B", "2026-10-04", "surface_injure", 0.89, 2.4, 0.76, 2, 1450.0, 1427.0, 23.0, 0.7, 219.0, 985.0, 40000.0, 40.6, "MONITOR", "Medium", "Surface pitting at mid-outboard span."),
+        ("INSP-02A-01", "WTG-02A", "2026-10-04", "corrosion", 0.85, 1.5, 0.62, 1, 1450.0, 1438.0, 12.0, 0.4, 95.0, 428.0, 40000.0, 93.4, "MONITOR", "Medium", "Mid-span surface roughness at r/R=0.62."),
+        ("INSP-01A-01", "WTG-01A", "2026-10-04", "clean", 0.99, 0.0, 0.88, 0, 1450.0, 1450.0, 0.0, 0.0, 0.0, 0.0, 40000.0, 0.0, "CLEAN", "Low", "Normal clean blade condition. Aerodynamic lift and drag coefficients remain at baseline reference polars."),
+        ("INSP-05B-01", "WTG-05B", "2026-10-04", "clean", 0.99, 0.0, 0.90, 0, 1450.0, 1450.0, 0.0, 0.0, 0.0, 0.0, 40000.0, 0.0, "CLEAN", "Low", "Clean operating profile with minor non-degrading surface discoloration. Zero AEP penalty.")
     ]
 
     cursor.executemany("""

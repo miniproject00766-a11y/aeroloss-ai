@@ -215,7 +215,7 @@
         </div>
         <div>
           <span class="text-[10px] font-semibold text-slate-500 block uppercase">Cluster Total Daily Revenue Loss</span>
-          <span class="text-xl font-bold text-slate-900">₹ 8,327 / day</span>
+          <span id="cluster-total-daily-loss-header" class="text-xl font-bold text-slate-900">Loading live data...</span>
         </div>
       </div>
     </div>
@@ -224,38 +224,38 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
       <div class="card-box bg-white rounded-2xl p-4">
         <span class="text-xs font-medium text-slate-400 uppercase block">Total Turbines</span>
-        <div class="text-xl font-bold text-slate-900 mt-1">6 Units</div>
+        <div id="cluster-kpi-total-turbines" class="text-xl font-bold text-slate-900 mt-1">6 Units</div>
         <span class="text-[11px] font-medium text-blue-600 mt-1 block">Cluster WTG-A</span>
       </div>
 
       <div class="card-box bg-white rounded-2xl p-4">
         <span class="text-xs font-medium text-slate-400 uppercase block">Healthy</span>
-        <div class="text-xl font-bold text-emerald-600 mt-1">2 Turbines</div>
-        <span class="text-[11px] font-medium text-emerald-700 mt-1 block">Level 0 Severity</span>
+        <div id="cluster-kpi-healthy-count" class="text-xl font-bold text-emerald-600 mt-1">—</div>
+        <span class="text-[11px] font-medium text-emerald-700 mt-1 block">Clean Blade Polars</span>
       </div>
 
       <div class="card-box bg-white rounded-2xl p-4">
         <span class="text-xs font-medium text-slate-400 uppercase block">Monitor</span>
-        <div class="text-xl font-bold text-amber-600 mt-1">2 Turbines</div>
-        <span class="text-[11px] font-medium text-amber-700 mt-1 block">Level 1 - 2 Severity</span>
+        <div id="cluster-kpi-monitor-count" class="text-xl font-bold text-amber-600 mt-1">—</div>
+        <span class="text-[11px] font-medium text-amber-700 mt-1 block">Low AEP Penalty</span>
       </div>
 
       <div class="card-box bg-white rounded-2xl p-4">
         <span class="text-xs font-medium text-slate-400 uppercase block">High Risk</span>
-        <div class="text-xl font-bold text-orange-600 mt-1">1 Turbine</div>
-        <span class="text-[11px] font-medium text-orange-700 mt-1 block">Level 3 Severity</span>
+        <div id="cluster-kpi-highrisk-count" class="text-xl font-bold text-orange-600 mt-1">—</div>
+        <span class="text-[11px] font-medium text-orange-700 mt-1 block">Elevated Drag</span>
       </div>
 
       <div class="card-box bg-white rounded-2xl p-4">
         <span class="text-xs font-medium text-slate-400 uppercase block">Critical</span>
-        <div class="text-xl font-bold text-rose-600 mt-1">1 Turbine</div>
-        <span class="text-[11px] font-medium text-rose-700 mt-1 block">Level 4 Severity</span>
+        <div id="cluster-kpi-critical-count" class="text-xl font-bold text-rose-600 mt-1">—</div>
+        <span class="text-[11px] font-medium text-rose-700 mt-1 block">Immediate Review</span>
       </div>
 
       <div class="card-box bg-white rounded-2xl p-4">
         <span class="text-xs font-medium text-slate-400 uppercase block">Total ₹ Loss / Day</span>
-        <div class="text-xl font-bold text-slate-900 mt-1">₹ 8,327</div>
-        <span class="text-[11px] font-medium text-rose-600 mt-1 block">₹ 30.39 Lakhs / yr</span>
+        <div id="cluster-kpi-daily-loss" class="text-xl font-bold text-slate-900 mt-1">₹ 0</div>
+        <span id="cluster-kpi-annual-loss" class="text-[11px] font-medium text-rose-600 mt-1 block">₹ 0 Lakhs / yr</span>
       </div>
     </div>
 
@@ -270,21 +270,21 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
               Inspection Priority Alert
             </span>
-            <span class="text-xs font-semibold text-rose-600 px-2 py-0.5 rounded-full bg-rose-50 border border-rose-200">Urgency: Critical</span>
+            <span id="banner-urgency-badge" class="text-xs font-semibold text-rose-600 px-2 py-0.5 rounded-full bg-rose-50 border border-rose-200">Urgency: Critical</span>
           </div>
-          <h2 class="text-lg font-bold text-slate-900">WTG-04B requires immediate inspection attention.</h2>
+          <h2 id="banner-alert-heading" class="text-lg font-bold text-slate-900">Evaluating Cluster Priorities...</h2>
           <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-600 pt-1">
-            <span>Severity: <strong class="text-rose-600">Level 4 / 5</strong></span>
-            <span>Defect: <strong class="text-slate-900">Leading-Edge Damage</strong></span>
-            <span>Location: <strong class="text-slate-900">r/R 0.91 (Blade Tip)</strong></span>
-            <span>AEP Impact: <strong class="text-rose-600">-3.8%</strong></span>
-            <span>Financial Loss: <strong class="text-slate-900">₹ 4,250 / day</strong></span>
+            <span id="banner-alert-severity">Severity: <strong class="text-rose-600">—</strong></span>
+            <span id="banner-alert-defect">Defect: <strong class="text-slate-900">—</strong></span>
+            <span id="banner-alert-location">Location: <strong class="text-slate-900">—</strong></span>
+            <span id="banner-alert-aep">AEP Impact: <strong class="text-rose-600">—</strong></span>
+            <span id="banner-alert-loss">Financial Loss: <strong class="text-slate-900">—</strong></span>
           </div>
         </div>
       </div>
 
-      <button onclick="openTurbineAnalysis('WTG-04B')" class="py-2.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all cursor-pointer shrink-0">
-        OPEN ANALYSIS FOR WTG-04B
+      <button id="banner-alert-btn" onclick="openTurbineAnalysis('WTG-04B')" class="py-2.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all cursor-pointer shrink-0">
+        OPEN DETAILED ANALYSIS
         <span class="material-symbols-outlined text-base">arrow_forward</span>
       </button>
     </div>
@@ -325,10 +325,10 @@
         </div>
         
         <div class="flex items-center gap-3 text-xs font-medium">
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Healthy (2)</span>
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Monitor (2)</span>
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> High Risk (1)</span>
-          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> Critical (1)</span>
+          <span id="legend-count-healthy" class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Healthy (—)</span>
+          <span id="legend-count-monitor" class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Monitor (—)</span>
+          <span id="legend-count-highrisk" class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> High Risk (—)</span>
+          <span id="legend-count-critical" class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> Critical (—)</span>
         </div>
       </div>
 
@@ -360,11 +360,11 @@
 
         <!-- Health Category Filter Buttons -->
         <div class="flex flex-wrap items-center gap-1.5" id="farm-filter-buttons">
-          <button onclick="setFarmFilter('ALL', this)" class="chip-btn active px-3 py-1.5 rounded-xl border border-blue-200 text-xs font-semibold text-blue-700 bg-blue-50">All (6)</button>
-          <button onclick="setFarmFilter('Healthy', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Healthy (2)</button>
-          <button onclick="setFarmFilter('Monitor', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Monitor (2)</button>
-          <button onclick="setFarmFilter('High Risk', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">High Risk (1)</button>
-          <button onclick="setFarmFilter('Critical', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Critical (1)</button>
+          <button id="btn-filter-all" onclick="setFarmFilter('ALL', this)" class="chip-btn active px-3 py-1.5 rounded-xl border border-blue-200 text-xs font-semibold text-blue-700 bg-blue-50">All (6)</button>
+          <button id="btn-filter-healthy" onclick="setFarmFilter('Healthy', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Healthy (—)</button>
+          <button id="btn-filter-monitor" onclick="setFarmFilter('Monitor', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Monitor (—)</button>
+          <button id="btn-filter-highrisk" onclick="setFarmFilter('High Risk', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">High Risk (—)</button>
+          <button id="btn-filter-critical" onclick="setFarmFilter('Critical', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Critical (—)</button>
         </div>
 
         <!-- Sorting Dropdown -->
@@ -757,8 +757,8 @@
           </div>
           
           <div class="flex items-center gap-6 text-xs text-slate-600">
-            <div><span class="text-slate-400 block text-[10px] font-semibold">INSPECTION ID</span> <strong class="text-slate-900">#2026-INSP-882</strong></div>
-            <div><span class="text-slate-400 block text-[10px] font-semibold">DATE</span> <strong class="text-slate-900">2026-10-04</strong></div>
+            <div><span class="text-slate-400 block text-[10px] font-semibold">INSPECTION ID</span> <strong id="analysis-inspection-id" class="text-slate-900">—</strong></div>
+            <div><span class="text-slate-400 block text-[10px] font-semibold">DATE</span> <strong id="analysis-inspection-date" class="text-slate-900">—</strong></div>
             <div><span class="text-slate-400 block text-[10px] font-semibold">AIRFOIL MODEL</span> <strong class="text-slate-900">FFA-W3-241</strong></div>
           </div>
         </div>
@@ -767,38 +767,38 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           <div class="card-box bg-white rounded-2xl p-4">
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">1. Detected Defects</span>
-            <div id="kpi-defect-count" class="text-xl font-bold text-slate-900 mt-1">1 Active</div>
-            <div id="kpi-defect-type" class="text-[11px] font-semibold text-blue-600 mt-0.5">Crack Defect</div>
+            <div id="kpi-defect-count" class="text-xl font-bold text-slate-900 mt-1">—</div>
+            <div id="kpi-defect-type" class="text-[11px] font-semibold text-blue-600 mt-0.5">Analyzing...</div>
           </div>
 
           <div class="card-box bg-white rounded-2xl p-4">
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">2. Max Severity</span>
-            <div id="kpi-max-severity" class="text-xl font-bold text-amber-600 mt-1">Level 4 / 5</div>
-            <div id="kpi-area-pct" class="text-[11px] font-medium text-slate-500 mt-0.5">4.50% Area</div>
+            <div id="kpi-max-severity" class="text-xl font-bold text-amber-600 mt-1">—</div>
+            <div id="kpi-area-pct" class="text-[11px] font-medium text-slate-500 mt-0.5">— Area</div>
           </div>
 
           <div class="card-box bg-white rounded-2xl p-4">
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">3. AEP / Energy Loss</span>
-            <div id="kpi-energy-loss" class="text-xl font-bold text-rose-600 mt-1">683 kWh/d</div>
-            <div id="kpi-aep-pct" class="text-[11px] font-semibold text-rose-500 mt-0.5">-2.20% AEP Impact</div>
+            <div id="kpi-energy-loss" class="text-xl font-bold text-rose-600 mt-1">— kWh/d</div>
+            <div id="kpi-aep-pct" class="text-[11px] font-semibold text-rose-500 mt-0.5">— AEP Impact</div>
           </div>
 
           <div class="card-box bg-white rounded-2xl p-4">
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">4. ₹ Financial Loss</span>
-            <div id="kpi-daily-loss" class="text-xl font-bold text-slate-900 mt-1">₹ 3,077 / d</div>
-            <div id="kpi-annual-lakhs" class="text-[11px] font-semibold text-rose-600 mt-0.5">₹ 11.23 Lakhs/yr</div>
+            <div id="kpi-daily-loss" class="text-xl font-bold text-slate-900 mt-1">₹ — / d</div>
+            <div id="kpi-annual-lakhs" class="text-[11px] font-semibold text-rose-600 mt-0.5">₹ — Lakhs/yr</div>
           </div>
 
           <div class="card-box bg-white rounded-2xl p-4">
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">5. Repair Payback</span>
-            <div id="kpi-payback-days" class="text-xl font-bold text-emerald-600 mt-1">13.0 Days</div>
+            <div id="kpi-payback-days" class="text-xl font-bold text-emerald-600 mt-1">— Days</div>
             <div class="text-[11px] font-medium text-slate-500 mt-0.5">Cost: ₹ 40,000</div>
           </div>
 
           <div class="card-box bg-white rounded-2xl p-4">
             <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">6. Decision</span>
-            <div id="kpi-decision-title" class="text-lg font-bold text-rose-600 mt-1 truncate">REPAIR</div>
-            <div id="kpi-urgency-badge" class="text-[11px] font-semibold text-rose-600 mt-0.5">Urgency: Critical</div>
+            <div id="kpi-decision-title" class="text-lg font-bold text-rose-600 mt-1 truncate">—</div>
+            <div id="kpi-urgency-badge" class="text-[11px] font-semibold text-rose-600 mt-0.5">Calculating...</div>
           </div>
         </div>
 
@@ -1361,116 +1361,181 @@
 
   <!-- DASHBOARD JAVASCRIPT LOGIC -->
   <script>
-    const windFarmTurbines = [
-      {
-        id: "WTG-04B",
-        health: "Critical",
-        healthClass: "bg-rose-50 text-rose-700 border-rose-200",
-        dotClass: "bg-rose-600",
-        severity: "Level 4 / 5",
-        defect: "Leading-Edge Damage",
-        r_R: "0.91 (Tip)",
-        aep: "-3.8%",
-        energyLoss: "944 kWh/day",
-        dailyLoss: 4250,
-        payback: "9.4 days",
-        priority: "HIGH",
-        priorityClass: "bg-rose-50 text-rose-700 border-rose-200",
-        sampleClass: "crack",
-        sampleFile: "patch_00155.jpg",
-        explainability: "Damage located at r/R = 0.91 near the blade tip, where tip rotational speed exceeds 250 km/h, amplifying profile drag and producing a maximum ₹ 4,250/day revenue loss."
-      },
-      {
-        id: "WTG-06A",
-        health: "High Risk",
-        healthClass: "bg-orange-50 text-orange-700 border-orange-200",
-        dotClass: "bg-orange-500",
-        severity: "Level 3 / 5",
-        defect: "Crack",
-        r_R: "0.84 (Outboard)",
-        aep: "-2.1%",
-        energyLoss: "592 kWh/day",
-        dailyLoss: 2665,
-        payback: "15.0 days",
-        priority: "HIGH",
-        priorityClass: "bg-orange-50 text-orange-700 border-orange-200",
-        sampleClass: "crack",
-        sampleFile: "patch_00058.jpg",
-        explainability: "Outboard structural crack at r/R = 0.84. Boundary layer flow detachment creates steady torque reduction resulting in ₹ 2,665/day daily loss."
-      },
-      {
-        id: "WTG-03B",
-        health: "Monitor",
-        healthClass: "bg-amber-50 text-amber-700 border-amber-200",
-        dotClass: "bg-amber-500",
-        severity: "Level 2 / 5",
-        defect: "Surface Injury",
-        r_R: "0.76 (Outboard)",
-        aep: "-0.7%",
-        energyLoss: "219 kWh/day",
-        dailyLoss: 985,
-        payback: "40.6 days",
-        priority: "Medium",
-        priorityClass: "bg-amber-50 text-amber-700 border-amber-200",
-        sampleClass: "surface_injure",
-        sampleFile: "patch_00003.jpg",
-        explainability: "Moderate surface pitting at r/R = 0.76. Extended payback period (40.6 days) indicates repair should be scheduled during routine outage."
-      },
-      {
-        id: "WTG-02A",
-        health: "Monitor",
-        healthClass: "bg-amber-50 text-amber-700 border-amber-200",
-        dotClass: "bg-amber-500",
-        severity: "Level 1 / 5",
-        defect: "Surface Defect",
-        r_R: "0.62 (Mid-span)",
-        aep: "-0.4%",
-        energyLoss: "95 kWh/day",
-        dailyLoss: 428,
-        payback: "93.4 days",
-        priority: "Medium",
-        priorityClass: "bg-amber-50 text-amber-700 border-amber-200",
-        sampleClass: "corrosion",
-        sampleFile: "patch_00000.jpg",
-        explainability: "Mid-span surface roughness at r/R = 0.62. Low rotational velocity limits total financial impact to ₹ 428/day."
-      },
-      {
-        id: "WTG-01A",
-        health: "Healthy",
-        healthClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
-        dotClass: "bg-emerald-500",
-        severity: "Level 0 / 5",
-        defect: "No Defect",
-        r_R: "0.88 (Tip)",
-        aep: "0%",
-        energyLoss: "0 kWh/day",
-        dailyLoss: 0,
-        payback: "—",
-        priority: "Low",
-        priorityClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
-        sampleClass: "corrosion",
-        sampleFile: "patch_00384.jpg",
-        explainability: "Normal clean blade condition. Aerodynamic lift and drag coefficients remain at baseline reference polars."
-      },
-      {
-        id: "WTG-05B",
-        health: "Healthy",
-        healthClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
-        dotClass: "bg-emerald-500",
-        severity: "Level 0 / 5",
-        defect: "No Defect",
-        r_R: "0.90 (Tip)",
-        aep: "0%",
-        energyLoss: "0 kWh/day",
-        dailyLoss: 0,
-        payback: "—",
-        priority: "Low",
-        priorityClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
-        sampleClass: "thunderstrike",
-        sampleFile: "patch_00427.jpg",
-        explainability: "Clean operating profile with minor non-degrading surface discoloration. Zero AEP penalty."
+    let windFarmTurbines = [];
+
+    async function loadWindFarmData() {
+      try {
+        const res = await fetch("/api/turbines");
+        const data = await res.json();
+        if (data && data.turbines) {
+          windFarmTurbines = data.turbines.map(t => {
+            const dailyLoss = Math.round(t.daily_financial_loss_inr || 0);
+            const energyLoss = Math.round(t.daily_energy_loss_kwh || 0);
+            const aepLoss = t.aep_loss_pct != null ? `-${Number(t.aep_loss_pct).toFixed(1)}%` : "0.0%";
+            const payback = t.payback_days && t.payback_days > 0 ? `${Number(t.payback_days).toFixed(1)} days` : "—";
+            const defect = t.defect_summary || (t.detected_class ? t.detected_class.replace('_', ' ').toUpperCase() : "Clean");
+            const r_R = t.r_R_summary || (t.r_R ? `${Number(t.r_R).toFixed(2)}` : "—");
+            const severity = t.severity_grade || (t.severity != null ? `Level ${t.severity} / 5` : "Level 0 / 5");
+
+            let health = t.health_status || "Monitor";
+            let healthClass = "bg-amber-50 text-amber-700 border-amber-200";
+            let dotClass = "bg-amber-500";
+            let priority = "Medium";
+            let priorityClass = "bg-amber-50 text-amber-700 border-amber-200";
+
+            if (t.recommended_action === "REPAIR" || health === "Critical") {
+              health = "Critical";
+              healthClass = "bg-rose-50 text-rose-700 border-rose-200";
+              dotClass = "bg-rose-600";
+              priority = "HIGH";
+              priorityClass = "bg-rose-50 text-rose-700 border-rose-200";
+            } else if (health === "High Risk" || t.urgency === "HIGH" || t.urgency === "CRITICAL" || t.urgency === "Critical") {
+              health = "High Risk";
+              healthClass = "bg-orange-50 text-orange-700 border-orange-200";
+              dotClass = "bg-orange-500";
+              priority = "HIGH";
+              priorityClass = "bg-orange-50 text-orange-700 border-orange-200";
+            } else if (dailyLoss === 0 || health === "Healthy" || defect.toLowerCase().includes("clean") || defect.toLowerCase().includes("no defect")) {
+              health = "Healthy";
+              healthClass = "bg-emerald-50 text-emerald-700 border-emerald-200";
+              dotClass = "bg-emerald-500";
+              priority = "Low";
+              priorityClass = "bg-emerald-50 text-emerald-700 border-emerald-200";
+            } else if (t.recommended_action === "ENGINEERING_ASSESSMENT") {
+              health = "Monitor";
+              healthClass = "bg-purple-50 text-purple-700 border-purple-200";
+              dotClass = "bg-purple-600";
+              priority = "Assessment";
+              priorityClass = "bg-purple-50 text-purple-700 border-purple-200";
+            }
+
+            return {
+              id: t.turbine_id,
+              name: t.turbine_name,
+              health: health,
+              healthClass: healthClass,
+              dotClass: dotClass,
+              severity: severity,
+              defect: defect,
+              r_R: r_R,
+              aep: aepLoss,
+              energyLoss: `${energyLoss} kWh/day`,
+              energyLossRaw: energyLoss,
+              dailyLoss: dailyLoss,
+              payback: payback,
+              priority: priority,
+              priorityClass: priorityClass,
+              sampleClass: t.sample_class || "crack",
+              sampleFile: t.sample_file || "patch_00155.jpg",
+              explainability: t.explainability || "Physics-informed BEM calculation on FFA-W3-241 airfoil."
+            };
+          });
+
+          updateFarmHeaderAndKpis();
+          renderWindFarmVisualGrid();
+          filterTurbineTable();
+          renderFarmFinancialChart();
+        }
+      } catch (err) {
+        console.error("Failed to load wind farm turbine data:", err);
       }
-    ];
+    }
+
+    function updateFarmHeaderAndKpis() {
+      if (!windFarmTurbines || windFarmTurbines.length === 0) return;
+
+      const totalTurbines = windFarmTurbines.length;
+      let totalDailyLoss = 0;
+      let healthyCount = 0;
+      let monitorCount = 0;
+      let highRiskCount = 0;
+      let criticalCount = 0;
+
+      windFarmTurbines.forEach(t => {
+        totalDailyLoss += (t.dailyLoss || 0);
+        if (t.health === "Critical") criticalCount++;
+        else if (t.health === "High Risk") highRiskCount++;
+        else if (t.health === "Monitor") monitorCount++;
+        else healthyCount++;
+      });
+
+      const totalAnnualLakhs = ((totalDailyLoss * 365) / 100000).toFixed(2);
+
+      const headerLoss = document.getElementById("cluster-total-daily-loss-header");
+      if (headerLoss) headerLoss.innerText = `₹ ${totalDailyLoss.toLocaleString()} / day`;
+
+      const kpiTot = document.getElementById("cluster-kpi-total-turbines");
+      if (kpiTot) kpiTot.innerText = `${totalTurbines} Units`;
+
+      const kpiHealthy = document.getElementById("cluster-kpi-healthy-count");
+      if (kpiHealthy) kpiHealthy.innerText = `${healthyCount} Turbines`;
+
+      const kpiMon = document.getElementById("cluster-kpi-monitor-count");
+      if (kpiMon) kpiMon.innerText = `${monitorCount} Turbines`;
+
+      const kpiHigh = document.getElementById("cluster-kpi-highrisk-count");
+      if (kpiHigh) kpiHigh.innerText = `${highRiskCount} Turbines`;
+
+      const kpiCrit = document.getElementById("cluster-kpi-critical-count");
+      if (kpiCrit) kpiCrit.innerText = `${criticalCount} Turbines`;
+
+      const kpiDaily = document.getElementById("cluster-kpi-daily-loss");
+      if (kpiDaily) kpiDaily.innerText = `₹ ${totalDailyLoss.toLocaleString()}`;
+
+      const kpiAnnual = document.getElementById("cluster-kpi-annual-loss");
+      if (kpiAnnual) kpiAnnual.innerText = `₹ ${totalAnnualLakhs} Lakhs / yr`;
+
+      const legH = document.getElementById("legend-count-healthy");
+      if (legH) legH.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Healthy (${healthyCount})`;
+      const legM = document.getElementById("legend-count-monitor");
+      if (legM) legM.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Monitor (${monitorCount})`;
+      const legHR = document.getElementById("legend-count-highrisk");
+      if (legHR) legHR.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> High Risk (${highRiskCount})`;
+      const legC = document.getElementById("legend-count-critical");
+      if (legC) legC.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> Critical (${criticalCount})`;
+
+      const btnAll = document.getElementById("btn-filter-all");
+      if (btnAll) btnAll.innerText = `All (${totalTurbines})`;
+      const btnH = document.getElementById("btn-filter-healthy");
+      if (btnH) btnH.innerText = `Healthy (${healthyCount})`;
+      const btnM = document.getElementById("btn-filter-monitor");
+      if (btnM) btnM.innerText = `Monitor (${monitorCount})`;
+      const btnHR = document.getElementById("btn-filter-highrisk");
+      if (btnHR) btnHR.innerText = `High Risk (${highRiskCount})`;
+      const btnC = document.getElementById("btn-filter-critical");
+      if (btnC) btnC.innerText = `Critical (${criticalCount})`;
+
+      const priorityList = [...windFarmTurbines].sort((a,b) => b.dailyLoss - a.dailyLoss);
+      const topAlert = priorityList[0];
+      if (topAlert) {
+        const bannerH = document.getElementById("banner-alert-heading");
+        if (bannerH) bannerH.innerText = `${topAlert.id} requires immediate inspection attention.`;
+
+        const bannerUrg = document.getElementById("banner-urgency-badge");
+        if (bannerUrg) bannerUrg.innerText = `Urgency: ${topAlert.health === 'Critical' ? 'Critical' : (topAlert.health === 'High Risk' ? 'High' : 'Medium')}`;
+
+        const bannerSev = document.getElementById("banner-alert-severity");
+        if (bannerSev) bannerSev.innerHTML = `Severity: <strong class="text-rose-600">${topAlert.severity}</strong>`;
+
+        const bannerDef = document.getElementById("banner-alert-defect");
+        if (bannerDef) bannerDef.innerHTML = `Defect: <strong class="text-slate-900">${topAlert.defect}</strong>`;
+
+        const bannerLoc = document.getElementById("banner-alert-location");
+        if (bannerLoc) bannerLoc.innerHTML = `Location: <strong class="text-slate-900">${topAlert.r_R}</strong>`;
+
+        const bannerAep = document.getElementById("banner-alert-aep");
+        if (bannerAep) bannerAep.innerHTML = `AEP Impact: <strong class="text-rose-600">${topAlert.aep}</strong>`;
+
+        const bannerLoss = document.getElementById("banner-alert-loss");
+        if (bannerLoss) bannerLoss.innerHTML = `Financial Loss: <strong class="text-slate-900">₹ ${topAlert.dailyLoss.toLocaleString()} / day</strong>`;
+
+        const bannerBtn = document.getElementById("banner-alert-btn");
+        if (bannerBtn) {
+          bannerBtn.innerHTML = `OPEN ANALYSIS FOR ${topAlert.id} <span class="material-symbols-outlined text-base">arrow_forward</span>`;
+          bannerBtn.onclick = () => openTurbineAnalysis(topAlert.id);
+        }
+      }
+    }
 
     let currentFilterHealth = "ALL";
     let farmChart = null;
@@ -1496,7 +1561,14 @@
         if (uploadText) uploadText.innerText = "JPG, PNG, or drone footage frame (1024x1024)";
       }
 
-      const t = windFarmTurbines.find(item => item.id === turbineId) || windFarmTurbines[0];
+      const t = windFarmTurbines.find(item => item.id === turbineId) || windFarmTurbines[0] || {
+        id: turbineId || "WTG-04B",
+        health: "Monitor",
+        severity: "Level 1 / 5",
+        healthClass: "bg-amber-50 text-amber-700 border-amber-200",
+        sampleClass: "crack",
+        sampleFile: "patch_00155.jpg"
+      };
       
       document.getElementById("breadcrumb-turbine-id").innerText = `${turbineId || t.id} Detailed Analysis`;
       document.getElementById("analysis-title-id").innerText = `Turbine ${turbineId || t.id} Detailed Analysis`;
@@ -1507,9 +1579,13 @@
         badge.className = `text-xs font-semibold px-3 py-1 rounded-full border ${t.healthClass}`;
       }
 
-      if (!keepUploaded) {
+      if (!keepUploaded && t.sampleClass && t.sampleFile) {
         currentSampleClass = t.sampleClass;
         currentSampleFile = t.sampleFile;
+        const bladeImg = document.getElementById("active-blade-img");
+        if (bladeImg) {
+          bladeImg.src = `/api/sample_image/${t.sampleClass}/${t.sampleFile}`;
+        }
       }
 
       document.getElementById("view-farm-overview").classList.add("hidden");
@@ -2110,6 +2186,9 @@
         const data = await res.json();
         activeAnalysisData = data;
         renderDashboard(data);
+        if (data.status === "SUCCESS") {
+          loadWindFarmData();
+        }
       } catch (err) {
         console.error("Analysis execution failed", err);
       } finally {
@@ -2223,6 +2302,14 @@
         p.innerText = `• ${r}`;
         reasonBox.appendChild(p);
       });
+
+      const countEl = document.getElementById("kpi-defect-count");
+      if (countEl) countEl.innerText = `${det.defect_count || 1} Active`;
+
+      const inspIdEl = document.getElementById("analysis-inspection-id");
+      if (inspIdEl) inspIdEl.innerText = data.inspection_id || `#2026-INSP-${Date.now().toString().slice(-4)}`;
+      const inspDateEl = document.getElementById("analysis-inspection-date");
+      if (inspDateEl) inspDateEl.innerText = new Date().toISOString().split('T')[0];
 
       document.getElementById("kpi-defect-type").innerText = det.detected_class.replace('_', ' ').toUpperCase();
       document.getElementById("kpi-max-severity").innerText = `Level ${char.severity_proxy} / 5`;
@@ -2441,8 +2528,10 @@
       statusPhys.innerText = "Waiting...";
       statusDec.innerText = "Waiting...";
 
+      const topTurb = (windFarmTurbines && windFarmTurbines.length > 0) ? windFarmTurbines[0] : { id: "WTG-04B", r_R: "0.91", defect: "Crack", aep: "-3.6%", dailyLoss: 5048, health: "Critical" };
+
       // Step 1: Drone Flies across turbine towards target blade
-      msg.innerText = "[1/4] Drone Flying & Scanning Wind Turbine WTG-04B at r/R = 0.91...";
+      msg.innerText = `[1/4] Drone Flying & Scanning Wind Turbine ${topTurb.id} at r/R = ${topTurb.r_R}...`;
       badge.innerText = "DRONE FLIGHT";
       badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-blue-900/80 text-blue-300 border border-blue-700";
       
@@ -2455,7 +2544,7 @@
       flash.classList.remove("hidden");
       setTimeout(() => flash.classList.add("hidden"), 300);
 
-      msg.innerText = "[2/4] Optical Camera Flash! RGB Image Patch Captured at r/R = 0.91.";
+      msg.innerText = `[2/4] Optical Camera Flash! RGB Image Patch Captured at r/R = ${topTurb.r_R}.`;
       badge.innerText = "IMAGE CAPTURED";
       badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-cyan-900/80 text-cyan-300 border border-cyan-700";
 
@@ -2475,7 +2564,7 @@
 
       bbox.classList.remove("hidden");
       nodeYolo.className = "w-32 p-3 rounded-xl border-2 border-indigo-500 bg-indigo-950/80 text-center space-y-1 shadow-lg shadow-indigo-500/30 scale-105 transition-all duration-300";
-      statusYolo.innerText = "Crack (98.4%)";
+      statusYolo.innerText = `${topTurb.defect} (Live)`;
 
       await new Promise(r => setTimeout(r, 1400));
 
@@ -2485,29 +2574,27 @@
       badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-emerald-900/80 text-emerald-300 border border-emerald-700";
 
       nodePhys.className = "w-32 p-3 rounded-xl border-2 border-emerald-500 bg-emerald-950/80 text-center space-y-1 shadow-lg shadow-emerald-500/30 scale-105 transition-all duration-300";
-      statusPhys.innerText = "-3.8% AEP Loss";
+      statusPhys.innerText = `${topTurb.aep} AEP Loss`;
 
       await new Promise(r => setTimeout(r, 1400));
 
       // Step 5: Financial Loss & Maintenance Action Decision
-      msg.innerText = "✓ Processing Complete! Daily Revenue Loss: ₹ 4,250/day. Action: REPAIR NOW.";
-      badge.innerText = "ACTION: REPAIR NOW";
+      msg.innerText = `✓ Processing Complete! Daily Revenue Loss: ₹ ${topTurb.dailyLoss.toLocaleString()}/day. Action: ${topTurb.health === 'Critical' ? 'REPAIR NOW' : 'ASSESSMENT'}.`;
+      badge.innerText = `ACTION: ${topTurb.health === 'Critical' ? 'REPAIR NOW' : 'ASSESSMENT'}`;
       badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-rose-900/80 text-rose-300 border border-rose-700 animate-pulse";
 
       nodeDec.className = "w-36 p-3 rounded-xl border-2 border-rose-500 bg-rose-950/80 text-center space-y-1 shadow-lg shadow-rose-500/30 scale-105 transition-all duration-300";
-      statusDec.innerText = "₹ 4,250/d • REPAIR";
+      statusDec.innerText = `₹ ${topTurb.dailyLoss.toLocaleString()}/d`;
 
       isSimRunning = false;
     }
 
     // DOM Load Initialization
-    window.addEventListener("DOMContentLoaded", () => {
-      renderWindFarmVisualGrid();
-      filterTurbineTable();
-      renderFarmFinancialChart();
-      loadSamples();
+    window.addEventListener("DOMContentLoaded", async () => {
+      await loadWindFarmData();
+      await loadSamples();
       setupUploadListeners();
-      setTimeout(runDroneSimulation, 1000);
+      setTimeout(runDroneSimulation, 1200);
     });
   </script>
 </body>
