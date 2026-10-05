@@ -72,7 +72,7 @@ class YoloService:
                 cnn_conf = float(probs[pred_idx])
 
                 # Check OOD Guardrail
-                is_valid, validation_msg = self.pipeline.validate_blade_domain(pil_img, probs, cnn_conf, threshold=0.70)
+                is_valid, validation_msg = self.pipeline.validate_blade_domain(pil_img, probs, cnn_conf, threshold=0.45, top2_threshold=0.75)
                 rejection_reason = validation_msg
                 
                 if not pred_class:

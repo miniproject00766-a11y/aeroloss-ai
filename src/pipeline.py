@@ -85,7 +85,7 @@ class AeroLossPipeline:
         else:
             self.ml_decision_model = None
 
-    def validate_blade_domain(self, pil_img, probs, confidence, threshold=0.70):
+    def validate_blade_domain(self, pil_img, probs, confidence, threshold=0.45, top2_threshold=0.75):
         """
         Out-of-Distribution (OOD) Domain Guardrail.
         Verifies that the uploaded photo exhibits authentic wind turbine blade surface characteristics.
@@ -110,34 +110,44 @@ class AeroLossPipeline:
                 top_idx, top_prob = top_indices[0], top_probs[0]
                 top_name = self.domain_categories[top_idx]
 
-                # (a) Living Organisms (All Birds, Animals, Insects, Plants: indices 0..397)
-                if 0 <= top_idx <= 397 and top_prob >= 0.20:
+                # (a) Natural Turbine Environments (Mountains, Valleys, Shorelines: indices 970..980)
+                TURBINE_ENVIRONMENTS = {970, 972, 975, 976, 977, 978, 979, 980}  # alp, cliff, lakeside, promontory, sandbar, seashore, valley
+                if top_idx in TURBINE_ENVIRONMENTS:
+                    pass  # Authentic outdoor wind farm landscape backdrop
+
+                # (b) Living Organisms (All Birds, Animals, Insects, Plants: indices 0..397)
+                elif 0 <= top_idx <= 397 and top_prob >= 0.40:
                     return False, f"Domain Guardrail: Biological organism detected ('{top_name}', {top_prob*100:.1f}%). Authentic turbine blades are industrial composite structures."
 
-                # (b) Food, Produce & Beverages (indices 920..970)
-                if 920 <= top_idx <= 970 and top_prob >= 0.20:
+                # (c) Food, Produce & Beverages (indices 924..969: guacamole through eggnog)
+                elif 924 <= top_idx <= 969 and top_prob >= 0.25:
                     return False, f"Domain Guardrail: Food/organic matter detected ('{top_name}', {top_prob*100:.1f}%). Authentic turbine blades are non-organic fiberglass composite."
 
-                # (c) Consumer Road Vehicles & Personal Transport
-                VEHICLE_KEYWORDS = {'car', 'automobile', 'wagon', 'minivan', 'truck', 'bus', 'motorcycle', 'bicycle'}
-                if any(k in top_name.lower() for k in VEHICLE_KEYWORDS) and top_prob >= 0.20:
+                # (d) Consumer Road Vehicles & Personal Transport
+                elif any(k in top_name.lower() for k in {'car', 'automobile', 'wagon', 'minivan', 'truck', 'bus', 'motorcycle', 'bicycle'}) and top_prob >= 0.30:
                     return False, f"Domain Guardrail: Consumer transport/vehicle detected ('{top_name}', {top_prob*100:.1f}%)."
 
-                # (d) Apparel, Garments & Woven Textiles
-                TEXTILE_KEYWORDS = {'wool', 'dishrag', 'quilt', 'velvet', 'poncho', 'jersey', 'towel', 'rug', 'carpet', 'cloth', 'fabric', 'suit', 'jacket', 'coat', 'blanket', 'linen', 'curtain', 'bonnet', 'stole', 'shawl'}
-                textile_hits = [(self.domain_categories[i].lower(), domain_probs[i].item()) for i in top_indices if any(k in self.domain_categories[i].lower() for k in TEXTILE_KEYWORDS)]
-                if textile_hits:
-                    hit_sum = sum(p for _, p in textile_hits)
-                    top_is_textile = any(k in top_name.lower() for k in TEXTILE_KEYWORDS)
-                    if (top_is_textile and top_prob >= 0.15) or hit_sum >= 0.20:
-                        return False, f"Domain Guardrail: Woven textile/fabric detected ('{top_name}', {top_prob*100:.1f}%). Industrial blades exhibit smooth aerodynamic gelcoat."
+                # (e) Apparel, Garments & Woven Textiles
+                else:
+                    TEXTILE_KEYWORDS = {'wool', 'dishrag', 'quilt', 'velvet', 'poncho', 'jersey', 'towel', 'rug', 'carpet', 'cloth', 'fabric', 'suit', 'jacket', 'coat', 'blanket', 'linen', 'curtain', 'bonnet', 'stole', 'shawl'}
+                    textile_hits = [(self.domain_categories[i].lower(), domain_probs[i].item()) for i in top_indices if any(k in self.domain_categories[i].lower() for k in TEXTILE_KEYWORDS)]
+                    if textile_hits:
+                        hit_sum = sum(p for _, p in textile_hits)
+                        top_is_textile = any(k in top_name.lower() for k in TEXTILE_KEYWORDS)
+                        if (top_is_textile and top_prob >= 0.15) or hit_sum >= 0.20:
+                            return False, f"Domain Guardrail: Woven textile/fabric detected ('{top_name}', {top_prob*100:.1f}%). Industrial blades exhibit smooth aerodynamic gelcoat."
 
             except Exception as e:
                 pass
 
-        # 2. Softmax Confidence Threshold
-        if confidence < threshold:
-            return False, f"Confidence below blade verification threshold ({confidence*100:.1f}% < {threshold*100:.1f}%). Model cannot verify aerodynamic blade surface."
+        # 2. Multi-Defect Softmax Confidence Threshold
+        # Real-world damaged blades often exhibit compound co-occurring defects (e.g. crack + corrosion).
+        sorted_probs = np.sort(probs)[::-1]
+        top1 = float(sorted_probs[0])
+        top2_sum = float(sorted_probs[0] + sorted_probs[1]) if len(sorted_probs) > 1 else top1
+
+        if top1 < threshold and top2_sum < top2_threshold:
+            return False, f"Confidence below blade verification threshold (Top-1: {top1*100:.1f}%, Top-2: {top2_sum*100:.1f}%). Model cannot verify aerodynamic blade surface."
 
         # 3. Shannon Entropy of Softmax Distribution
         probs_clipped = np.clip(probs, 1e-7, 1.0)
@@ -145,8 +155,8 @@ class AeroLossPipeline:
         max_possible_entropy = np.log(len(probs))
         normalized_entropy = entropy / max_possible_entropy if max_possible_entropy > 0 else 0.0
 
-        if normalized_entropy > 0.65:
-            return False, f"High prediction uncertainty / entropy ({normalized_entropy:.2f}). Model cannot reliably identify aerodynamic blade surface features."
+        if normalized_entropy > 0.82:
+            return False, f"High prediction uncertainty / entropy ({normalized_entropy:.2f} > 0.82). Model cannot reliably identify aerodynamic blade surface features."
 
         # 4. Domain Color Saturation Filter
         # Wind turbine blades are non-saturated composite (white, light gray, gelcoat, matte black).
@@ -188,7 +198,7 @@ class AeroLossPipeline:
             probs = np.array([0.90])
 
         # 2.1 Out-of-Distribution (OOD) Domain Guardrail Check
-        is_valid, validation_msg = self.validate_blade_domain(pil_img, probs, confidence, threshold=0.70)
+        is_valid, validation_msg = self.validate_blade_domain(pil_img, probs, confidence, threshold=0.45, top2_threshold=0.75)
         if not is_valid:
             return {
                 'is_valid_blade_image': False,
