@@ -90,10 +90,11 @@ class YoloService:
 
         # 2. If OOD rejected, draw warning banner and return
         if not is_valid:
-            banner_h = max(60, int(h * 0.18))
+            banner_h = max(70, int(h * 0.22))
             draw.rectangle([0, h//2 - banner_h//2, w, h//2 + banner_h//2], fill=(220, 38, 38), outline=(255, 255, 255), width=3)
-            draw.text((w * 0.05, h//2 - 14), "🛑 REJECTED: OUT-OF-DOMAIN / NON-BLADE IMAGE", fill="white")
-            draw.text((w * 0.05, h//2 + 10), "Guardrail Activated: Image does not exhibit turbine blade reflectance.", fill="white")
+            draw.text((w * 0.05, h//2 - 20), "🛑 REJECTED: OUT-OF-DOMAIN / NON-BLADE IMAGE", fill="white")
+            detail_msg = rejection_reason[:65] if len(rejection_reason) > 65 else rejection_reason
+            draw.text((w * 0.05, h//2 + 5), detail_msg, fill="white")
             return [], draw_img, False, rejection_reason
 
         # 3. If YOLO model is available, run YOLO

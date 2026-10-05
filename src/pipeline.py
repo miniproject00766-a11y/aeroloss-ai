@@ -58,6 +58,17 @@ class AeroLossPipeline:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
+        # Load Out-of-Distribution (OOD) Semantic Domain Model (MobileNetV3 on ImageNet)
+        try:
+            self.domain_weights = models.MobileNet_V3_Small_Weights.DEFAULT
+            self.domain_model = models.mobilenet_v3_small(weights=self.domain_weights).to(self.device).eval()
+            self.domain_categories = self.domain_weights.meta['categories']
+            self.domain_transform = self.domain_weights.transforms()
+        except Exception as e:
+            self.domain_model = None
+            self.domain_categories = []
+            self.domain_transform = None
+
         # Load ML Decision Model (prioritize realistic calibrated model pipeline)
         decision_path_realistic = os.path.join(MODELS_DIR, "decision_classifier_realistic.joblib")
         decision_path = os.path.join(MODELS_DIR, "decision_classifier.joblib")
@@ -78,13 +89,56 @@ class AeroLossPipeline:
         """
         Out-of-Distribution (OOD) Domain Guardrail.
         Verifies that the uploaded photo exhibits authentic wind turbine blade surface characteristics.
-        Prevents non-blade images (dogs, nature, cars, indoors) from generating fake damage numbers.
+        Prevents non-blade images (fabrics, textiles, household items, nature, food) from generating fake damage numbers.
         """
-        # 1. Softmax Confidence Threshold
+        # 1. Semantic Open-Domain Veto (ImageNet Foundation Filter)
+        # Rejects textiles, fabrics, household objects, animals, food, etc.
+        if self.domain_model is not None and self.domain_transform is not None:
+            try:
+                domain_tensor = self.domain_transform(pil_img).unsqueeze(0).to(self.device)
+                with torch.no_grad():
+                    domain_logits = self.domain_model(domain_tensor)
+                    domain_probs = torch.softmax(domain_logits, dim=1).squeeze()
+                    top5_indices = torch.topk(domain_probs, 5).indices.tolist()
+
+                TEXTILE_KEYWORDS = {
+                    'wool', 'dishrag', 'quilt', 'velvet', 'poncho', 'jersey', 'towel',
+                    'doormat', 'bath towel', 'sweatshirt', 'sock', 'cardigan', 'cloak',
+                    'shawl', 'pajama', 'linen', 'apron', 'rug', 'carpet', 'handkerchief',
+                    'fur coat', 'stole', 'bonnet', 'feather boa', 'jean', 'suit',
+                    'swimming trunks', 'diaper', 'trench coat', 'kimono', 'sleeping bag',
+                    'miniskirt', 'sarong', 'brassiere', 'bib', 'pillow', 'curtain', 'mitten'
+                }
+                DOMESTIC_KEYWORDS = {
+                    'cellular telephone', 'coffee mug', 'cup', 'plate', 'dining table',
+                    'pizza', 'cheeseburger', 'hotdog', 'bagel', 'sandwich', 'ice cream',
+                    'refrigerator', 'microwave', 'toaster', 'desk', 'couch', 'studio couch',
+                    'toilet seat', 'wardrobe', 'bookcase'
+                }
+
+                top_matches = [(self.domain_categories[i].lower(), domain_probs[i].item()) for i in top5_indices]
+                top_cat, top_prob = top_matches[0]
+
+                # Direct match on top category
+                if any(k in top_cat for k in TEXTILE_KEYWORDS):
+                    return False, f"Semantic Domain Guardrail Veto: Image identified as textile/fabric ('{top_cat}', {top_prob*100:.1f}%). Authentic turbine blades consist of industrial fiberglass/gelcoat composite."
+                
+                if any(k in top_cat for k in DOMESTIC_KEYWORDS):
+                    return False, f"Semantic Domain Guardrail Veto: Image identified as non-blade object ('{top_cat}', {top_prob*100:.1f}%). Model only accepts wind turbine blade surfaces."
+
+                # Aggregated textile probability
+                textile_hits = [f"{cat} ({prob*100:.1f}%)" for cat, prob in top_matches if any(k in cat for k in TEXTILE_KEYWORDS)]
+                if len(textile_hits) >= 2:
+                    return False, f"Semantic Domain Guardrail Veto: Textile weave pattern detected [{', '.join(textile_hits)}]. Authentic blades exhibit continuous aerodynamic composite surfaces."
+
+            except Exception as e:
+                pass
+
+        # 2. Softmax Confidence Threshold
         if confidence < threshold:
             return False, f"Confidence below blade verification threshold ({confidence*100:.1f}% < {threshold*100:.1f}%). Model cannot verify aerodynamic blade surface."
 
-        # 2. Shannon Entropy of Softmax Distribution
+        # 3. Shannon Entropy of Softmax Distribution
         probs_clipped = np.clip(probs, 1e-7, 1.0)
         entropy = -np.sum(probs_clipped * np.log(probs_clipped))
         max_possible_entropy = np.log(len(probs))
@@ -93,7 +147,7 @@ class AeroLossPipeline:
         if normalized_entropy > 0.65:
             return False, f"High prediction uncertainty / entropy ({normalized_entropy:.2f}). Model cannot reliably identify aerodynamic blade surface features."
 
-        # 3. Domain Color Saturation Filter
+        # 4. Domain Color Saturation Filter
         # Wind turbine blades are non-saturated composite (white, light gray, gelcoat, matte black).
         # Unfamiliar photos (animals, clothing, household items, nature) typically have high saturation.
         np_img = np.array(pil_img)
