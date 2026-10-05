@@ -37,11 +37,11 @@ class AeroLossPipeline:
         self.financial_engine = FinancialEngine()
         self.decision_engine = DecisionEngine()
         
-        # Load Vision Classifier
+        # Load Vision Classifier (6-class defect classifier)
         vision_ckpt_path = os.path.join(MODELS_DIR, "blade_defect_classifier.pth")
         if os.path.exists(vision_ckpt_path):
             ckpt = torch.load(vision_ckpt_path, map_location=self.device)
-            self.class_names = ckpt['class_names']
+            self.class_names = ckpt.get('class_names', ['corrosion', 'crack', 'craze', 'hide_craze', 'surface_injure', 'thunderstrike'])
             self.vision_model = models.mobilenet_v3_small(weights=None)
             self.vision_model.classifier[3] = nn.Linear(self.vision_model.classifier[3].in_features, len(self.class_names))
             self.vision_model.load_state_dict(ckpt['model_state_dict'])
@@ -58,15 +58,51 @@ class AeroLossPipeline:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
-        # Load ML Decision Model (prioritize realistic calibrated model)
+        # Load ML Decision Model (prioritize realistic calibrated model pipeline)
         decision_path_realistic = os.path.join(MODELS_DIR, "decision_classifier_realistic.joblib")
         decision_path = os.path.join(MODELS_DIR, "decision_classifier.joblib")
         if os.path.exists(decision_path_realistic):
-            self.ml_decision_model = joblib.load(decision_path_realistic)
+            try:
+                self.ml_decision_model = joblib.load(decision_path_realistic)
+            except Exception:
+                self.ml_decision_model = None
         elif os.path.exists(decision_path):
-            self.ml_decision_model = joblib.load(decision_path)
+            try:
+                self.ml_decision_model = joblib.load(decision_path)
+            except Exception:
+                self.ml_decision_model = None
         else:
             self.ml_decision_model = None
+
+    def validate_blade_domain(self, pil_img, probs, confidence, threshold=0.70):
+        """
+        Out-of-Distribution (OOD) Domain Guardrail.
+        Verifies that the uploaded photo exhibits authentic wind turbine blade surface characteristics.
+        Prevents non-blade images (dogs, nature, cars, indoors) from generating fake damage numbers.
+        """
+        # 1. Softmax Confidence Threshold
+        if confidence < threshold:
+            return False, f"Confidence below blade verification threshold ({confidence*100:.1f}% < {threshold*100:.1f}%). Model cannot verify aerodynamic blade surface."
+
+        # 2. Shannon Entropy of Softmax Distribution
+        probs_clipped = np.clip(probs, 1e-7, 1.0)
+        entropy = -np.sum(probs_clipped * np.log(probs_clipped))
+        max_possible_entropy = np.log(len(probs))
+        normalized_entropy = entropy / max_possible_entropy if max_possible_entropy > 0 else 0.0
+
+        if normalized_entropy > 0.65:
+            return False, f"High prediction uncertainty / entropy ({normalized_entropy:.2f}). Model cannot reliably identify aerodynamic blade surface features."
+
+        # 3. Domain Color Saturation Filter
+        # Wind turbine blades are non-saturated composite (white, light gray, gelcoat, matte black).
+        # Unfamiliar photos (animals, clothing, household items, nature) typically have high saturation.
+        np_img = np.array(pil_img)
+        if len(np_img.shape) == 3 and np_img.shape[2] == 3:
+            saturation = float(np.mean(np.max(np_img, axis=2) - np.min(np_img, axis=2)))
+            if saturation > 85.0:
+                return False, f"Color saturation anomaly ({saturation:.1f} > 85.0). Industrial turbine blades exhibit low-saturation fiberglass/gelcoat reflectance."
+
+        return True, "Valid wind turbine blade surface."
 
     def analyze_image(self, image_input, r_R=None, area_pct=None, wind_speed=7.56, rated_kw=3600.0, tariff=4.50, repair_cost=40000.0):
         """
@@ -94,6 +130,21 @@ class AeroLossPipeline:
             pred_class = 'surface_injure'
             confidence = 0.90
             all_probs = {pred_class: confidence}
+            probs = np.array([0.90])
+
+        # 2.1 Out-of-Distribution (OOD) Domain Guardrail Check
+        is_valid, validation_msg = self.validate_blade_domain(pil_img, probs, confidence, threshold=0.70)
+        if not is_valid:
+            return {
+                'is_valid_blade_image': False,
+                'status': 'REJECTED_OUT_OF_DOMAIN',
+                'error': 'Uploaded image is not recognized as a wind turbine blade.',
+                'rejection_reason': validation_msg,
+                'confidence': round(confidence, 4),
+                'confidence_pct': f"{confidence*100:.1f}%",
+                'detected_candidate': pred_class,
+                'advice': 'Please upload an authentic, clear drone or borescope photograph of an industrial wind turbine blade surface.'
+            }
 
         # 3. Damage Characterization Proxy
         base_sev_map = {
@@ -165,6 +216,8 @@ class AeroLossPipeline:
         final_decision = rule_decision['decision']
 
         return {
+            'is_valid_blade_image': True,
+            'status': 'SUCCESS',
             'visual_detection': {
                 'detected_class': pred_class,
                 'confidence': round(confidence, 4),

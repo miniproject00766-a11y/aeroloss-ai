@@ -41,8 +41,10 @@ scratch/
 .DS_Store
 Thumbs.db
 # ML datasets and generated training outputs
+data/external/
 data/yolo_dataset/
 runs/
+
 
 # Trained model weights
 *.pt

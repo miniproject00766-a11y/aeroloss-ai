@@ -2118,6 +2118,67 @@
     }
 
     function renderDashboard(data) {
+      if (data.is_valid_blade_image === false || data.status === "REJECTED_OUT_OF_DOMAIN" || data.maintenance_decision?.recommended_action === "REJECTED") {
+        if (data.image_overlay_b64) {
+          document.getElementById("active-blade-img").src = data.image_overlay_b64;
+        }
+        document.getElementById("detected-tag-label").innerText = "🛑 REJECTED: NON-BLADE IMAGE";
+        document.getElementById("detected-tag-label").className = "text-xs font-bold text-rose-600 bg-rose-50 px-2.5 py-1 rounded border border-rose-300";
+
+        const heroCard = document.getElementById("hero-decision-card");
+        const heroTitle = document.getElementById("hero-action-title");
+        const heroUrgency = document.getElementById("hero-urgency-badge");
+
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-amber-600 via-orange-600 to-rose-700";
+        heroTitle.innerText = "🛑 REJECTED: UNFAMILIAR / NON-BLADE IMAGE";
+        document.getElementById("kpi-decision-title").innerText = "REJECTED";
+        document.getElementById("kpi-decision-title").className = "text-lg font-bold text-amber-600 mt-1 truncate";
+        heroUrgency.innerText = "GUARDRAIL INTERVENTION";
+        heroUrgency.className = "px-3 py-1 bg-black/40 text-white text-xs font-bold rounded-full border border-white/20 uppercase tracking-wider";
+        document.getElementById("kpi-urgency-badge").innerText = "GUARDRAIL INTERVENTION";
+
+        const reasonBox = document.getElementById("hero-reasoning-container");
+        reasonBox.innerHTML = `
+          <p class="font-bold text-amber-100">⚠️ Domain Guardrail Activated:</p>
+          <p class="text-xs text-white/90">• ${data.error || 'Image is not recognized as a wind turbine blade.'}</p>
+          <p class="text-xs text-white/90">• <strong>Reason:</strong> ${data.rejection_reason || 'Unfamiliar texture or excessive color saturation.'}</p>
+          <p class="text-xs text-amber-200 mt-2 font-semibold">• Please upload an authentic wind turbine blade inspection photograph.</p>
+        `;
+
+        document.getElementById("kpi-defect-type").innerText = "INVALID IMAGE";
+        document.getElementById("kpi-max-severity").innerText = "Level 0 / 5";
+        document.getElementById("kpi-area-pct").innerText = "0.0% Area";
+        document.getElementById("kpi-energy-loss").innerText = "0 kWh/d";
+        document.getElementById("kpi-aep-pct").innerText = "0.0% AEP Impact";
+        document.getElementById("kpi-daily-loss").innerText = "₹ 0 / d";
+        document.getElementById("kpi-annual-lakhs").innerText = "₹ 0.00 Lakhs/yr";
+        document.getElementById("kpi-payback-days").innerText = "N/A";
+
+        const tableBody = document.getElementById("detection-table-body");
+        if (tableBody) {
+          tableBody.innerHTML = `
+            <tr class="hover:bg-rose-50/50">
+              <td class="p-3.5 font-bold text-rose-600">REJECTED (NON-BLADE)</td>
+              <td class="p-3.5 font-semibold text-slate-500">0.0%</td>
+              <td class="p-3.5">0.0%</td>
+              <td class="p-3.5">N/A</td>
+              <td class="p-3.5"><span class="px-2 py-0.5 rounded font-semibold bg-rose-100 text-rose-800">Invalid</span></td>
+            </tr>
+          `;
+        }
+
+        document.getElementById("energy-base-kw").innerText = "0 kW";
+        document.getElementById("energy-damaged-kw").innerText = "0 kW";
+        document.getElementById("energy-diff-kw").innerText = "0 kW Loss";
+        document.getElementById("fin-hero-daily").innerText = "₹ 0 / DAY";
+        document.getElementById("fin-kwh-day").innerText = "0 kWh/day";
+        document.getElementById("fin-monthly-val").innerText = "₹ 0";
+        document.getElementById("fin-annual-val").innerText = "₹ 0 Lakhs";
+        document.getElementById("payback-loss-val").innerText = "₹ 0 / day";
+        document.getElementById("payback-result-days").innerText = "N/A";
+        return;
+      }
+
       const det = data.visual_detection;
       const char = data.characterization;
       const phys = data.physics_aerodynamics;
