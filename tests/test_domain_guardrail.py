@@ -4,8 +4,9 @@ import unittest
 from PIL import Image, ImageDraw
 import numpy as np
 
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
+
 
 from src.pipeline import AeroLossPipeline
 

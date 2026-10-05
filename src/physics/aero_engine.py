@@ -2,9 +2,11 @@ import os
 import pandas as pd
 import numpy as np
 
-RAW_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai\data\raw"
-MODELS_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai\models"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+RAW_DIR = os.path.join(BASE_DIR, "data", "raw")
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 POLAR_FILE = os.path.join(RAW_DIR, "FFA_W3_241_polar.csv")
+
 
 class AeroLossPhysicsEngine:
     """

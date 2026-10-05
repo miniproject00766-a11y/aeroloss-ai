@@ -9,9 +9,10 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 
-# Set project base path
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+# Set project base path dynamically
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
+
 
 from src.physics.aero_engine import AeroLossPhysicsEngine
 from src.financial.financial_engine import FinancialEngine

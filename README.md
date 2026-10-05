@@ -59,19 +59,19 @@ While existing drone inspection tools stop at drawing 2D bounding boxes (e.g. *"
 
 ---
 
-## 🛠️ Installation & Setup
+## 🛠️ Clone & Run from GitHub
 
-### 1. Prerequisites
-* Python 3.9+
-* PyTorch
-* Scikit-Learn
-* Pandas, NumPy, Pillow
-
+### 1. Clone & Install
 ```bash
-pip install torch torchvision scikit-learn pandas numpy pillow
+# Clone the complete repository from GitHub
+git clone https://github.com/miniproject00766-a11y/aeroloss-ai.git
+cd aeroloss-ai
+
+# Install requirements
+pip install -r requirements.txt
 ```
 
-### 2. Run the Dashboard Server
+### 2. Launch the Interactive Dashboard Server
 ```bash
 python server.py
 ```
@@ -80,10 +80,16 @@ Open your browser and navigate to:
 http://localhost:8080
 ```
 
-### 3. Run Pipeline Inference Test
+### 3. Run Automated Unit & Guardrail Tests
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```
+
+### 4. Run Command-Line Inference Test
 ```bash
 python src/pipeline.py
 ```
+
 
 ---
 
