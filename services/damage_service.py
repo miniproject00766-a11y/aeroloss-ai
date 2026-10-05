@@ -41,8 +41,11 @@ class DamageService:
         r_R = primary.get('r_over_R', 0.88)
 
         base_sev = self.base_severity_map.get(primary_class, 2)
-        if area_pct > 6.0:
-            severity = min(5, base_sev + 1)
+        # Structural engineering scaling (IEC 61400-23 / DNV-GL)
+        if area_pct >= 20.0 or (primary_class in ['crack', 'thunderstrike'] and area_pct >= 5.0):
+            severity = 5  # Critical catastrophic structural failure
+        elif area_pct > 6.0 or (primary_class in ['crack', 'thunderstrike']):
+            severity = max(4, min(5, base_sev + 1))
         elif area_pct < 0.8:
             severity = max(1, base_sev - 1)
         else:

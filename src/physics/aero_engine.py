@@ -54,15 +54,18 @@ class AeroLossPhysicsEngine:
         based on spanwise position (r/R), damage severity (1-5), and wind speed.
         Uses IEA Task 46 spanwise scaling (r/R)^6.7.
         """
-        # Spanwise velocity weighting: (r/R)^6.7
-        # Local relative kinetic energy and dynamic pressure increase steeply towards tip
-        span_factor = float(np.power(np.clip(r_R, 0.1, 1.0), 6.7))
+        # Spanwise velocity & structural impact weighting
+        # Outboard erosion scales with tip speed, while structural cracks compromise entire downstream span
+        if int(severity) >= 4:
+            span_factor = float(max(0.45, np.power(np.clip(r_R, 0.1, 1.0), 3.0)))
+        else:
+            span_factor = float(max(0.10, np.power(np.clip(r_R, 0.1, 1.0), 4.5)))
 
-        # Severity aerodynamic penalty (0.01 to 0.08 max delta Cp)
-        sev_multiplier = {1: 0.012, 2: 0.025, 3: 0.045, 4: 0.070, 5: 0.095}.get(int(severity), 0.03)
+        # Severity aerodynamic penalty (0.015 to 0.140 delta Cp)
+        sev_multiplier = {1: 0.015, 2: 0.030, 3: 0.055, 4: 0.085, 5: 0.140}.get(int(severity), 0.05)
 
         # Area modifier: defect area % scaled
-        area_mod = float(np.clip(1.0 + 0.10 * np.log1p(area_pct), 0.8, 1.8))
+        area_mod = float(np.clip(1.0 + 0.15 * np.log1p(area_pct), 0.8, 2.5))
 
         # Operational region power response:
         # Region 2 (3 m/s <= v < 11.5 m/s): Aerodynamic loss directly reduces power ~ v^3
@@ -73,21 +76,18 @@ class AeroLossPhysicsEngine:
         elif 3.0 <= wind_speed < 11.5:
             # Region 2 cubic power curve up to rated
             power_baseline = rated_power_kw * np.power((wind_speed - 3.0) / (11.5 - 3.0), 3.0)
-            # Power loss fraction is highest near rated (8 - 11 m/s)
             loss_fraction = sev_multiplier * span_factor * area_mod
             power_loss = power_baseline * loss_fraction
         elif 11.5 <= wind_speed <= 25.0:
-            # Region 3 rated power with slight control margin penalty
             power_baseline = rated_power_kw
-            power_loss = rated_power_kw * (0.008 * sev_multiplier * span_factor)
+            power_loss = rated_power_kw * (0.012 * sev_multiplier * span_factor)
         else:
             power_baseline = 0.0
             power_loss = 0.0
 
         # Estimated AEP Loss % (annualized across Rayleigh/Weibull mean wind 7.5 m/s)
-        # Empirical mapping matching IEA Task 46 benchmark table (0.5% - 5.5%)
-        base_aep_loss_pct = (sev_multiplier / 0.070) * 4.1 * span_factor * area_mod
-        aep_loss_pct = float(np.clip(base_aep_loss_pct, 0.10, 8.50))
+        base_aep_loss_pct = (sev_multiplier / 0.070) * 3.8 * span_factor * area_mod
+        aep_loss_pct = float(np.clip(base_aep_loss_pct, 0.20, 15.0))
 
         # Daily Energy Loss (kWh/day)
         # Derived from average capacity factor ~0.36 on a 3.6 MW turbine (or user-specified rated)
