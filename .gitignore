@@ -40,7 +40,13 @@ scratch/
 # OS generated files
 .DS_Store
 Thumbs.db
+# ML datasets and generated training outputs
+data/yolo_dataset/
+runs/
 
-# Heavy raw datasets
-data/external/
+# Trained model weights
+*.pt
 
+# Python cache
+__pycache__/
+*.py[cod]

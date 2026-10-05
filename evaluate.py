@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
 from src.physics.aero_engine import AeroLossPhysicsEngine

@@ -7,7 +7,6 @@ RAW_DIR = os.path.join(BASE_DIR, "data", "raw")
 MODELS_DIR = os.path.join(BASE_DIR, "models")
 POLAR_FILE = os.path.join(RAW_DIR, "FFA_W3_241_polar.csv")
 
-
 class AeroLossPhysicsEngine:
     """
     Physics-informed aerodynamic degradation and power loss engine.

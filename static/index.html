@@ -3,15 +3,18 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>AeroLoss AI — Blade Maintenance Decision Platform</title>
+  <title>AeroLoss AI — Wind Farm Inspection & Financial Decision Engine</title>
   
-  <!-- Stitch Design System Dependencies -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Poppins Font & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..700,0..1,0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0" />
+  
+  <!-- Tailwind CSS, Chart.js & html2pdf -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -19,444 +22,2080 @@
       theme: {
         extend: {
           colors: {
-            "stitch-primary": "#004ac6",
-            "stitch-primary-hover": "#003aa0",
-            "stitch-bg": "#F8FAFC",
-            "stitch-surface": "#ffffff",
-            "stitch-border": "#e2e8f0",
-            "stitch-text": "#0b1c30",
-            "stitch-muted": "#475569",
-            "stitch-success": "#10b981",
-            "stitch-warning": "#f59e0b",
-            "stitch-danger": "#ef4444",
-            "stitch-purple": "#8b5cf6"
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              900: '#0f172a'
+            }
           },
           fontFamily: {
-            headline: ["'Hanken Grotesk'", "sans-serif"],
-            body: ["'Inter'", "sans-serif"]
+            sans: ["'Poppins'", "sans-serif"]
           },
           boxShadow: {
-            'stitch': '0 2px 8px -2px rgba(15, 23, 42, 0.06), 0 1px 4px -1px rgba(15, 23, 42, 0.04)',
-            'stitch-card': '0 4px 12px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03)',
-            'stitch-glow': '0 12px 28px -6px rgba(0, 74, 198, 0.18)'
+            'card': '0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02)',
+            'card-hover': '0 12px 30px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.04)'
           }
         }
       }
     }
   </script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #F8FAFC;
-      color: #0b1c30;
-      font-size: 15px;
-    }
-    h1, h2, h3, h4, .font-headline { font-family: 'Hanken Grotesk', sans-serif; }
-    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24; }
+    * { font-family: 'Poppins', sans-serif; }
+    body { background-color: #F8FAFC; color: #0f172a; scroll-behavior: smooth; font-weight: 400; }
+    h1, h2, h3, h4, h5, h6, strong, b, .font-bold { font-weight: 600; }
+    .font-semibold, .font-medium { font-weight: 500; }
+    .font-normal { font-weight: 400; }
     
-    .chip-btn {
-      transition: all 0.15s ease-in-out;
+    .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+    
+    /* High-contrast visible box borders & shining hover glow */
+    .card-box {
+      border: 1.5px solid #cbd5e1 !important; /* Visible slate-300 border edge */
+      box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.05), 0 1px 3px -1px rgba(15, 23, 42, 0.03);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
     }
-    .chip-btn.active {
-      background-color: #eff6ff;
-      border-color: #2563eb;
-      color: #1d4ed8;
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+
+    .card-box:hover {
+      border-color: #3b82f6 !important; /* Glowing blue border highlight */
+      box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.18), 0 4px 10px -2px rgba(37, 99, 235, 0.08);
+      transform: translateY(-2px);
     }
-    .chip-btn:hover:not(.active) {
-      border-color: #cbd5e1;
-      background-color: #f8fafc;
+
+    .card-accent-top {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-accent-top::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #6366f1, #3b82f6);
+      opacity: 0.85;
+      transition: all 0.25s ease;
+    }
+
+    .card-accent-top:hover::before {
+      opacity: 1;
+      height: 4px;
+    }
+
+    .chip-btn { transition: all 0.2s ease-in-out; }
+    .chip-btn.active { background: #eff6ff; border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2); }
+    
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    .nav-item { transition: all 0.15s ease-in-out; }
+    .nav-item:hover, .nav-item.active { background-color: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; font-weight: 600; }
+
+    /* Moving Animation Keyframes for Windmill Drone Workflow */
+    @keyframes spinWindmill {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes floatDrone {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-8px) translateX(6px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+
+    @keyframes scanLaser {
+      0% { opacity: 0.2; transform: scaleY(0.6); }
+      50% { opacity: 0.95; transform: scaleY(1.15); }
+      100% { opacity: 0.2; transform: scaleY(0.6); }
+    }
+
+    @keyframes flowLine {
+      0% { stroke-dashoffset: 40; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+
+    .animate-windmill-spin {
+      animation: spinWindmill 8s linear infinite;
+      transform-origin: center;
+    }
+
+    .animate-drone-float {
+      animation: floatDrone 3.2s ease-in-out infinite;
+    }
+
+    .animate-scan-beam {
+      animation: scanLaser 2s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    .animated-flow-line {
+      stroke-dasharray: 8 6;
+      animation: flowLine 1.2s linear infinite;
+    }
+
+    .pulse-glow-node {
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      #printable-pdf-report, #printable-pdf-report * { visibility: visible; }
+      #printable-pdf-report { position: absolute; left: 0; top: 0; width: 100%; }
     }
   </style>
 </head>
-<body class="min-h-screen bg-stitch-bg antialiased text-slate-800">
+<body class="min-h-screen bg-slate-50 text-slate-800 antialiased flex flex-col">
 
-  <!-- Top Global Header -->
-  <header class="bg-white border-b border-slate-200/90 w-full shadow-xs sticky top-0 z-50">
-    <div class="w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+  <!-- ================= TOP FULL-WIDTH LIGHT HEADER ================= -->
+  <header class="bg-white text-slate-900 border-b border-slate-200 sticky top-0 z-50 w-full shadow-xs">
+    <div class="w-full px-4 sm:px-6 h-16 flex items-center justify-between">
       
-      <!-- Brand Logo -->
+      <!-- Brand Logo & Title -->
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-blue-500 flex items-center justify-center text-white shadow-md shadow-blue-500/20 cursor-pointer" onclick="showFarmOverview()">
           <span class="material-symbols-outlined text-2xl">cyclone</span>
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <span class="font-headline font-black text-xl sm:text-2xl text-slate-900 tracking-tight">AeroLoss<span class="text-stitch-primary">.AI</span></span>
-            <span class="text-xs px-2.5 py-0.5 rounded-full font-bold bg-blue-50 text-stitch-primary border border-blue-200">Decision Platform</span>
+            <span class="font-bold text-xl tracking-tight text-slate-900 cursor-pointer" onclick="showFarmOverview()">AeroLoss<span class="text-blue-600">.AI</span></span>
+            <span class="text-[10px] px-2.5 py-0.5 rounded-full font-semibold bg-blue-50 text-blue-700 border border-blue-200">Decision Engine v2.4</span>
           </div>
-          <p class="text-xs text-slate-500 font-medium hidden md:block">AI Defect Vision • FFA-W3-241 Airfoil Physics • Daily Lost Generation • Financial Payback Support</p>
+          <p class="text-[11px] text-slate-500 font-medium hidden md:block">Wind Farm Inspection & Monitoring • Offshore Cluster A</p>
         </div>
       </div>
 
-      <!-- Engine Status & Profile -->
-      <div class="flex items-center gap-5">
-        <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-800">
+      <!-- Quick Header Status Badges -->
+      <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          IEA Task 46 & FFA-W3-241 Physics Active
+          YOLOv8 + BEM Physics Active
         </div>
-        <div class="flex items-center gap-3 border-l border-slate-200 pl-4">
-          <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-black text-xs shadow-xs">
-            OP
-          </div>
-          <div class="text-left text-xs hidden lg:block">
-            <div class="font-extrabold text-slate-900 leading-tight">Offshore Asset Manager</div>
-            <div class="text-slate-400 font-medium text-[11px]">Cluster WTG-04B</div>
-          </div>
-        </div>
+
+        <button onclick="showFarmOverview()" class="px-3.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold flex items-center gap-1.5 transition-all">
+          <span class="material-symbols-outlined text-base">wind_power</span>
+          Offshore Cluster A
+        </button>
       </div>
 
     </div>
   </header>
 
-  <!-- Main Full-Width Fluid Responsive Workspace -->
-  <main class="w-full px-4 sm:px-6 lg:px-8 py-5 space-y-5">
+  <!-- ========================================================================= -->
+  <!-- PAGE 1: WIND FARM INSPECTION OVERVIEW (NO CARD IMAGES, CLEAN TYPOGRAPHY)  -->
+  <!-- ========================================================================= -->
+  <div id="view-farm-overview" class="flex-1 w-full p-4 sm:p-6 lg:p-8 space-y-8 max-w-full">
     
-    <!-- Operational Parameter Control Bar -->
-    <section class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-stitch">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5 items-end">
-        <div class="lg:col-span-3">
-          <label class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-1.5">Turbine Preset</label>
-          <select id="cfg-turbine" class="w-full text-sm font-bold rounded-xl border-slate-200 bg-slate-50/80 py-2.5 px-3 text-slate-800 focus:ring-stitch-primary focus:border-stitch-primary">
-            <option value="3600" selected>Offshore 3.6 MW (T1 SCADA Reference)</option>
-            <option value="15000">IEA 15 MW Reference Turbine</option>
-            <option value="2500">Fuhrländer FL2500 (2.5 MW)</option>
-            <option value="2000">Onshore 2.0 MW Turbine</option>
+    <!-- PAGE TITLE & SUBTITLE -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">
+          <span class="material-symbols-outlined text-base">hub</span>
+          Offshore Wind Farm Asset Overview
+        </div>
+        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Wind Farm Inspection Overview</h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">
+          Monitor turbine health, identify high-risk defects, and prioritize inspections across Offshore Cluster A.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4 shrink-0 bg-blue-50/60 border border-blue-100 p-4 rounded-xl">
+        <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-2xl">payments</span>
+        </div>
+        <div>
+          <span class="text-[10px] font-semibold text-slate-500 block uppercase">Cluster Total Daily Revenue Loss</span>
+          <span class="text-xl font-bold text-slate-900">₹ 8,327 / day</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 SUMMARY KPI CARDS -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+      <div class="card-box bg-white rounded-2xl p-4">
+        <span class="text-xs font-medium text-slate-400 uppercase block">Total Turbines</span>
+        <div class="text-xl font-bold text-slate-900 mt-1">6 Units</div>
+        <span class="text-[11px] font-medium text-blue-600 mt-1 block">Cluster WTG-A</span>
+      </div>
+
+      <div class="card-box bg-white rounded-2xl p-4">
+        <span class="text-xs font-medium text-slate-400 uppercase block">Healthy</span>
+        <div class="text-xl font-bold text-emerald-600 mt-1">2 Turbines</div>
+        <span class="text-[11px] font-medium text-emerald-700 mt-1 block">Level 0 Severity</span>
+      </div>
+
+      <div class="card-box bg-white rounded-2xl p-4">
+        <span class="text-xs font-medium text-slate-400 uppercase block">Monitor</span>
+        <div class="text-xl font-bold text-amber-600 mt-1">2 Turbines</div>
+        <span class="text-[11px] font-medium text-amber-700 mt-1 block">Level 1 - 2 Severity</span>
+      </div>
+
+      <div class="card-box bg-white rounded-2xl p-4">
+        <span class="text-xs font-medium text-slate-400 uppercase block">High Risk</span>
+        <div class="text-xl font-bold text-orange-600 mt-1">1 Turbine</div>
+        <span class="text-[11px] font-medium text-orange-700 mt-1 block">Level 3 Severity</span>
+      </div>
+
+      <div class="card-box bg-white rounded-2xl p-4">
+        <span class="text-xs font-medium text-slate-400 uppercase block">Critical</span>
+        <div class="text-xl font-bold text-rose-600 mt-1">1 Turbine</div>
+        <span class="text-[11px] font-medium text-rose-700 mt-1 block">Level 4 Severity</span>
+      </div>
+
+      <div class="card-box bg-white rounded-2xl p-4">
+        <span class="text-xs font-medium text-slate-400 uppercase block">Total ₹ Loss / Day</span>
+        <div class="text-xl font-bold text-slate-900 mt-1">₹ 8,327</div>
+        <span class="text-[11px] font-medium text-rose-600 mt-1 block">₹ 30.39 Lakhs / yr</span>
+      </div>
+    </div>
+
+    <!-- INSPECTION PRIORITY ALERT BANNER -->
+    <div class="card-box card-accent-top bg-white rounded-2xl p-6 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+      <div class="flex items-start gap-4">
+        <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center shrink-0 shadow-xs">
+          <span class="material-symbols-outlined text-2xl">priority_high</span>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
+              Inspection Priority Alert
+            </span>
+            <span class="text-xs font-semibold text-rose-600 px-2 py-0.5 rounded-full bg-rose-50 border border-rose-200">Urgency: Critical</span>
+          </div>
+          <h2 class="text-lg font-bold text-slate-900">WTG-04B requires immediate inspection attention.</h2>
+          <div class="flex flex-wrap items-center gap-4 text-xs font-medium text-slate-600 pt-1">
+            <span>Severity: <strong class="text-rose-600">Level 4 / 5</strong></span>
+            <span>Defect: <strong class="text-slate-900">Leading-Edge Damage</strong></span>
+            <span>Location: <strong class="text-slate-900">r/R 0.91 (Blade Tip)</strong></span>
+            <span>AEP Impact: <strong class="text-rose-600">-3.8%</strong></span>
+            <span>Financial Loss: <strong class="text-slate-900">₹ 4,250 / day</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="openTurbineAnalysis('WTG-04B')" class="py-2.5 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all cursor-pointer shrink-0">
+        OPEN ANALYSIS FOR WTG-04B
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
+      </button>
+    </div>
+
+    <!-- DRONE IMAGE UPLOAD & RUN ANALYSIS CARD ON PAGE 1 -->
+    <div id="farm-upload-box" class="card-box card-accent-top bg-white rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6 border-2 border-dashed border-blue-300 hover:border-blue-600 bg-gradient-to-r from-blue-50/40 via-indigo-50/20 to-white transition-all shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/30">
+          <span class="material-symbols-outlined text-3xl">upload_file</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold uppercase tracking-wider text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-full">Custom Turbine Ingestion</span>
+            <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Real YOLOv8 + BEM Physics</span>
+          </div>
+          <h2 class="text-base font-bold text-slate-900 mt-1">Upload Inspection Image to Run Full AI Analysis</h2>
+          <p class="text-xs text-slate-500 font-medium mt-0.5">Upload any drone blade photo (JPG, PNG) to automatically switch to the turbine analysis page and run the trained YOLOv8 & BEM physics model.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 shrink-0 w-full md:w-auto">
+        <label for="farm-file-uploader" class="w-full md:w-auto py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 transition-all cursor-pointer">
+          <span class="material-symbols-outlined text-base">add_photo_alternate</span>
+          Choose Inspection Photo
+          <input type="file" id="farm-file-uploader" accept="image/*" class="hidden">
+        </label>
+      </div>
+    </div>
+
+    <!-- WIND FARM TURBINE CARDS GRID (CLEAN DATA CARDS - NO IMAGES) -->
+    <div class="card-box bg-white rounded-2xl p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div>
+          <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+            <span class="material-symbols-outlined text-blue-600 text-lg">wind_power</span>
+            Wind Farm Turbine Overview Cards
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5 font-medium">Click any turbine card to open its detailed aerodynamic & financial analysis</p>
+        </div>
+        
+        <div class="flex items-center gap-3 text-xs font-medium">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Healthy (2)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Monitor (2)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> High Risk (1)</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> Critical (1)</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="wind-farm-visual-grid">
+        <!-- Populated dynamically via JS as clean data cards (NO IMAGES) -->
+      </div>
+    </div>
+
+    <!-- EXPLAINABILITY & PHYSICS ENGINE ARCHITECTURE PANEL -->
+    <div class="bg-blue-50/70 border border-blue-100 rounded-2xl p-6 space-y-2 text-xs text-slate-700">
+      <div class="flex items-center gap-2 text-slate-900 font-semibold text-sm">
+        <span class="material-symbols-outlined text-blue-600 text-lg">psychology</span>
+        AeroLoss AI Decision Engine Explainability Framework
+      </div>
+      <p class="leading-relaxed font-medium">
+        <strong>How AeroLoss AI computes financial loss:</strong> Visual drone inspection patches are processed through YOLOv8 for defect classification and area proxy extraction. The extracted spanwise location (<code class="bg-blue-100 text-blue-900 px-1.5 py-0.5 rounded font-mono font-semibold">r/R</code>) applies Sandia National Labs & IEA Wind Task 46 airfoil polar degradation on the <strong>FFA-W3-241 airfoil ($Re = 10^7$)</strong>. Local lift/drag changes ($\Delta C_l, \Delta C_d$) compute turbine-level daily lost generation ($\text{kWh/day}$) and revenue impact ($\text{₹/day}$) for payback evaluation.
+      </p>
+    </div>
+
+    <!-- FILTERS & SEARCH TOOLBAR -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Search Input -->
+        <div class="relative w-full sm:w-72">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-lg">search</span>
+          <input type="text" id="farm-search-input" placeholder="Search Turbine ID (e.g. WTG-04B)..." oninput="filterTurbineTable()" class="w-full rounded-xl border-slate-200 pl-9 pr-3 py-2 text-xs font-medium text-slate-800 placeholder-slate-400 focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <!-- Health Category Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5" id="farm-filter-buttons">
+          <button onclick="setFarmFilter('ALL', this)" class="chip-btn active px-3 py-1.5 rounded-xl border border-blue-200 text-xs font-semibold text-blue-700 bg-blue-50">All (6)</button>
+          <button onclick="setFarmFilter('Healthy', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Healthy (2)</button>
+          <button onclick="setFarmFilter('Monitor', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Monitor (2)</button>
+          <button onclick="setFarmFilter('High Risk', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">High Risk (1)</button>
+          <button onclick="setFarmFilter('Critical', this)" class="chip-btn px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 bg-white hover:bg-slate-50">Critical (1)</button>
+        </div>
+
+        <!-- Sorting Dropdown -->
+        <div class="flex items-center gap-2 shrink-0">
+          <label class="text-xs font-semibold text-slate-500 uppercase">Sort By:</label>
+          <select id="farm-sort-select" onchange="filterTurbineTable()" class="rounded-xl border-slate-200 bg-slate-50 py-1.5 px-3 text-xs font-semibold text-slate-800 focus:ring-blue-500">
+            <option value="priority" selected>Highest Priority First</option>
+            <option value="financial">Financial Loss (Highest)</option>
+            <option value="energy">Energy Loss (Highest)</option>
+            <option value="severity">Severity Level</option>
+            <option value="id">Turbine ID</option>
           </select>
         </div>
-        <div class="lg:col-span-3">
-          <div class="flex justify-between items-center mb-1.5">
-            <label class="text-xs font-black uppercase tracking-wider text-slate-500">Wind Speed</label>
-            <span id="cfg-wind-val" class="text-xs font-black text-stitch-primary bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">7.6 m/s</span>
-          </div>
-          <input id="cfg-wind" type="range" min="3" max="22" step="0.2" value="7.56" class="w-full accent-stitch-primary h-2 bg-slate-200 rounded-lg cursor-pointer">
+
+      </div>
+    </div>
+
+    <!-- INSPECTION PRIORITY RANKING & WIND FARM CHARTS -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Priority Ranking List (5 cols) -->
+      <div class="lg:col-span-5 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="border-b border-slate-100 pb-3">
+          <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+            <span class="material-symbols-outlined text-blue-600 text-lg">format_list_numbered</span>
+            Inspection Priority Ranking
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5 font-medium">Automated urgency ranking based on financial & aerodynamic risk</p>
         </div>
-        <div class="lg:col-span-2">
-          <label class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-1.5">Electricity Tariff</label>
-          <div class="flex items-center gap-1.5 bg-slate-50/80 border border-slate-200 rounded-xl px-3 py-2">
-            <span class="text-slate-400 text-sm font-extrabold">₹</span>
-            <input id="cfg-tariff" type="number" step="0.1" value="4.50" class="w-full bg-transparent border-0 p-0 text-sm font-bold text-slate-800 focus:ring-0">
-            <span class="text-slate-400 text-xs font-bold">/kWh</span>
+
+        <div class="space-y-3" id="priority-ranking-list">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Wind Farm Analytics Charts (7 cols) -->
+      <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="border-b border-slate-100 pb-3 flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-base text-slate-900 flex items-center gap-2">
+              <span class="material-symbols-outlined text-blue-600 text-lg">bar_chart</span>
+              Wind Farm Financial Loss Distribution
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5 font-medium">Financial loss comparison across all 6 cluster turbines</p>
           </div>
         </div>
-        <div class="lg:col-span-2">
-          <label class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-1.5">Repair Mobilization</label>
-          <div class="flex items-center gap-1.5 bg-slate-50/80 border border-slate-200 rounded-xl px-3 py-2">
-            <span class="text-slate-400 text-sm font-extrabold">₹</span>
-            <input id="cfg-repair" type="number" step="5000" value="40000" class="w-full bg-transparent border-0 p-0 text-sm font-bold text-slate-800 focus:ring-0">
+
+        <div class="h-64 w-full relative">
+          <canvas id="chart-farm-financial"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- ANIMATED END-TO-END INSPECTION & DECISION PROCESS FLOW AT BOTTOM OF PAGE  -->
+    <!-- ========================================================================= -->
+    <div class="card-box card-accent-top bg-white rounded-2xl p-6 shadow-sm space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-semibold text-blue-600 uppercase tracking-wider mb-0.5">
+            <span class="material-symbols-outlined text-base animate-spin">autorenew</span>
+            Live Inspection & Physics Pipeline Workflow
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 flex items-center gap-2">
+            AeroLoss.AI End-to-End Autonomous Inspection & Decision Engine
+          </h3>
+          <p class="text-xs text-slate-500 font-medium">Real-time drone RGB optical capture, YOLOv8 defect extraction, BEM physics calculation & repair payback</p>
+        </div>
+        <span class="text-xs font-semibold px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5 shadow-xs shrink-0">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span> Real Backend Active
+        </span>
+      </div>
+
+      <!-- REAL-TIME DRONE FLYING & IMAGE CAPTURE SIMULATION STAGE -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl relative overflow-hidden space-y-4">
+        
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-blue-500 animate-ping"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Real-Time Autonomous Drone Flight & AI Processing Simulation</span>
+          </div>
+          
+          <button id="btn-trigger-drone-sim" onclick="runDroneSimulation()" class="py-2 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-blue-500/30 transition-all cursor-pointer shrink-0">
+            <span class="material-symbols-outlined text-base">play_arrow</span>
+            Start Live Drone Inspection
+          </button>
+        </div>
+
+        <!-- SIMULATION CANVAS CONTAINER -->
+        <div id="sim-canvas-stage" class="relative w-full h-64 bg-slate-950 rounded-xl overflow-hidden border border-slate-800 flex items-center justify-between p-6">
+          
+          <!-- Background Grid Lines -->
+          <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+
+          <!-- Windmill Tower & Blade Graphic (Center-Left) -->
+          <div class="relative w-36 h-48 flex items-center justify-center shrink-0">
+            <!-- Tower -->
+            <div class="absolute bottom-0 w-4 h-32 bg-gradient-to-t from-slate-700 to-slate-500 rounded-t-sm"></div>
+            <!-- Spinning Rotor Blades -->
+            <div class="absolute top-2 w-28 h-28 animate-windmill-spin flex items-center justify-center">
+              <svg class="w-28 h-28 text-slate-300 drop-shadow-lg" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="6" fill="#3b82f6" />
+                <path d="M50 50 Q48 10 50 0 Q52 10 50 50 Z" fill="#94a3b8" />
+                <path d="M50 50 Q85 62 98 75 Q70 73 50 50 Z" fill="#94a3b8" />
+                <path d="M50 50 Q15 62 2 75 Q30 73 50 50 Z" fill="#94a3b8" />
+              </svg>
+            </div>
+            <!-- Target Marker on Blade -->
+            <div class="absolute top-3 right-4 w-4 h-4 rounded-full border-2 border-rose-500 animate-ping"></div>
+          </div>
+
+          <!-- Flying Drone Element (Animates horizontally across stage) -->
+          <div id="sim-drone-element" class="absolute top-10 left-6 transition-all duration-1000 ease-in-out flex flex-col items-center z-20">
+            <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/50 border border-blue-300">
+              <span class="material-symbols-outlined text-2xl">flight_takeoff</span>
+            </div>
+            <!-- Laser Cone Beam -->
+            <div id="sim-laser-beam" class="hidden w-10 h-16 bg-gradient-to-b from-cyan-400/80 via-blue-500/40 to-transparent clip-triangle mt-1"></div>
+          </div>
+
+          <!-- Camera Flash Overlay Effect -->
+          <div id="sim-camera-flash" class="hidden absolute inset-0 bg-white/40 backdrop-blur-xs transition-opacity duration-300 z-30 pointer-events-none"></div>
+
+          <!-- Floating Image Patch Popout -->
+          <div id="sim-captured-patch" class="hidden absolute left-48 top-16 w-24 h-24 rounded-xl border-2 border-blue-400 shadow-2xl overflow-hidden transition-all duration-700 bg-slate-900 z-20">
+            <img src="/api/sample_image/crack/patch_00155.jpg" class="w-full h-full object-cover">
+            <div id="sim-patch-bbox" class="hidden absolute inset-2 border-2 border-rose-500 bg-rose-500/20 rounded flex items-start p-1">
+              <span class="text-[8px] font-bold bg-rose-600 text-white px-1 rounded">crack 98.4%</span>
+            </div>
+          </div>
+
+          <!-- Processing Nodes (Right Side Flow) -->
+          <div class="flex items-center gap-4 z-10">
+            <!-- Node 1: YOLOv8 AI -->
+            <div id="sim-node-yolo" class="w-32 p-3 rounded-xl border border-slate-700 bg-slate-900/90 text-center space-y-1 transition-all duration-300">
+              <span class="material-symbols-outlined text-indigo-400 text-xl">memory</span>
+              <div class="text-[10px] font-bold text-slate-200">YOLOv8 AI</div>
+              <div id="sim-status-yolo" class="text-[9px] text-slate-500 font-mono">Waiting...</div>
+            </div>
+
+            <!-- Arrow -->
+            <span class="material-symbols-outlined text-slate-600 text-sm">arrow_forward</span>
+
+            <!-- Node 2: BEM Physics -->
+            <div id="sim-node-physics" class="w-32 p-3 rounded-xl border border-slate-700 bg-slate-900/90 text-center space-y-1 transition-all duration-300">
+              <span class="material-symbols-outlined text-emerald-400 text-xl">air</span>
+              <div class="text-[10px] font-bold text-slate-200">BEM Physics</div>
+              <div id="sim-status-physics" class="text-[9px] text-slate-500 font-mono">Waiting...</div>
+            </div>
+
+            <!-- Arrow -->
+            <span class="material-symbols-outlined text-slate-600 text-sm">arrow_forward</span>
+
+            <!-- Node 3: Decision Engine -->
+            <div id="sim-node-decision" class="w-36 p-3 rounded-xl border border-slate-700 bg-slate-900/90 text-center space-y-1 transition-all duration-300">
+              <span class="material-symbols-outlined text-rose-400 text-xl">gavel</span>
+              <div class="text-[10px] font-bold text-slate-200">Financial Action</div>
+              <div id="sim-status-decision" class="text-[9px] text-slate-500 font-mono">Waiting...</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- LIVE SIMULATION STATUS MESSAGING BAR -->
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs text-slate-300">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+            <span>Pipeline Status:</span>
+            <strong id="sim-live-message" class="text-blue-400 font-mono font-semibold">Click "Start Live Drone Inspection" to launch real-time simulation</strong>
+          </div>
+          <span id="sim-step-badge" class="text-[10px] font-semibold px-2.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 shrink-0">STANDBY</span>
+        </div>
+
+      </div>
+
+      <!-- 5-STEP ANIMATED PIPELINE NODES GRID -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 relative">
+        
+        <!-- STEP 1 -->
+        <div class="p-4 rounded-xl border-2 border-slate-200 bg-slate-50/70 hover:border-blue-500 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-2 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 font-bold text-xs flex items-center justify-center">1</span>
+            <span class="material-symbols-outlined text-blue-600 text-xl group-hover:scale-110 transition-transform">photo_camera</span>
+          </div>
+          <h4 class="font-bold text-xs text-slate-900">1. RGB Drone Optics</h4>
+          <p class="text-[11px] text-slate-500 leading-tight">High-resolution drone optics ingestion & cropping into $1024 \times 1024$ patches.</p>
+          <div class="pt-1 text-[10px] font-semibold text-blue-700 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span> Raw Ingestion Active
           </div>
         </div>
-        <div class="lg:col-span-2">
-          <button id="btn-recalculate" class="w-full py-2.5 px-4 rounded-xl bg-stitch-primary hover:bg-stitch-primary-hover text-white font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer">
-            <span class="material-symbols-outlined text-lg">sync</span>
-            Run Impact Analysis
+
+        <!-- STEP 2 -->
+        <div class="p-4 rounded-xl border-2 border-slate-200 bg-slate-50/70 hover:border-indigo-500 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-2 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 font-bold text-xs flex items-center justify-center">2</span>
+            <span class="material-symbols-outlined text-indigo-600 text-xl group-hover:scale-110 transition-transform">center_focus_strong</span>
+          </div>
+          <h4 class="font-bold text-xs text-slate-900">2. YOLOv8 Model</h4>
+          <p class="text-[11px] text-slate-500 leading-tight">Fine-tuned bounding box detection across 6 defect classes with 92.4% mAP.</p>
+          <div class="pt-1 text-[10px] font-semibold text-indigo-700 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> mAP@0.5: 92.4%
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="p-4 rounded-xl border-2 border-slate-200 bg-slate-50/70 hover:border-amber-500 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-2 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-700 font-bold text-xs flex items-center justify-center">3</span>
+            <span class="material-symbols-outlined text-amber-600 text-xl group-hover:scale-110 transition-transform">straighten</span>
+          </div>
+          <h4 class="font-bold text-xs text-slate-900">3. Damage Location ($r/R$)</h4>
+          <p class="text-[11px] text-slate-500 leading-tight">Spanwise radial mapping along blade span ($r/R$) & area % proxy calculation.</p>
+          <div class="pt-1 text-[10px] font-semibold text-amber-700 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span> Radial Span Mapping
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="p-4 rounded-xl border-2 border-slate-200 bg-slate-50/70 hover:border-emerald-500 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-2 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-700 font-bold text-xs flex items-center justify-center">4</span>
+            <span class="material-symbols-outlined text-emerald-600 text-xl group-hover:scale-110 transition-transform">air</span>
+          </div>
+          <h4 class="font-bold text-xs text-slate-900">4. BEM Physics Engine</h4>
+          <p class="text-[11px] text-slate-500 leading-tight">FFA-W3-241 airfoil polars ($Re = 10^7$), $\Delta C_l, \Delta C_d$ and kWh daily energy loss.</p>
+          <div class="pt-1 text-[10px] font-semibold text-emerald-700 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Energy Loss $\text{kWh}$
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="p-4 rounded-xl border-2 border-slate-200 bg-slate-50/70 hover:border-rose-500 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 space-y-2 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="w-7 h-7 rounded-lg bg-rose-100 text-rose-700 font-bold text-xs flex items-center justify-center">5</span>
+            <span class="material-symbols-outlined text-rose-600 text-xl group-hover:scale-110 transition-transform">gavel</span>
+          </div>
+          <h4 class="font-bold text-xs text-slate-900">5. Financial & Action</h4>
+          <p class="text-[11px] text-slate-500 leading-tight">Daily ₹ loss calculation, payback crossover days, and automated REPAIR recommendation.</p>
+          <div class="pt-1 text-[10px] font-semibold text-rose-700 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span> Action Support Live
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 2: INDIVIDUAL TURBINE DETAILED ANALYSIS VIEW                         -->
+  <!-- ========================================================================= -->
+  <div id="view-turbine-analysis" class="hidden flex-1 flex w-full">
+    
+    <!-- LEFT LIGHT SIDEBAR NAVIGATION -->
+    <aside class="w-64 bg-white text-slate-600 border-r border-slate-200 shrink-0 hidden md:flex flex-col justify-between p-4 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto">
+      <div class="space-y-1">
+        <button onclick="showFarmOverview()" class="w-full mb-3 px-3 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer">
+          <span class="material-symbols-outlined text-base">arrow_back</span>
+          Back to Wind Farm
+        </button>
+
+        <div class="px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-slate-400">Analysis Menu</div>
+        
+        <a href="#sec-overview" class="nav-item active flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-700 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-blue-600">grid_view</span>
+          1. Overview / Home
+        </a>
+        
+        <a href="#sec-inspection" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-indigo-600">photo_camera</span>
+          2. Drone Inspection Upload
+        </a>
+        
+        <a href="#sec-detection" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-emerald-600">center_focus_strong</span>
+          3. AI Damage Detection
+        </a>
+
+        <a href="#sec-characterization" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-amber-600">straighten</span>
+          4. Damage Characterization
+        </a>
+
+        <a href="#sec-physics" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-cyan-600">air</span>
+          5. Aerodynamic Physics
+        </a>
+
+        <a href="#sec-energy" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-amber-500">bolt</span>
+          6. Energy Loss Impact
+        </a>
+
+        <a href="#sec-financial" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-emerald-600">payments</span>
+          7. Financial Revenue Loss
+        </a>
+
+        <a href="#sec-payback" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-rose-600">schedule</span>
+          8. Repair Payback Economics
+        </a>
+
+        <a href="#sec-progression" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-purple-600">trending_up</span>
+          9. Risk & Progression
+        </a>
+
+        <a href="#sec-decision" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-rose-600">gavel</span>
+          10. Maintenance Decision
+        </a>
+
+        <a href="#sec-uncertainty" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-orange-500">shield</span>
+          11. Assumptions & Confidence
+        </a>
+
+        <a href="#sec-scada" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-teal-600">sensors</span>
+          12. Optional SCADA Monitoring
+        </a>
+
+        <a href="#sec-blades" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-blue-600">propeller</span>
+          13. Blade Health View
+        </a>
+
+        <a href="#sec-analytics" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-indigo-600">bar_chart</span>
+          14. Analytics & 8 Graphs
+        </a>
+
+        <a href="#sec-reports" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-green-600">description</span>
+          15. Report Generation
+        </a>
+
+        <a href="#sec-settings" class="nav-item flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-medium text-slate-600 border border-transparent">
+          <span class="material-symbols-outlined text-lg text-slate-500">settings</span>
+          16. Settings Panel
+        </a>
+      </div>
+
+      <!-- Sidebar Footer Disclaimer -->
+      <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-[10px] text-slate-500 leading-tight">
+        <span class="font-semibold text-slate-800 block mb-1 flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs text-blue-600">verified_user</span>
+          Decision-Support System
+        </span>
+        Engineering recommendation framework. Not an autonomous maintenance authorization engine.
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT VIEWPORT -->
+    <main class="flex-1 w-full p-4 sm:p-6 lg:p-8 space-y-8 overflow-x-hidden">
+
+      <!-- BREADCRUMB & BACK BUTTON BAR -->
+      <div class="flex items-center justify-between bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+        <div class="flex items-center gap-2 text-xs font-medium text-slate-500">
+          <span class="hover:text-blue-600 cursor-pointer" onclick="showFarmOverview()">Wind Farm Overview</span>
+          <span class="text-slate-300">/</span>
+          <span id="breadcrumb-turbine-id" class="text-slate-900 font-bold">WTG-04B Detailed Analysis</span>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="downloadOfficialPDFReport()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm shadow-blue-500/20 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+            Download PDF Report
+          </button>
+          
+          <button onclick="showFarmOverview()" class="px-4 py-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold flex items-center gap-2 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-base">arrow_back</span>
+            ← Back to Wind Farm Overview
           </button>
         </div>
       </div>
-    </section>
 
-    <!-- Main Workspace Bento Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-      
-      <!-- LEFT COLUMN: Inspection Input & Image Viewport (5 cols) -->
-      <section class="lg:col-span-5 space-y-4">
+      <!-- SECTION 1: OVERVIEW / DASHBOARD HOME -->
+      <section id="sec-overview" class="space-y-6 scroll-mt-20">
         
-        <!-- Inspection Frame Card -->
-        <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch space-y-3">
-          <div class="flex items-center justify-between">
-            <h2 class="font-headline font-black text-base text-slate-900 flex items-center gap-2">
-              <span class="material-symbols-outlined text-stitch-primary text-xl">photo_camera</span>
-              1. Drone Visual Inspection
-            </h2>
-            <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">1024 × 1024 RGB</span>
-          </div>
-
-          <!-- Quick Defect Sample Chips (All 6 Classes Prominently Displayed) -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 flex flex-wrap items-center justify-between gap-4 shadow-sm">
           <div>
-            <label class="block text-[11px] font-black text-slate-400 uppercase tracking-wider mb-1.5">Test Defect Scenarios (Click to Inspect)</label>
-            <div id="sample-chips-container" class="grid grid-cols-3 gap-1.5">
-              <!-- Populated dynamically with all 6 defect classes -->
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Individual Turbine Inspection Summary</span>
+            <div class="flex items-center gap-3 mt-1">
+              <h1 id="analysis-title-id" class="text-xl font-bold text-slate-900">Turbine WTG-04B Detailed Analysis</h1>
+              <span id="analysis-health-badge" class="text-xs font-semibold px-3 py-1 rounded-full bg-rose-50 text-rose-700 border border-rose-200">Critical Attention Required</span>
             </div>
           </div>
+          
+          <div class="flex items-center gap-6 text-xs text-slate-600">
+            <div><span class="text-slate-400 block text-[10px] font-semibold">INSPECTION ID</span> <strong class="text-slate-900">#2026-INSP-882</strong></div>
+            <div><span class="text-slate-400 block text-[10px] font-semibold">DATE</span> <strong class="text-slate-900">2026-10-04</strong></div>
+            <div><span class="text-slate-400 block text-[10px] font-semibold">AIRFOIL MODEL</span> <strong class="text-slate-900">FFA-W3-241</strong></div>
+          </div>
+        </div>
 
-          <!-- Image Display Viewport (Full Inspection Resolution) -->
-          <div class="relative rounded-2xl overflow-hidden border border-slate-200 bg-slate-950 h-[260px] sm:h-[280px] flex items-center justify-center shadow-inner group">
-            <img id="active-blade-img" src="" alt="Blade Defect Inspection View" class="w-full h-full object-cover">
-            <div id="img-loading-spinner" class="hidden absolute inset-0 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center text-white">
-              <span class="material-symbols-outlined animate-spin text-4xl">progress_activity</span>
-            </div>
-            <!-- Bounding Box Annotation Tag -->
-            <div id="bbox-overlay-tag" class="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-xl bg-slate-900/90 backdrop-blur-md text-white text-xs font-bold flex items-center gap-2 border border-white/20 shadow-lg">
-              <span class="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
-              <span id="detected-tag-label">Loading Defect...</span>
-            </div>
+        <!-- 6 TOP KPI CARDS -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="card-box bg-white rounded-2xl p-4">
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">1. Detected Defects</span>
+            <div id="kpi-defect-count" class="text-xl font-bold text-slate-900 mt-1">1 Active</div>
+            <div id="kpi-defect-type" class="text-[11px] font-semibold text-blue-600 mt-0.5">Crack Defect</div>
           </div>
 
-          <!-- Spanwise Radial Location (r/R) with Interactive Slider Embedded Below Image -->
-          <div class="bg-slate-50/90 rounded-xl p-3 border border-slate-200/80 space-y-2">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-black text-slate-700 flex items-center gap-1.5 uppercase tracking-wider">
-                <span class="material-symbols-outlined text-stitch-primary text-base">straighten</span>
-                Spanwise Location (r/R)
-              </span>
-              <div class="flex items-center gap-1.5">
-                <span id="spanwise-speed-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-200/80 text-slate-700">
-                  Speed: ~245 km/h
-                </span>
-                <span id="spanwise-val-badge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-blue-100 text-stitch-primary border border-blue-200">
-                  r/R = 0.88 (Outboard Tip)
-                </span>
-              </div>
-            </div>
-
-            <!-- Visual Radial Blade Graphic -->
-            <div class="relative pt-3 pb-1">
-              <div class="h-6 w-full rounded-full bg-gradient-to-r from-slate-200 via-amber-100 to-rose-300 relative overflow-hidden flex items-center justify-between px-3 text-[10px] font-black text-slate-700 shadow-inner">
-                <span>ROOT (0.10)</span>
-                <span>MID-SPAN (0.50)</span>
-                <span class="text-rose-900">TIP (1.0)</span>
-              </div>
-              <div id="blade-pin-marker" class="absolute top-0 transition-all duration-200 transform -translate-x-1/2 flex flex-col items-center pointer-events-none" style="left: 88%;">
-                <span class="material-symbols-outlined text-slate-900 text-xl drop-shadow-md">location_on</span>
-              </div>
-            </div>
-
-            <!-- Interactive Spanwise Range Slider -->
-            <div class="space-y-1">
-              <div class="flex items-center justify-between text-[10px] font-bold text-slate-400">
-                <span>0.10 (Root Hub)</span>
-                <span class="text-stitch-primary font-bold flex items-center gap-0.5">
-                  <span class="material-symbols-outlined text-xs">drag_indicator</span>
-                  Drag slider to test any blade position
-                </span>
-                <span>0.98 (Tip)</span>
-              </div>
-              <input type="range" id="cfg-spanwise-slider" min="0.10" max="0.98" step="0.01" value="0.88" class="w-full accent-stitch-primary cursor-pointer h-2 bg-slate-200 rounded-lg">
-            </div>
-
-            <div class="text-[11px] text-slate-500 bg-blue-50/70 border border-blue-100/80 rounded-lg p-2 leading-tight flex items-start gap-1.5">
-              <span class="material-symbols-outlined text-stitch-primary text-sm shrink-0 mt-0.5">insights</span>
-              <span><strong>Physics Scaling:</strong> Aerodynamic penalty scales as <strong class="text-slate-800">(r/R)<sup>6.7</sup></strong>. Outboard tip speeds exceed 250 km/h resulting in <strong>₹2,000–₹4,500/day</strong> loss, whereas identical damage at mid-span costs only <strong>₹150/day</strong>.</span>
-            </div>
+          <div class="card-box bg-white rounded-2xl p-4">
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">2. Max Severity</span>
+            <div id="kpi-max-severity" class="text-xl font-bold text-amber-600 mt-1">Level 4 / 5</div>
+            <div id="kpi-area-pct" class="text-[11px] font-medium text-slate-500 mt-0.5">4.50% Area</div>
           </div>
 
-          <!-- File Upload Dropzone -->
-          <div class="border border-dashed border-slate-200 hover:border-stitch-primary rounded-xl p-3 text-center cursor-pointer transition-all bg-slate-50/50 relative">
-            <input type="file" id="file-uploader" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
-            <div class="flex items-center justify-center gap-2 text-slate-600">
-              <span class="material-symbols-outlined text-xl text-slate-400">upload_file</span>
-              <span class="text-xs font-bold">Upload Custom Drone Inspection Photo (JPG / PNG)</span>
-            </div>
+          <div class="card-box bg-white rounded-2xl p-4">
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">3. AEP / Energy Loss</span>
+            <div id="kpi-energy-loss" class="text-xl font-bold text-rose-600 mt-1">683 kWh/d</div>
+            <div id="kpi-aep-pct" class="text-[11px] font-semibold text-rose-500 mt-0.5">-2.20% AEP Impact</div>
+          </div>
+
+          <div class="card-box bg-white rounded-2xl p-4">
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">4. ₹ Financial Loss</span>
+            <div id="kpi-daily-loss" class="text-xl font-bold text-slate-900 mt-1">₹ 3,077 / d</div>
+            <div id="kpi-annual-lakhs" class="text-[11px] font-semibold text-rose-600 mt-0.5">₹ 11.23 Lakhs/yr</div>
+          </div>
+
+          <div class="card-box bg-white rounded-2xl p-4">
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">5. Repair Payback</span>
+            <div id="kpi-payback-days" class="text-xl font-bold text-emerald-600 mt-1">13.0 Days</div>
+            <div class="text-[11px] font-medium text-slate-500 mt-0.5">Cost: ₹ 40,000</div>
+          </div>
+
+          <div class="card-box bg-white rounded-2xl p-4">
+            <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">6. Decision</span>
+            <div id="kpi-decision-title" class="text-lg font-bold text-rose-600 mt-1 truncate">REPAIR</div>
+            <div id="kpi-urgency-badge" class="text-[11px] font-semibold text-rose-600 mt-0.5">Urgency: Critical</div>
           </div>
         </div>
 
       </section>
 
-      <!-- RIGHT COLUMN: Decision Action, 4 Metric Cards & Side-by-Side Charts (7 cols) -->
-      <section class="lg:col-span-7 space-y-4">
+      <!-- SECTION 2: DRONE INSPECTION / IMAGE UPLOAD -->
+      <section id="sec-inspection" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">2</span>
+            <h2 class="font-bold text-base text-slate-900">Drone Inspection & Photo Upload Viewport</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">RGB Drone Optical Ingestion Viewport</span>
+        </div>
 
-        <!-- HERO DECISION BANNER (High-Impact, Vibrant, Clear) -->
-        <div id="hero-decision-card" class="rounded-2xl p-5 sm:p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-red-600 via-rose-600 to-red-700">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <div class="lg:col-span-5 space-y-4 flex flex-col justify-between">
             <div>
-              <div class="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-white/80">
-                <span class="material-symbols-outlined text-base">verified</span>
-                Maintenance Decision Support Recommendation
+              <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Test Defect Scenarios (Click to Inspect)</label>
+              <div id="sample-chips-container" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                <!-- Populated dynamically -->
               </div>
-              <h1 id="hero-action-title" class="font-headline text-2xl sm:text-3xl font-black tracking-tight mt-1">
+            </div>
+
+            <div id="section2-upload-dropzone" class="border border-dashed border-slate-300 hover:border-blue-600 rounded-2xl p-5 text-center cursor-pointer transition-all bg-slate-50 relative">
+              <input type="file" id="file-uploader" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
+              <div class="flex flex-col items-center justify-center gap-2 text-slate-600">
+                <span class="material-symbols-outlined text-3xl text-blue-600">upload_file</span>
+                <span class="text-xs font-bold text-slate-800" id="upload-status-heading">Upload New RGB Inspection Photo</span>
+                <span class="text-[10px] text-slate-400" id="upload-status-text">JPG, PNG, or drone footage frame (1024x1024)</span>
+              </div>
+            </div>
+
+            <button id="btn-recalculate" class="w-full py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-md shadow-blue-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <span class="material-symbols-outlined text-base">play_arrow</span>
+              Analyze Damage & Run Physics Engine
+            </button>
+          </div>
+
+          <div class="lg:col-span-7 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 relative h-80 sm:h-96 flex items-center justify-center shadow-inner group">
+            <img id="active-blade-img" src="" alt="Drone Blade Inspection" class="w-full h-full object-cover">
+            
+            <div id="img-loading-spinner" class="hidden absolute inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center text-white">
+              <span class="material-symbols-outlined animate-spin text-4xl text-blue-600">progress_activity</span>
+            </div>
+
+            <div id="bbox-overlay-tag" class="absolute bottom-4 left-4 px-3.5 py-2 rounded-xl bg-white/95 backdrop-blur-md text-slate-900 text-xs font-bold flex items-center gap-2 border border-slate-200 shadow-md">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+              <span id="detected-tag-label">Loading Defect...</span>
+            </div>
+
+            <div class="absolute top-4 right-4 text-[10px] font-semibold px-2.5 py-1 rounded-lg bg-white/90 text-slate-700 border border-slate-200 shadow-xs">
+              RGB Visual Inspection Feed • 1024×1024 Resolution
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 3: AI DAMAGE DETECTION -->
+      <section id="sec-detection" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">3</span>
+            <h2 class="font-bold text-base text-slate-900">AI Damage Detection (Feature Extraction)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Visual feature detection table</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-700 border border-slate-200 rounded-xl overflow-hidden">
+            <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+              <tr>
+                <th class="p-3.5">Damage Category</th>
+                <th class="p-3.5">AI Confidence Score</th>
+                <th class="p-3.5">Damage Area %</th>
+                <th class="p-3.5">Spanwise Position (r/R)</th>
+                <th class="p-3.5">Severity Rating</th>
+              </tr>
+            </thead>
+            <tbody id="detection-table-body" class="divide-y divide-slate-100 font-medium">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 text-xs text-slate-600 flex items-start gap-3">
+          <span class="material-symbols-outlined text-blue-600 text-lg shrink-0 mt-0.5">info</span>
+          <div>
+            <strong class="text-slate-900 font-bold">Important Architecture Principle:</strong> Optical damage classification provides area feature proxies. Energy loss and financial metrics are calculated through the physics-informed BEM surrogate engine.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: DAMAGE CHARACTERIZATION -->
+      <section id="sec-characterization" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">4</span>
+            <h2 class="font-bold text-base text-slate-900">Damage Characterization & Spanwise Radial Position (r/R)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Spanwise location mapping along blade length</span>
+        </div>
+
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="font-bold text-sm text-slate-900 flex items-center gap-2">
+                <span class="material-symbols-outlined text-blue-600 text-lg">straighten</span>
+                Spanwise Location (r/R Ratio = radial position / reference radius)
+              </h3>
+              <p class="text-xs text-slate-500 mt-1">r/R = 0.20 (Root) • r/R = 0.50 (Mid-Span) • r/R = 0.90 (Outboard Tip)</p>
+            </div>
+            <span id="spanwise-val-badge" class="text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-blue-100 text-blue-800 border border-blue-200">
+              r/R = 0.88 (Outboard Tip)
+            </span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="relative pt-2">
+              <div class="h-9 w-full rounded-xl bg-gradient-to-r from-emerald-100 via-amber-100 to-rose-200 flex items-center justify-between px-4 text-xs font-semibold text-slate-700 shadow-inner border border-slate-200">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> ROOT (0.10)</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> MID-SPAN (0.50)</span>
+                <span class="flex items-center gap-1.5 text-rose-900"><span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span> TIP (0.98)</span>
+              </div>
+              <div id="blade-pin-marker" class="absolute top-0 transition-all duration-150 transform -translate-x-1/2 flex flex-col items-center pointer-events-none" style="left: 88%;">
+                <span class="material-symbols-outlined text-slate-900 text-2xl drop-shadow-md">location_on</span>
+              </div>
+            </div>
+
+            <input type="range" id="cfg-spanwise-slider" min="0.10" max="0.98" step="0.01" value="0.88" oninput="document.getElementById('spanwise-val-badge').innerText = 'r/R = ' + parseFloat(this.value).toFixed(2); runAnalysis(parseFloat(this.value));" class="w-full accent-blue-600 cursor-pointer h-2 bg-slate-200 rounded-lg">
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: PHYSICS ANALYSIS -->
+      <section id="sec-physics" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">5</span>
+            <h2 class="font-bold text-base text-slate-900">Aerodynamic Physics Analysis (FFA-W3-241 Airfoil)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Re = 10,000,000 • Sandia & IEA Wind Task 46 Polars</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs text-slate-700">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 font-semibold uppercase block text-[10px]">Reference Airfoil</span>
+            <strong class="text-slate-900 text-sm block mt-1">FFA-W3-241</strong>
+            <span class="text-slate-500 text-[10px]">High Re Aerodynamic Profile</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 font-semibold uppercase block text-[10px]">Reynolds Number</span>
+            <strong class="text-slate-900 text-sm block mt-1">Re = 1.0 × 10⁷</strong>
+            <span class="text-slate-500 text-[10px]">120-Point Polar Dataset</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 font-semibold uppercase block text-[10px]">Lift Penalty (ΔCl)</span>
+            <strong class="text-rose-600 text-sm block mt-1">- 18.4% Peak Lift Drop</strong>
+            <span class="text-slate-500 text-[10px]">Premature Boundary Stall</span>
+          </div>
+
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 font-semibold uppercase block text-[10px]">Drag Increase (ΔCd)</span>
+            <strong class="text-rose-600 text-sm block mt-1">+ 42.1% Profile Drag</strong>
+            <span class="text-slate-500 text-[10px]">Surface Roughness Friction</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: ENERGY LOSS IMPACT -->
+      <section id="sec-energy" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">6</span>
+            <h2 class="font-bold text-base text-slate-900">Energy Loss Impact & Power Curve Breakdown</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">BEM-style power generation calculation</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center">
+          <div class="bg-emerald-50 border border-emerald-200 p-5 rounded-xl">
+            <span class="text-xs font-semibold text-emerald-800 uppercase block">Baseline Clean Power</span>
+            <div id="energy-base-kw" class="text-2xl font-bold text-emerald-700 mt-1.5">1,450 kW</div>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 p-5 rounded-xl">
+            <span class="text-xs font-semibold text-amber-800 uppercase block">Damaged Operating Power</span>
+            <div id="energy-damaged-kw" class="text-2xl font-bold text-amber-700 mt-1.5">1,390 kW</div>
+          </div>
+          <div class="bg-rose-50 border border-rose-200 p-5 rounded-xl">
+            <span class="text-xs font-semibold text-rose-800 uppercase block">Power Difference</span>
+            <div id="energy-diff-kw" class="text-2xl font-bold text-rose-600 mt-1.5">60 kW Loss</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: FINANCIAL IMPACT -->
+      <section id="sec-financial" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">7</span>
+            <h2 class="font-bold text-base text-slate-900">Financial Revenue Loss Impact (₹ Rate Calculation)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Daily Loss = Lost Energy (kWh/day) × Tariff (₹/kWh)</span>
+        </div>
+
+        <div class="bg-gradient-to-r from-blue-50 via-indigo-50/40 to-slate-50 border border-blue-200 text-slate-900 p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
+          <div>
+            <span class="text-xs font-semibold text-blue-700 uppercase tracking-wider block">Estimated Daily Financial Loss</span>
+            <div id="fin-hero-daily" class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">₹ 3,077 / DAY</div>
+            <div class="text-xs text-slate-600 mt-2 flex items-center gap-4 font-medium">
+              <span>Lost Energy: <strong id="fin-kwh-day" class="text-slate-900">683 kWh/day</strong></span>
+              <span>Tariff: <strong id="fin-tariff-val" class="text-slate-900">₹ 4.50 / kWh</strong></span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 text-xs text-right border-l border-blue-200 pl-6 shrink-0">
+            <div>
+              <span class="text-slate-500 block font-semibold">MONTHLY LOSS</span>
+              <strong id="fin-monthly-val" class="text-slate-900 text-lg font-bold">₹ 92,310</strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block font-semibold">ANNUAL LOSS</span>
+              <strong id="fin-annual-val" class="text-rose-600 text-lg font-bold">₹ 11.23 Lakhs</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: REPAIR PAYBACK ECONOMICS -->
+      <section id="sec-payback" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">8</span>
+            <h2 class="font-bold text-base text-slate-900">Repair Payback Economics (Payback Days = Cost ÷ Daily Loss)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Cost-benefit mobilization timeline</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-center text-xs">
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <span class="text-slate-400 font-semibold block uppercase">One-Time Repair Cost</span>
+            <strong id="payback-cost-val" class="text-slate-900 text-xl block mt-1.5">₹ 40,000</strong>
+          </div>
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <span class="text-slate-400 font-semibold block uppercase">Daily Revenue Loss</span>
+            <strong id="payback-loss-val" class="text-rose-600 text-xl block mt-1.5">₹ 3,077 / day</strong>
+          </div>
+          <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200">
+            <span class="text-emerald-800 font-semibold block uppercase">Payback Crossover</span>
+            <strong id="payback-result-days" class="text-emerald-700 text-xl block mt-1.5">13.0 Days</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: RISK & PROGRESSION -->
+      <section id="sec-progression" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">9</span>
+            <h2 class="font-bold text-base text-slate-900">Damage Progression & Risk Assessment</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Erosion escalation risk rating</span>
+        </div>
+
+        <div id="sec-progression-card" class="flex items-center justify-between bg-amber-50 border border-amber-200 p-5 rounded-xl text-xs text-amber-900 transition-all duration-300">
+          <div class="flex items-center gap-3">
+            <span id="risk-icon" class="material-symbols-outlined text-amber-600 text-2xl">warning</span>
+            <div>
+              <strong id="risk-title" class="font-bold text-sm">Erosion Escalation Risk: HIGH RISK</strong>
+              <p id="risk-desc" class="text-xs text-amber-800 mt-0.5">Liquid impingement rain fatigue model indicates rapid progressive tape delamination if unaddressed.</p>
+            </div>
+          </div>
+          <span id="risk-badge" class="px-3.5 py-1.5 rounded-full bg-amber-200 text-amber-900 font-semibold text-xs shrink-0">High Inspection Priority</span>
+        </div>
+      </section>
+
+      <!-- SECTION 10: MAINTENANCE DECISION ENGINE -->
+      <section id="sec-decision" class="space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">10</span>
+            <h2 class="font-bold text-lg text-slate-900">Maintenance Decision Support Recommendation</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Multi-criteria decision framework</span>
+        </div>
+
+        <div id="hero-decision-card" class="rounded-2xl p-7 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-rose-600 to-red-700">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-white/80">
+                <span class="material-symbols-outlined text-base">verified</span>
+                Maintenance Decision Support System
+              </div>
+              <h1 id="hero-action-title" class="text-2xl font-bold tracking-tight mt-1">
                 ACTION: REPAIR NOW
               </h1>
             </div>
-            <div id="hero-urgency-badge" class="px-4 py-1.5 rounded-full bg-white/25 backdrop-blur-md text-white font-black text-xs uppercase tracking-wider self-start sm:self-center border border-white/30 shadow-xs">
+            <div id="hero-urgency-badge" class="px-4 py-1.5 rounded-full bg-white/20 text-white font-semibold text-xs uppercase tracking-wider border border-white/30">
               Urgency: Critical
             </div>
           </div>
 
-          <!-- Traceable Engineering Reasoning Bullets -->
-          <div class="mt-3.5 pt-3.5 border-t border-white/20 space-y-1 text-xs sm:text-sm text-white/95" id="hero-reasoning-container">
+          <div class="mt-4 pt-4 border-t border-white/20 space-y-1.5 text-xs sm:text-sm text-white/90" id="hero-reasoning-container">
             <p>• High outboard aerodynamic penalty at r/R = 0.89 with severity Level 4.</p>
-            <p>• Rapid repair payback period justifies scheduled maintenance.</p>
+            <p>• Rapid repair payback period justifies scheduled maintenance mobilization.</p>
           </div>
         </div>
-
-        <!-- 4 EXECUTIVE METRIC CARDS -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-          <!-- Card 1: Defect Type -->
-          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch text-center">
-            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Defect Type</span>
-            <div id="metric-defect-name" class="font-headline font-black text-xl text-slate-800 mt-1">CRACK</div>
-            <div id="metric-confidence" class="text-xs font-bold text-stitch-primary mt-0.5">100.0% Confidence</div>
-          </div>
-
-          <!-- Card 2: Severity -->
-          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch text-center">
-            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Severity & Area</span>
-            <div id="metric-severity-val" class="font-headline font-black text-xl text-amber-600 mt-1">Level 4 / 5</div>
-            <div id="metric-area-val" class="text-xs font-bold text-slate-500 mt-0.5">4.5% Blade Area</div>
-          </div>
-
-          <!-- Card 3: Energy Deficit (Daily + Annual) -->
-          <div class="bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-stitch text-center flex flex-col justify-between">
-            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Energy Impact</span>
-            <div class="my-auto py-1">
-              <div id="metric-energy-loss" class="font-headline font-black text-xl text-rose-600">683 kWh / d</div>
-              <div id="metric-annual-energy" class="text-xs font-bold text-slate-600 mt-0.5">249.3 MWh / yr</div>
-            </div>
-            <div id="metric-aep-loss" class="text-[11px] font-bold text-rose-500">-2.2% AEP Impact</div>
-          </div>
-
-          <!-- Card 4: Financial Loss / Payback (Dual: Daily Rate + Annualized Lakhs) -->
-          <div class="bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-stitch text-center flex flex-col justify-between">
-            <span class="text-xs font-black text-slate-400 uppercase tracking-wider">Revenue Impact</span>
-            <div class="my-auto py-1">
-              <div id="metric-daily-loss" class="font-headline font-black text-xl text-slate-900">₹3,077 / d</div>
-              <div id="metric-annual-loss" class="text-xs font-black text-rose-600 mt-0.5">₹11.23 Lakhs / yr</div>
-            </div>
-            <div id="metric-payback-days" class="text-[11px] font-bold text-emerald-600">Payback: 13.0 days</div>
-          </div>
-        </div>
-
-        <!-- TWO SIDE-BY-SIDE ANALYTICS CHARTS (Comfortable Height) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          
-          <!-- Chart 1: Power Curve Degradation -->
-          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch space-y-2">
-            <div class="flex items-center justify-between">
-              <h3 class="font-headline font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-stitch-primary text-base">trending_down</span>
-                Power Curve: Clean vs. Degraded
-              </h3>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-stitch-primary border border-blue-200">BEM Physics</span>
-            </div>
-            <div class="h-60 w-full" style="height: 250px;">
-              <canvas id="chart-power-curve"></canvas>
-            </div>
-          </div>
-
-          <!-- Chart 2: Repair Payback Timeline -->
-          <div class="bg-white rounded-2xl border border-slate-200/90 p-4 shadow-stitch space-y-2">
-            <div class="flex items-center justify-between">
-              <h3 class="font-headline font-bold text-xs text-slate-900 flex items-center gap-1.5">
-                <span class="material-symbols-outlined text-emerald-600 text-base">payments</span>
-                Payback Timeline: Loss vs. Fix Cost
-              </h3>
-              <span id="crossover-tag" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Crossover: Day 13</span>
-            </div>
-            <div class="h-60 w-full" style="height: 250px;">
-              <canvas id="chart-payback-curve"></canvas>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Export & Record Action Bar -->
-        <div class="flex items-center justify-between p-3.5 px-5 bg-white rounded-2xl border border-slate-200/90 text-xs text-slate-600 shadow-stitch">
-          <span class="font-medium">Turbine Record: <strong class="text-slate-800">WTG-04B</strong> • Blade Inspection: <strong class="text-slate-800">#2026-FLIGHT-12</strong></span>
-          <button id="btn-export-json" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold flex items-center gap-1.5 shadow-xs transition-all cursor-pointer text-xs">
-            <span class="material-symbols-outlined text-base">download</span>
-            Export Official JSON Assessment
-          </button>
-        </div>
-
       </section>
 
+      <!-- SECTION 11: ASSUMPTIONS & CONFIDENCE -->
+      <section id="sec-uncertainty" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">11</span>
+            <h2 class="font-bold text-base text-slate-900">Assumptions & Confidence Breakdown</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Uncertainty disclosure & parameters</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">YOLO Visual Confidence</span>
+            <strong class="text-slate-900 text-sm">98.8% Confidence</strong>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">Physics Surrogate Accuracy</span>
+            <strong class="text-slate-900 text-sm">R² = 0.992 (GBDT Engine)</strong>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">Tariff & Mobilization</span>
+            <strong class="text-slate-900 text-sm">User Configured Input</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: SCADA MONITORING -->
+      <section id="sec-scada" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center text-xs font-bold">12</span>
+            <h2 class="font-bold text-base text-slate-900">Optional SCADA & Continuous Monitoring</h2>
+          </div>
+          <span class="text-xs text-teal-700 font-semibold px-2.5 py-1 rounded bg-teal-50 border border-teal-200">OPTIONAL MONITORING MODULE</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-slate-700">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">Rotor Speed</span>
+            <strong class="text-slate-900 text-sm">12.1 RPM</strong>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">Generator Temp</span>
+            <strong class="text-slate-900 text-sm">64.2 °C</strong>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">Pitch Angle</span>
+            <strong class="text-slate-900 text-sm">0.8° Normal</strong>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block font-semibold">Power Deviation</span>
+            <strong class="text-rose-600 text-sm">- 3.8% SCADA Shift</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 13: BLADE HEALTH VIEW -->
+      <section id="sec-blades" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">13</span>
+            <h2 class="font-bold text-base text-slate-900">Turbine Blade Health View (Blade 1 / Blade 2 / Blade 3)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Select blade to view specific damage</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 text-xs">
+          <div class="bg-rose-50/70 border border-rose-200 p-5 rounded-xl space-y-2 cursor-pointer hover:shadow-md transition-all">
+            <div class="flex justify-between items-center">
+              <strong class="text-rose-900 font-semibold text-sm">Blade 1 (Active Inspection)</strong>
+              <span class="px-2 py-0.5 rounded bg-rose-200 text-rose-800 font-semibold text-[10px]">HIGHEST RISK</span>
+            </div>
+            <p class="text-slate-600">Crack Defect detected at <strong>r/R = 0.88 (Outboard Tip)</strong>. Severity Level 4.</p>
+          </div>
+
+          <div class="bg-emerald-50/70 border border-emerald-200 p-5 rounded-xl space-y-2 cursor-pointer hover:shadow-md transition-all">
+            <div class="flex justify-between items-center">
+              <strong class="text-emerald-900 font-semibold text-sm">Blade 2</strong>
+              <span class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-800 font-semibold text-[10px]">HEALTHY 99%</span>
+            </div>
+            <p class="text-slate-600">No leading-edge erosion detected. Smooth clean airfoil polar profile.</p>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl space-y-2 cursor-pointer hover:shadow-md transition-all">
+            <div class="flex justify-between items-center">
+              <strong class="text-slate-900 font-semibold text-sm">Blade 3</strong>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold text-[10px]">MINOR PITTING</span>
+            </div>
+            <p class="text-slate-600">Surface pitting at <strong>r/R = 0.45 (Mid-span)</strong>. Severity Level 1.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 14: ANALYTICS & CHARTS -->
+      <section id="sec-analytics" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">14</span>
+            <h2 class="font-bold text-base text-slate-900">Analytics Suite (8 Comprehensive Graphs)</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Interactive performance visualization</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5 space-y-2">
+            <h3 class="font-semibold text-xs text-slate-900">Graph 4 – Baseline vs Damaged Power Curve</h3>
+            <div class="h-64 w-full relative"><canvas id="chart-power-curve"></canvas></div>
+          </div>
+
+          <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5 space-y-2">
+            <h3 class="font-semibold text-xs text-slate-900">Graph 7 – Repair Cost vs Accumulated Loss Crossover</h3>
+            <div class="h-64 w-full relative"><canvas id="chart-payback-curve"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 15: REPORT GENERATION (PDF REPORT DOWNLOAD) -->
+      <section id="sec-reports" class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 scroll-mt-20">
+        <div>
+          <h2 class="font-bold text-base text-slate-900">15. Official Maintenance Summary Report (PDF Document)</h2>
+          <p class="text-xs text-slate-500 font-medium">Generate & download complete engineering assessment report in official PDF document format</p>
+        </div>
+
+        <div class="flex items-center gap-3 shrink-0">
+          <button onclick="downloadOfficialPDFReport()" class="py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center gap-2 shadow-md shadow-blue-500/20 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+            Download Official PDF Report
+          </button>
+          
+          <button id="btn-export-json" class="py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs flex items-center gap-1.5 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-base">download</span>
+            JSON File
+          </button>
+        </div>
+      </section>
+
+      <!-- SECTION 16: SETTINGS PANEL -->
+      <section id="sec-settings" class="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-6 scroll-mt-20">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold">16</span>
+            <h2 class="font-bold text-base text-slate-900">Settings & Input Configuration Panel</h2>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">Configurable operational thresholds</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-xs">
+          <div>
+            <label class="block font-semibold text-slate-500 mb-1">Turbine Preset</label>
+            <select id="cfg-turbine" onchange="runAnalysis(null)" class="w-full rounded-xl border-slate-200 bg-slate-50 text-xs font-medium py-2.5 px-3">
+              <option value="3600" selected>Offshore 3.6 MW (T1 SCADA Reference)</option>
+              <option value="15000">IEA 15 MW Reference Turbine</option>
+              <option value="2500">Fuhrländer FL2500 (2.5 MW)</option>
+              <option value="2000">Onshore 2.0 MW Wind Turbine</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-500 mb-1">Wind Speed (<span id="cfg-wind-val">7.6 m/s</span>)</label>
+            <input id="cfg-wind" type="range" min="3" max="22" step="0.2" value="7.56" oninput="document.getElementById('cfg-wind-val').innerText = parseFloat(this.value).toFixed(1) + ' m/s'; runAnalysis(null);" class="w-full accent-blue-600 h-2 bg-slate-200 rounded-lg">
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-500 mb-1">Electricity Tariff (₹/kWh)</label>
+            <input id="cfg-tariff" type="number" step="0.1" value="4.50" oninput="runAnalysis(null)" class="w-full rounded-xl border-slate-200 bg-slate-50 text-xs font-medium py-2.5 px-3">
+          </div>
+
+          <div>
+            <label class="block font-semibold text-slate-500 mb-1">Repair Mobilization (₹)</label>
+            <input id="cfg-repair" type="number" step="5000" value="40000" oninput="runAnalysis(null)" class="w-full rounded-xl border-slate-200 bg-slate-50 text-xs font-medium py-2.5 px-3">
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+  </div>
+
+  <!-- HIDDEN PRINTABLE PDF REPORT CONTAINER -->
+  <div id="printable-pdf-report" class="hidden p-8 bg-white text-slate-900 max-w-4xl mx-auto space-y-6">
+    <div class="border-b-2 border-blue-600 pb-4 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">AEROLOSS AI — OFFICIAL MAINTENANCE REPORT</h1>
+        <p class="text-xs text-slate-500">Physics-Informed Defect & Financial Assessment • Offshore Cluster A</p>
+      </div>
+      <div class="text-right text-xs">
+        <span class="font-semibold text-slate-900 block">Report ID: #2026-RPT-882</span>
+        <span class="text-slate-500 block">Date: 2026-10-04</span>
+      </div>
     </div>
 
-  </main>
+    <div class="grid grid-cols-2 gap-4 text-xs bg-slate-50 p-4 rounded-xl border border-slate-200">
+      <div><strong>Turbine Unit:</strong> <span id="pdf-turb-id">WTG-04B</span></div>
+      <div><strong>Defect Category:</strong> <span id="pdf-defect-cat">Leading-Edge Damage</span></div>
+      <div><strong>Spanwise Radial Position:</strong> <span id="pdf-r-R">r/R = 0.91 (Blade Tip)</span></div>
+      <div><strong>Damage Severity:</strong> <span id="pdf-severity">Level 4 / 5</span></div>
+      <div><strong>Reference Airfoil:</strong> <span>FFA-W3-241 (Re = 1e7)</span></div>
+      <div><strong>YOLO Detection Score:</strong> <span>98.8% Confidence</span></div>
+    </div>
 
-  <!-- Enterprise Operational Footer -->
-  <footer class="border-t border-slate-200/80 bg-white/90 backdrop-blur-sm py-4 px-6 text-xs text-slate-500 mt-4">
-    <div class="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <span class="flex items-center gap-1.5 text-slate-700 font-bold">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          AeroLoss AI Enterprise v2.4
-        </span>
-        <span class="text-slate-300">|</span>
-        <span>FFA-W3-241 Airfoil (Sandia / IEA Wind Task 46)</span>
-        <span class="text-slate-300">|</span>
-        <span>SCADA 3.6 MW Offshore Reference</span>
-      </div>
-      <div class="text-slate-400 font-medium text-[11px]">
-        Autonomous Physics-Informed Wind Turbine Decision Support System
+    <div class="space-y-2">
+      <h2 class="text-sm font-bold text-slate-900 border-b border-slate-200 pb-1">Aerodynamic & Energy Impact Analysis</h2>
+      <div class="grid grid-cols-3 gap-3 text-xs text-center">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-slate-500 block text-[10px]">BASELINE POWER</span>
+          <strong id="pdf-base-kw" class="text-slate-900 text-sm">1,450 kW</strong>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-slate-500 block text-[10px]">DAMAGED POWER</span>
+          <strong id="pdf-dam-kw" class="text-slate-900 text-sm">1,390 kW</strong>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-slate-500 block text-[10px]">AEP LOSS %</span>
+          <strong id="pdf-aep-pct" class="text-rose-600 text-sm">-3.8% AEP</strong>
+        </div>
       </div>
     </div>
-  </footer>
 
-  <!-- Interactive Dashboard Controller Scripts -->
+    <div class="space-y-2">
+      <h2 class="text-sm font-bold text-slate-900 border-b border-slate-200 pb-1">Financial Revenue Impact & Repair Economics</h2>
+      <div class="grid grid-cols-3 gap-3 text-xs text-center">
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-slate-500 block text-[10px]">DAILY REVENUE LOSS</span>
+          <strong id="pdf-daily-loss" class="text-slate-900 text-sm">₹ 4,250 / day</strong>
+        </div>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <span class="text-slate-500 block text-[10px]">MOBILIZATION COST</span>
+          <strong id="pdf-repair-cost" class="text-slate-900 text-sm">₹ 40,000</strong>
+        </div>
+        <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200">
+          <span class="text-emerald-800 block text-[10px]">PAYBACK CROSSOVER</span>
+          <strong id="pdf-payback-days" class="text-emerald-700 text-sm">9.4 Days</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-rose-50 border border-rose-200 p-4 rounded-xl text-xs space-y-1">
+      <h3 id="pdf-action-title" class="font-bold text-rose-900 text-sm">FINAL RECOMMENDATION: ACTION: REPAIR NOW</h3>
+      <p id="pdf-action-reason" class="text-rose-800">High outboard aerodynamic drag penalty near blade tip (r/R = 0.91). Rapid payback period (9.4 days) justifies immediate repair mobilization.</p>
+    </div>
+
+    <div class="text-[10px] text-slate-400 border-t border-slate-200 pt-4 leading-relaxed">
+      <strong>Engineering Governance Disclaimer:</strong> AeroLoss AI is a physics-informed decision support system. All calculations are model-based estimates derived under configured operating assumptions and should be validated through standard site engineering procedures prior to mobilization.
+    </div>
+  </div>
+
+  <!-- DASHBOARD JAVASCRIPT LOGIC -->
   <script>
+    const windFarmTurbines = [
+      {
+        id: "WTG-04B",
+        health: "Critical",
+        healthClass: "bg-rose-50 text-rose-700 border-rose-200",
+        dotClass: "bg-rose-600",
+        severity: "Level 4 / 5",
+        defect: "Leading-Edge Damage",
+        r_R: "0.91 (Tip)",
+        aep: "-3.8%",
+        energyLoss: "944 kWh/day",
+        dailyLoss: 4250,
+        payback: "9.4 days",
+        priority: "HIGH",
+        priorityClass: "bg-rose-50 text-rose-700 border-rose-200",
+        sampleClass: "crack",
+        sampleFile: "patch_00155.jpg",
+        explainability: "Damage located at r/R = 0.91 near the blade tip, where tip rotational speed exceeds 250 km/h, amplifying profile drag and producing a maximum ₹ 4,250/day revenue loss."
+      },
+      {
+        id: "WTG-06A",
+        health: "High Risk",
+        healthClass: "bg-orange-50 text-orange-700 border-orange-200",
+        dotClass: "bg-orange-500",
+        severity: "Level 3 / 5",
+        defect: "Crack",
+        r_R: "0.84 (Outboard)",
+        aep: "-2.1%",
+        energyLoss: "592 kWh/day",
+        dailyLoss: 2665,
+        payback: "15.0 days",
+        priority: "HIGH",
+        priorityClass: "bg-orange-50 text-orange-700 border-orange-200",
+        sampleClass: "crack",
+        sampleFile: "patch_00058.jpg",
+        explainability: "Outboard structural crack at r/R = 0.84. Boundary layer flow detachment creates steady torque reduction resulting in ₹ 2,665/day daily loss."
+      },
+      {
+        id: "WTG-03B",
+        health: "Monitor",
+        healthClass: "bg-amber-50 text-amber-700 border-amber-200",
+        dotClass: "bg-amber-500",
+        severity: "Level 2 / 5",
+        defect: "Surface Injury",
+        r_R: "0.76 (Outboard)",
+        aep: "-0.7%",
+        energyLoss: "219 kWh/day",
+        dailyLoss: 985,
+        payback: "40.6 days",
+        priority: "Medium",
+        priorityClass: "bg-amber-50 text-amber-700 border-amber-200",
+        sampleClass: "surface_injure",
+        sampleFile: "patch_00003.jpg",
+        explainability: "Moderate surface pitting at r/R = 0.76. Extended payback period (40.6 days) indicates repair should be scheduled during routine outage."
+      },
+      {
+        id: "WTG-02A",
+        health: "Monitor",
+        healthClass: "bg-amber-50 text-amber-700 border-amber-200",
+        dotClass: "bg-amber-500",
+        severity: "Level 1 / 5",
+        defect: "Surface Defect",
+        r_R: "0.62 (Mid-span)",
+        aep: "-0.4%",
+        energyLoss: "95 kWh/day",
+        dailyLoss: 428,
+        payback: "93.4 days",
+        priority: "Medium",
+        priorityClass: "bg-amber-50 text-amber-700 border-amber-200",
+        sampleClass: "corrosion",
+        sampleFile: "patch_00000.jpg",
+        explainability: "Mid-span surface roughness at r/R = 0.62. Low rotational velocity limits total financial impact to ₹ 428/day."
+      },
+      {
+        id: "WTG-01A",
+        health: "Healthy",
+        healthClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+        dotClass: "bg-emerald-500",
+        severity: "Level 0 / 5",
+        defect: "No Defect",
+        r_R: "0.88 (Tip)",
+        aep: "0%",
+        energyLoss: "0 kWh/day",
+        dailyLoss: 0,
+        payback: "—",
+        priority: "Low",
+        priorityClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+        sampleClass: "corrosion",
+        sampleFile: "patch_00384.jpg",
+        explainability: "Normal clean blade condition. Aerodynamic lift and drag coefficients remain at baseline reference polars."
+      },
+      {
+        id: "WTG-05B",
+        health: "Healthy",
+        healthClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+        dotClass: "bg-emerald-500",
+        severity: "Level 0 / 5",
+        defect: "No Defect",
+        r_R: "0.90 (Tip)",
+        aep: "0%",
+        energyLoss: "0 kWh/day",
+        dailyLoss: 0,
+        payback: "—",
+        priority: "Low",
+        priorityClass: "bg-emerald-50 text-emerald-700 border-emerald-200",
+        sampleClass: "thunderstrike",
+        sampleFile: "patch_00427.jpg",
+        explainability: "Clean operating profile with minor non-degrading surface discoloration. Zero AEP penalty."
+      }
+    ];
+
+    let currentFilterHealth = "ALL";
+    let farmChart = null;
     let activeAnalysisData = null;
     let powerChart = null;
     let paybackChart = null;
-    let currentSampleClass = "corrosion";
-    let currentSampleFile = "patch_00384.jpg";
+    let currentSampleClass = "crack";
+    let currentSampleFile = "patch_00155.jpg";
+    let activeUploadedBase64 = null;
 
+    function showFarmOverview() {
+      document.getElementById("view-farm-overview").classList.remove("hidden");
+      document.getElementById("view-turbine-analysis").classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openTurbineAnalysis(turbineId, keepUploaded = false) {
+      if (!keepUploaded) {
+        activeUploadedBase64 = null;
+        const uploadHeading = document.getElementById("upload-status-heading");
+        const uploadText = document.getElementById("upload-status-text");
+        if (uploadHeading) uploadHeading.innerText = "Upload New RGB Inspection Photo";
+        if (uploadText) uploadText.innerText = "JPG, PNG, or drone footage frame (1024x1024)";
+      }
+
+      const t = windFarmTurbines.find(item => item.id === turbineId) || windFarmTurbines[0];
+      
+      document.getElementById("breadcrumb-turbine-id").innerText = `${turbineId || t.id} Detailed Analysis`;
+      document.getElementById("analysis-title-id").innerText = `Turbine ${turbineId || t.id} Detailed Analysis`;
+      
+      const badge = document.getElementById("analysis-health-badge");
+      if (badge) {
+        badge.innerText = `${t.health} Status (${t.severity})`;
+        badge.className = `text-xs font-semibold px-3 py-1 rounded-full border ${t.healthClass}`;
+      }
+
+      if (!keepUploaded) {
+        currentSampleClass = t.sampleClass;
+        currentSampleFile = t.sampleFile;
+      }
+
+      document.getElementById("view-farm-overview").classList.add("hidden");
+      document.getElementById("view-turbine-analysis").classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      runAnalysis(null);
+    }
+
+    // Render Wind Farm Cards (CLEAN DATA CARDS - NO IMAGES AS REQUESTED)
+    function renderWindFarmVisualGrid() {
+      const container = document.getElementById("wind-farm-visual-grid");
+      container.innerHTML = "";
+
+      windFarmTurbines.forEach(t => {
+        const card = document.createElement("div");
+        card.className = "card-accent-top bg-white rounded-2xl border-2 border-slate-300 hover:border-blue-500 p-5 space-y-3.5 shadow-md hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 cursor-pointer flex flex-col justify-between hover:-translate-y-1.5";
+        card.onclick = () => openTurbineAnalysis(t.id);
+        
+        card.innerHTML = `
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full ${t.dotClass}"></span>
+                <strong class="text-slate-900 text-base font-bold">${t.id}</strong>
+              </div>
+              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full border ${t.healthClass}">${t.health}</span>
+            </div>
+
+            <div class="space-y-1.5 text-xs text-slate-600">
+              <div class="flex justify-between"><span>Defect Category:</span> <strong class="text-slate-900 font-bold">${t.defect}</strong></div>
+              <div class="flex justify-between"><span>Location (r/R):</span> <strong class="text-slate-900">${t.r_R}</strong></div>
+              <div class="flex justify-between"><span>AEP Impact:</span> <strong class="text-rose-600 font-bold">${t.aep}</strong></div>
+              <div class="flex justify-between"><span>Daily Revenue Loss:</span> <strong class="text-slate-900 font-bold text-sm">₹ ${t.dailyLoss.toLocaleString()}/day</strong></div>
+            </div>
+
+            <div class="bg-blue-50/50 p-3 rounded-xl border border-blue-200/80 text-[11px] text-slate-700 leading-tight">
+              <strong class="text-slate-900 font-semibold block mb-0.5">Physics Insight:</strong>
+              ${t.explainability}
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100">
+            <button onclick="event.stopPropagation(); openTurbineAnalysis('${t.id}')" class="flex-1 py-2.5 px-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs flex items-center justify-center gap-1.5 transition-all shadow-sm shadow-blue-500/20 cursor-pointer">
+              OPEN ANALYSIS
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+            <button onclick="event.stopPropagation(); downloadOfficialPDFReport('${t.id}')" class="py-2.5 px-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs flex items-center gap-1 transition-all border border-blue-200 shadow-xs cursor-pointer" title="Download PDF Report for ${t.id}">
+              <span class="material-symbols-outlined text-base text-blue-600">picture_as_pdf</span>
+              PDF
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function filterTurbineTable() {
+      const searchInput = document.getElementById("farm-search-input");
+      const search = searchInput ? searchInput.value.toLowerCase() : "";
+      const sortSelect = document.getElementById("farm-sort-select");
+      const sort = sortSelect ? sortSelect.value : "priority";
+
+      let filtered = windFarmTurbines.filter(t => {
+        const matchesSearch = t.id.toLowerCase().includes(search) || t.defect.toLowerCase().includes(search);
+        const matchesHealth = (currentFilterHealth === "ALL") || (t.health === currentFilterHealth);
+        return matchesSearch && matchesHealth;
+      });
+
+      if (sort === "priority") {
+        const priorityOrder = { "Critical": 1, "High Risk": 2, "Monitor": 3, "Healthy": 4 };
+        filtered.sort((a,b) => priorityOrder[a.health] - priorityOrder[b.health]);
+      } else if (sort === "financial") {
+        filtered.sort((a,b) => b.dailyLoss - a.dailyLoss);
+      } else if (sort === "energy") {
+        filtered.sort((a,b) => parseInt(b.energyLoss) - parseInt(a.energyLoss));
+      } else if (sort === "id") {
+        filtered.sort((a,b) => a.id.localeCompare(b.id));
+      }
+
+      renderTurbineTable(filtered);
+      renderPriorityRankingList(filtered);
+    }
+
+    function setFarmFilter(health, btn) {
+      currentFilterHealth = health;
+      document.querySelectorAll("#farm-filter-buttons button").forEach(b => {
+        b.classList.remove("active", "bg-blue-50", "text-blue-700", "border-blue-200");
+        b.classList.add("bg-white", "text-slate-700", "border-slate-200");
+      });
+      btn.classList.add("active", "bg-blue-50", "text-blue-700", "border-blue-200");
+      btn.classList.remove("bg-white", "text-slate-700", "border-slate-200");
+      filterTurbineTable();
+    }
+
+    function renderTurbineTable(list) {
+      const tbody = document.getElementById("farm-table-body");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      list.forEach(t => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-blue-50/40 cursor-pointer transition-all";
+        tr.onclick = () => openTurbineAnalysis(t.id);
+
+        tr.innerHTML = `
+          <td class="p-3.5 font-bold text-slate-900">${t.id}</td>
+          <td class="p-3.5"><span class="px-2.5 py-0.5 rounded-full border text-[11px] font-semibold ${t.healthClass}">${t.health}</span></td>
+          <td class="p-3.5 font-medium text-slate-700">${t.severity}</td>
+          <td class="p-3.5 font-semibold text-slate-900">${t.defect}</td>
+          <td class="p-3.5 font-medium text-slate-600">${t.r_R}</td>
+          <td class="p-3.5 font-semibold text-rose-600">${t.aep}</td>
+          <td class="p-3.5 font-medium text-slate-700">${t.energyLoss}</td>
+          <td class="p-3.5 font-bold text-slate-900">₹ ${t.dailyLoss.toLocaleString()}</td>
+          <td class="p-3.5 font-medium text-emerald-700">${t.payback}</td>
+          <td class="p-3.5"><span class="px-2 py-0.5 rounded border text-[10px] font-semibold ${t.priorityClass}">${t.priority}</span></td>
+          <td class="p-3.5 text-center">
+            <div class="flex items-center justify-center gap-1.5">
+              <button onclick="event.stopPropagation(); openTurbineAnalysis('${t.id}')" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[11px] flex items-center gap-1 shadow-xs">
+                ANALYSIS →
+              </button>
+              <button onclick="event.stopPropagation(); downloadOfficialPDFReport('${t.id}')" class="px-2 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 font-semibold text-[11px] flex items-center gap-1 shadow-xs" title="Download PDF Report">
+                <span class="material-symbols-outlined text-xs">picture_as_pdf</span> PDF
+              </button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderPriorityRankingList(list) {
+      const container = document.getElementById("priority-ranking-list");
+      container.innerHTML = "";
+
+      list.slice(0, 6).forEach((t, idx) => {
+        const item = document.createElement("div");
+        item.className = "flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-blue-50/50 cursor-pointer transition-all";
+        item.onclick = () => openTurbineAnalysis(t.id);
+
+        item.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-lg bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center">${idx + 1}</span>
+            <div>
+              <strong class="text-slate-900 text-xs font-semibold block">${t.id} — ${t.defect}</strong>
+              <span class="text-[10px] text-slate-500 font-medium">r/R: ${t.r_R} • Loss: ₹ ${t.dailyLoss.toLocaleString()}/day</span>
+            </div>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full border text-[10px] font-semibold ${t.healthClass}">${t.health}</span>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function renderFarmFinancialChart() {
+      const ctx = document.getElementById("chart-farm-financial").getContext("2d");
+      if (farmChart) farmChart.destroy();
+
+      farmChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: windFarmTurbines.map(t => t.id),
+          datasets: [{
+            label: 'Daily Revenue Loss (₹ / day)',
+            data: windFarmTurbines.map(t => t.dailyLoss),
+            backgroundColor: windFarmTurbines.map(t => t.dailyLoss > 3000 ? '#ef4444' : (t.dailyLoss > 1000 ? '#f59e0b' : (t.dailyLoss > 0 ? '#3b82f6' : '#10b981'))),
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { color: '#f1f5f9' }, title: { display: true, text: 'Turbine ID', font: { family: 'Poppins', size: 11 } } },
+            y: { grid: { color: '#f1f5f9' }, title: { display: true, text: 'Daily Revenue Loss (₹)', font: { family: 'Poppins', size: 11 } } }
+          }
+        }
+      });
+    }
+
+    // PDF Report Generator Function (Self-Healing Async Engine)
+    async function downloadOfficialPDFReport(targetTurbineId = null) {
+      let turbineId = targetTurbineId;
+      if (!turbineId) {
+        const breadcrumbEl = document.getElementById("breadcrumb-turbine-id");
+        turbineId = breadcrumbEl ? breadcrumbEl.innerText.replace(" Detailed Analysis", "").trim() : "WTG-04B";
+      }
+
+      if (!activeAnalysisData || targetTurbineId) {
+        const t = windFarmTurbines.find(item => item.id === turbineId) || windFarmTurbines[0];
+        currentSampleClass = t.sampleClass;
+        currentSampleFile = t.sampleFile;
+        await runAnalysis(null);
+      }
+
+      if (!activeAnalysisData) {
+        alert("Unable to fetch turbine analysis data for PDF generation.");
+        return;
+      }
+
+      const det = activeAnalysisData.visual_detection;
+      const char = activeAnalysisData.characterization;
+      const phys = activeAnalysisData.physics_aerodynamics;
+      const en = activeAnalysisData.energy_impact;
+      const fin = activeAnalysisData.financial_impact;
+      const dec = activeAnalysisData.maintenance_decision;
+
+      document.getElementById("pdf-turb-id").innerText = turbineId;
+      document.getElementById("pdf-defect-cat").innerText = det.detected_class.replace('_', ' ').toUpperCase();
+      document.getElementById("pdf-r-R").innerText = `r/R = ${char.spanwise_position_r_R.toFixed(2)} (${char.blade_region})`;
+      document.getElementById("pdf-severity").innerText = `Level ${char.severity_proxy} / 5 (${char.damage_area_pct}% Area)`;
+
+      const basePower = phys.baseline_power_kw ?? phys.power_baseline_kw ?? 0;
+      const damPower = phys.damaged_power_kw ?? phys.power_damaged_kw ?? 0;
+
+      document.getElementById("pdf-base-kw").innerText = `${Math.round(basePower).toLocaleString()} kW`;
+      document.getElementById("pdf-dam-kw").innerText = `${Math.round(damPower).toLocaleString()} kW`;
+      document.getElementById("pdf-aep-pct").innerText = `-${en.aep_loss_pct}% AEP`;
+
+      document.getElementById("pdf-daily-loss").innerText = `₹ ${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / day`;
+      document.getElementById("pdf-repair-cost").innerText = `₹ ${fin.repair_cost_inr.toLocaleString()}`;
+      document.getElementById("pdf-payback-days").innerText = `${fin.payback_days.toFixed(1)} Days`;
+
+      document.getElementById("pdf-action-title").innerText = `FINAL RECOMMENDATION: ACTION: ${dec.recommended_action}`;
+      document.getElementById("pdf-action-reason").innerText = dec.reasoning.join(" ");
+
+      const element = document.getElementById("printable-pdf-report");
+      element.classList.remove("hidden");
+
+      let pdfSaved = false;
+      if (typeof html2pdf === "function") {
+        try {
+          const opt = {
+            margin:       0.4,
+            filename:     `AeroLoss_Maintenance_Report_${turbineId}_${Date.now()}.pdf`,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2, useCORS: true, allowTaint: true, logging: false },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+          };
+          await html2pdf().set(opt).from(element).save();
+          pdfSaved = true;
+        } catch (err) {
+          console.warn("html2pdf save failed, triggering fallback print window:", err);
+        }
+      }
+
+      // Printable Window Fallback
+      generatePrintableReportWindow(turbineId, det, char, phys, en, fin, dec);
+
+      element.classList.add("hidden");
+    }
+
+    function generatePrintableReportWindow(turbineId, det, char, phys, en, fin, dec) {
+      const printWindow = window.open('', '_blank', 'width=900,height=1000');
+      if (!printWindow) {
+        console.warn("Pop-up window blocked for printable view.");
+        return;
+      }
+
+      const isRepair = dec.recommended_action === "REPAIR";
+
+      const reportHTML = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>AeroLoss AI Maintenance Report — ${turbineId}</title>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+            * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+            body { background: #ffffff; color: #0f172a; margin: 0; padding: 36px; line-height: 1.5; }
+            .header { border-bottom: 3px solid #2563eb; padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; }
+            .title { font-size: 20px; font-weight: 600; color: #0f172a; margin: 0; }
+            .subtitle { font-size: 11px; color: #64748b; margin-top: 4px; font-weight: 500; }
+            .meta-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; margin-bottom: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-size: 11px; }
+            .meta-item strong { display: block; font-size: 9px; color: #64748b; text-transform: uppercase; margin-bottom: 2px; font-weight: 600; }
+            .section-title { font-size: 13px; font-weight: 600; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; margin-top: 24px; margin-bottom: 12px; color: #1e293b; text-transform: uppercase; }
+            .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+            .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px; text-align: center; }
+            .card-label { font-size: 10px; color: #64748b; text-transform: uppercase; font-weight: 500; }
+            .card-value { font-size: 17px; font-weight: 600; color: #0f172a; margin-top: 4px; }
+            .card-value.highlight { color: #dc2626; }
+            .card-value.success { color: #16a34a; }
+            .banner { border-radius: 12px; padding: 16px; margin-top: 24px; }
+            .banner.repair { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+            .banner.monitor { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+            .banner-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+            .banner-body { font-size: 11px; line-height: 1.5; }
+            table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
+            th { background: #f1f5f9; text-align: left; padding: 10px; border-bottom: 1px solid #cbd5e1; font-weight: 600; color: #475569; }
+            td { padding: 10px; border-bottom: 1px solid #e2e8f0; color: #1e293b; }
+            .footer { margin-top: 36px; border-top: 1px solid #e2e8f0; pt: 16px; font-size: 10px; color: #94a3b8; text-align: center; }
+            @media print {
+              body { padding: 20px; }
+              .no-print { display: none !important; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="no-print" style="margin-bottom: 20px; text-align: right;">
+            <button onclick="window.print()" style="padding: 10px 20px; background: #2563eb; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 12px;">Save as PDF / Print Document</button>
+          </div>
+
+          <div class="header">
+            <div>
+              <h1 class="title">AEROLOSS AI — OFFICIAL MAINTENANCE REPORT</h1>
+              <div class="subtitle">Physics-Informed Defect & Financial Decision Engine • Offshore Cluster A</div>
+            </div>
+            <div style="text-align: right; font-size: 11px; color: #64748b;">
+              <strong>REPORT #2026-RPT-${Math.floor(1000 + Math.random()*9000)}</strong><br/>
+              Date: ${new Date().toISOString().split('T')[0]}
+            </div>
+          </div>
+
+          <div class="meta-box">
+            <div class="meta-item"><strong>Turbine Unit ID</strong> ${turbineId}</div>
+            <div class="meta-item"><strong>Inspection Date</strong> ${new Date().toISOString().split('T')[0]}</div>
+            <div class="meta-item"><strong>Airfoil Polars</strong> FFA-W3-241 (Re = 10^7)</div>
+            <div class="meta-item"><strong>YOLOv8 Detection</strong> ${det.detected_class.replace('_', ' ').toUpperCase()} (${det.confidence_pct})</div>
+            <div class="meta-item"><strong>Spanwise Radial Location</strong> r/R = ${char.spanwise_position_r_R.toFixed(2)} (${char.blade_region})</div>
+            <div class="meta-item"><strong>Damage Severity Grade</strong> Level ${char.severity_proxy} / 5 (${char.damage_area_pct}% Area)</div>
+          </div>
+
+          <div class="section-title">1. AI Visual Detection & Bounding Box Characterization</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Defect Category</th>
+                <th>Confidence</th>
+                <th>Damage Area %</th>
+                <th>Radial Location (r/R)</th>
+                <th>Severity Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>${det.detected_class.replace('_', ' ').toUpperCase()}</strong></td>
+                <td>${det.confidence_pct}</td>
+                <td>${char.damage_area_pct}%</td>
+                <td>r/R = ${char.spanwise_position_r_R.toFixed(2)} (${char.blade_region})</td>
+                <td>Level ${char.severity_proxy} / 5</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="section-title">2. Aerodynamic Physics & Power Degradation</div>
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-label">Baseline Power</div>
+              <div class="card-value">${Math.round(phys.baseline_power_kw ?? phys.power_baseline_kw ?? 0).toLocaleString()} kW</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Damaged Power</div>
+              <div class="card-value">${Math.round(phys.damaged_power_kw ?? phys.power_damaged_kw ?? 0).toLocaleString()} kW</div>
+            </div>
+            <div class="card">
+              <div class="card-label">AEP Penalty Impact</div>
+              <div class="card-value highlight">-${en.aep_loss_pct}% AEP</div>
+            </div>
+          </div>
+
+          <div class="section-title">3. Financial Revenue Loss & Repair Economics</div>
+          <div class="grid-3">
+            <div class="card">
+              <div class="card-label">Daily Revenue Loss</div>
+              <div class="card-value highlight">₹ ${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / day</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Repair Mobilization Cost</div>
+              <div class="card-value">₹ ${fin.repair_cost_inr.toLocaleString()}</div>
+            </div>
+            <div class="card">
+              <div class="card-label">Payback Crossover</div>
+              <div class="card-value success">${fin.payback_days.toFixed(1)} Days</div>
+            </div>
+          </div>
+
+          <div class="banner ${isRepair ? 'repair' : 'monitor'}">
+            <div class="banner-title">FINAL MAINTENANCE RECOMMENDATION: ACTION: ${dec.recommended_action}</div>
+            <div class="banner-body">
+              <strong>Urgency: ${dec.urgency}</strong><br/>
+              ${dec.reasoning.join(" ")}
+            </div>
+          </div>
+
+          <div class="footer">
+            AeroLoss AI Decision Engine v2.4 • Engineering Decision-Support Document • Confidential & Proprietary
+          </div>
+
+          <script>
+            window.onload = function() {
+              setTimeout(function() { window.print(); }, 400);
+            };
+          <\/script>
+        </body>
+        </html>
+      `;
+
+      printWindow.document.write(reportHTML);
+      printWindow.document.close();
+    }
+
+    // Individual Analysis Logic & APIs
     async function loadSamples() {
       try {
         const res = await fetch("/api/samples");
         const data = await res.json();
         const container = document.getElementById("sample-chips-container");
+        if (!container) return;
         container.innerHTML = "";
 
         data.samples.forEach((s, idx) => {
           const btn = document.createElement("button");
           const isTip = s.zone && (s.zone.includes("Tip") || s.r_R >= 0.80);
           const isMid = s.zone && (s.zone.includes("Mid") || s.r_R < 0.70);
-          const badgeColor = isTip
-            ? "bg-rose-100 text-rose-700 border-rose-200"
-            : (isMid ? "bg-amber-100 text-amber-800 border-amber-200" : "bg-blue-100 text-blue-700 border-blue-200");
+          
+          const badgeClass = isTip
+            ? "bg-rose-100 text-rose-800 border-rose-200"
+            : (isMid ? "bg-amber-100 text-amber-800 border-amber-200" : "bg-blue-100 text-blue-800 border-blue-200");
 
           btn.className = `chip-btn p-2 text-left rounded-xl border transition-all cursor-pointer flex flex-col justify-between ${
-            idx === 0 ? "active" : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
+            idx === 0 ? "active bg-blue-50/80 border-blue-500 shadow-sm" : "border-slate-200 bg-white hover:bg-slate-50 text-slate-800"
           }`;
+          
           btn.innerHTML = `
-            <span class="text-xs font-bold leading-tight text-slate-900 truncate">${s.label}</span>
-            <span class="text-[10px] font-black px-1.5 py-0.5 rounded ${badgeColor} border mt-1 w-fit">${s.badge || ('r/R ' + s.r_R.toFixed(2))}</span>
+            <span class="text-xs font-semibold leading-tight text-slate-900 truncate">${s.label}</span>
+            <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded ${badgeClass} border w-fit mt-1">${s.badge || ('r/R ' + s.r_R.toFixed(2))}</span>
           `;
+
           btn.onclick = () => {
+            activeUploadedBase64 = null;
+            const uploadHeading = document.getElementById("upload-status-heading");
+            const uploadText = document.getElementById("upload-status-text");
+            if (uploadHeading) uploadHeading.innerText = "Upload New RGB Inspection Photo";
+            if (uploadText) uploadText.innerText = "JPG, PNG, or drone footage frame (1024x1024)";
+
             document.querySelectorAll("#sample-chips-container button").forEach(b => {
-              b.classList.remove("active");
-              b.classList.add("border-slate-200", "bg-white", "text-slate-700");
+              b.classList.remove("active", "bg-blue-50/80", "border-blue-500", "shadow-sm");
+              b.classList.add("border-slate-200", "bg-white");
             });
-            btn.classList.add("active");
-            btn.classList.remove("border-slate-200", "bg-white", "text-slate-700");
+            btn.classList.add("active", "bg-blue-50/80", "border-blue-500", "shadow-sm");
+            btn.classList.remove("border-slate-200", "bg-white");
             currentSampleClass = s.class_name;
             currentSampleFile = s.filename;
             document.getElementById("active-blade-img").src = s.preview_url;
             runAnalysis(null);
           };
+
           container.appendChild(btn);
 
-          if (idx === 0) {
+          if (idx === 0 && !activeUploadedBase64) {
             currentSampleClass = s.class_name;
             currentSampleFile = s.filename;
             document.getElementById("active-blade-img").src = s.preview_url;
           }
         });
-
-        runAnalysis(null);
       } catch (err) {
-        console.error("Failed to load samples", err);
+        console.error("Failed to load sample scenarios", err);
       }
+    }
+
+    // Handle Custom Image Upload & Auto-Run Analysis
+    function handleImageUpload(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        activeUploadedBase64 = e.target.result;
+        currentSampleClass = null;
+        currentSampleFile = null;
+
+        // Clear active selection on sample chips
+        document.querySelectorAll("#sample-chips-container button").forEach(b => {
+          b.classList.remove("active", "bg-blue-50/80", "border-blue-500", "shadow-sm");
+          b.classList.add("border-slate-200", "bg-white");
+        });
+
+        // Update upload dropzone status text
+        const uploadHeading = document.getElementById("upload-status-heading");
+        const uploadText = document.getElementById("upload-status-text");
+        if (uploadHeading) uploadHeading.innerText = file.name;
+        if (uploadText) uploadText.innerText = `Uploaded (${(file.size / 1024).toFixed(1)} KB) • Processing with YOLOv8 & BEM...`;
+
+        // Update preview image
+        const bladeImg = document.getElementById("active-blade-img");
+        if (bladeImg) bladeImg.src = activeUploadedBase64;
+
+        // Switch to Analysis Page
+        const turbineId = "WTG-04B (Uploaded Photo)";
+        document.getElementById("breadcrumb-turbine-id").innerText = `${turbineId} Detailed Analysis`;
+        document.getElementById("analysis-title-id").innerText = `Turbine ${turbineId} Detailed Analysis`;
+        document.getElementById("view-farm-overview").classList.add("hidden");
+        document.getElementById("view-turbine-analysis").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Run full backend analysis on the uploaded image
+        runAnalysis(null);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function setupUploadListeners() {
+      // 1. Page 1 Main Farm Uploader
+      const farmInput = document.getElementById("farm-file-uploader");
+      if (farmInput) {
+        farmInput.addEventListener("change", function() {
+          if (this.files && this.files[0]) handleImageUpload(this.files[0]);
+        });
+      }
+
+      // 2. Page 2 Section 2 Uploader
+      const page2Input = document.getElementById("file-uploader");
+      if (page2Input) {
+        page2Input.addEventListener("change", function() {
+          if (this.files && this.files[0]) handleImageUpload(this.files[0]);
+        });
+      }
+
+      // 3. Recalculate / Analyze Button
+      const btnRecalc = document.getElementById("btn-recalculate");
+      if (btnRecalc) {
+        btnRecalc.addEventListener("click", function() {
+          runAnalysis(null);
+        });
+      }
+
+      // 4. Drag and Drop Support
+      const dropzones = [
+        document.getElementById("farm-upload-box"),
+        document.getElementById("section2-upload-dropzone")
+      ];
+
+      dropzones.forEach(zone => {
+        if (!zone) return;
+        ['dragenter', 'dragover'].forEach(eventName => {
+          zone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            zone.classList.add("border-blue-600", "bg-blue-50/60");
+          }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+          zone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            zone.classList.remove("border-blue-600", "bg-blue-50/60");
+          }, false);
+        });
+
+        zone.addEventListener('drop', (e) => {
+          const dt = e.dataTransfer;
+          const files = dt.files;
+          if (files && files[0]) {
+            handleImageUpload(files[0]);
+          }
+        }, false);
+      });
     }
 
     async function runAnalysis(custom_r_R = null) {
       const spinner = document.getElementById("img-loading-spinner");
-      spinner.classList.remove("hidden");
+      if (spinner) spinner.classList.remove("hidden");
 
       const wind = parseFloat(document.getElementById("cfg-wind").value);
       const rated = parseFloat(document.getElementById("cfg-turbine").value);
       const tariff = parseFloat(document.getElementById("cfg-tariff").value);
       const repair = parseFloat(document.getElementById("cfg-repair").value);
 
+      const breadcrumbEl = document.getElementById("breadcrumb-turbine-id");
+      const currentTurbineId = breadcrumbEl ? breadcrumbEl.innerText.replace(" Detailed Analysis", "").trim() : "WTG-04B";
+
       const payload = {
-        sample_class: currentSampleClass,
-        sample_file: currentSampleFile,
+        turbine_id: currentTurbineId,
         wind_speed: wind,
         rated_kw: rated,
         tariff: tariff,
         repair_cost: repair
       };
+
+      if (activeUploadedBase64) {
+        payload.image_base64 = activeUploadedBase64;
+        payload.image_b64 = activeUploadedBase64;
+      } else {
+        payload.sample_class = currentSampleClass;
+        payload.sample_file = currentSampleFile;
+      }
 
       if (custom_r_R !== null && custom_r_R !== undefined) {
         payload.r_R = custom_r_R;
@@ -472,51 +2111,13 @@
         activeAnalysisData = data;
         renderDashboard(data);
       } catch (err) {
-        console.error("Analysis failed", err);
+        console.error("Analysis execution failed", err);
       } finally {
-        spinner.classList.add("hidden");
+        if (spinner) spinner.classList.add("hidden");
       }
     }
 
     function renderDashboard(data) {
-      if (data.is_valid_blade_image === false || data.status === "REJECTED_OUT_OF_DOMAIN") {
-        document.getElementById("detected-tag-label").innerText = "🛑 REJECTED: NON-BLADE IMAGE";
-        document.getElementById("detected-tag-label").className = "text-xs font-black text-rose-600 bg-rose-50 px-2.5 py-1 rounded border border-rose-300";
-
-        const heroCard = document.getElementById("hero-decision-card");
-        const heroTitle = document.getElementById("hero-action-title");
-        const heroUrgency = document.getElementById("hero-urgency-badge");
-
-        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-amber-600 via-orange-600 to-rose-700";
-        heroTitle.innerText = "🛑 REJECTED: UNFAMILIAR / NON-BLADE IMAGE";
-        heroUrgency.innerText = "GUARDRAIL INTERVENTION";
-        heroUrgency.className = "px-3 py-1 bg-black/40 text-white text-xs font-black rounded-full border border-white/20 uppercase tracking-wider";
-
-        const reasonBox = document.getElementById("hero-reasoning-container");
-        reasonBox.innerHTML = `
-          <p class="font-bold text-amber-100">⚠️ Domain Guardrail Activated:</p>
-          <p class="text-xs text-white/90">• ${data.error || 'Image is not recognized as a wind turbine blade.'}</p>
-          <p class="text-xs text-white/90">• <strong>Reason:</strong> ${data.rejection_reason || 'Unfamiliar texture or high color saturation.'}</p>
-          <p class="text-xs text-amber-200 mt-2 font-semibold">• ${data.advice || 'Please upload an authentic wind turbine blade inspection photograph.'}</p>
-        `;
-
-        document.getElementById("metric-defect-name").innerText = "INVALID IMAGE";
-        document.getElementById("metric-confidence").innerText = `${data.confidence_pct || '0%'} Confidence`;
-        document.getElementById("metric-severity-val").innerText = "N/A";
-        document.getElementById("metric-area-val").innerText = "N/A";
-        document.getElementById("metric-energy-loss").innerText = "0 kWh / d";
-        if (document.getElementById("metric-annual-energy")) {
-          document.getElementById("metric-annual-energy").innerText = "0 MWh / yr";
-        }
-        document.getElementById("metric-aep-loss").innerText = "0.00% AEP Impact";
-        document.getElementById("metric-daily-loss").innerText = "₹ 0 / d";
-        if (document.getElementById("metric-annual-loss")) {
-          document.getElementById("metric-annual-loss").innerText = "₹ 0.00 Lakhs / yr";
-        }
-        document.getElementById("metric-payback-days").innerText = "Payback: N/A";
-        return;
-      }
-
       const det = data.visual_detection;
       const char = data.characterization;
       const phys = data.physics_aerodynamics;
@@ -524,24 +2125,35 @@
       const fin = data.financial_impact;
       const dec = data.maintenance_decision;
 
+      if (data.image_overlay_b64) {
+        document.getElementById("active-blade-img").src = data.image_overlay_b64;
+      }
+
       document.getElementById("detected-tag-label").innerText = `${det.detected_class.toUpperCase()} (${det.confidence_pct})`;
-      document.getElementById("detected-tag-label").className = "text-xs font-black text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200";
 
       const heroCard = document.getElementById("hero-decision-card");
       const heroTitle = document.getElementById("hero-action-title");
       const heroUrgency = document.getElementById("hero-urgency-badge");
 
-      if (dec.recommended_action === "REPAIR") {
-        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-red-600 via-rose-600 to-red-700";
+      const action = dec.recommended_action;
+      if (action === "REPAIR") {
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-rose-600 to-red-700";
         heroTitle.innerText = "ACTION: REPAIR NOW";
-      } else if (dec.recommended_action === "MONITOR") {
-        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700";
+        document.getElementById("kpi-decision-title").innerText = "REPAIR";
+        document.getElementById("kpi-decision-title").className = "text-lg font-bold text-rose-600 mt-1 truncate";
+      } else if (action === "MONITOR") {
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-emerald-600 to-teal-700";
         heroTitle.innerText = "ACTION: MONITOR";
+        document.getElementById("kpi-decision-title").innerText = "MONITOR";
+        document.getElementById("kpi-decision-title").className = "text-lg font-bold text-emerald-600 mt-1 truncate";
       } else {
-        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-purple-700 via-indigo-700 to-violet-800";
+        heroCard.className = "rounded-2xl p-6 text-white shadow-xl transition-all duration-300 bg-gradient-to-r from-purple-700 to-indigo-800";
         heroTitle.innerText = "ACTION: ENGINEERING ASSESSMENT";
+        document.getElementById("kpi-decision-title").innerText = "ASSESSMENT";
+        document.getElementById("kpi-decision-title").className = "text-lg font-bold text-purple-600 mt-1 truncate";
       }
       heroUrgency.innerText = `Urgency: ${dec.urgency}`;
+      document.getElementById("kpi-urgency-badge").innerText = `Urgency: ${dec.urgency}`;
 
       const reasonBox = document.getElementById("hero-reasoning-container");
       reasonBox.innerHTML = "";
@@ -551,37 +2163,97 @@
         reasonBox.appendChild(p);
       });
 
-      document.getElementById("metric-defect-name").innerText = det.detected_class.replace('_', ' ').toUpperCase();
-      document.getElementById("metric-confidence").innerText = `${det.confidence_pct} Confidence`;
+      document.getElementById("kpi-defect-type").innerText = det.detected_class.replace('_', ' ').toUpperCase();
+      document.getElementById("kpi-max-severity").innerText = `Level ${char.severity_proxy} / 5`;
+      document.getElementById("kpi-area-pct").innerText = `${char.damage_area_pct}% Area`;
 
-      document.getElementById("metric-severity-val").innerText = `Level ${char.severity_proxy} / 5`;
-      document.getElementById("metric-area-val").innerText = `${char.damage_area_pct}% Blade Area`;
+      document.getElementById("kpi-energy-loss").innerText = `${Math.round(en.daily_energy_loss_kwh).toLocaleString()} kWh/d`;
+      document.getElementById("kpi-aep-pct").innerText = `-${en.aep_loss_pct}% AEP Impact`;
 
-      // Dual Energy Metrics (Daily + Annual)
-      document.getElementById("metric-energy-loss").innerText = `${Math.round(en.daily_energy_loss_kwh).toLocaleString()} kWh / d`;
-      if (document.getElementById("metric-annual-energy")) {
-        document.getElementById("metric-annual-energy").innerText = `${(en.annual_energy_loss_kwh / 1000).toFixed(1)} MWh / yr`;
-      }
-      document.getElementById("metric-aep-loss").innerText = `-${en.aep_loss_pct}% AEP Impact`;
-
-      // Dual Financial Metrics (Daily Rate + Annual Lakhs)
-      document.getElementById("metric-daily-loss").innerText = `₹${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / d`;
+      document.getElementById("kpi-daily-loss").innerText = `₹ ${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / d`;
       const annualLakhs = (fin.annual_financial_loss_inr / 100000).toFixed(2);
-      if (document.getElementById("metric-annual-loss")) {
-        document.getElementById("metric-annual-loss").innerText = `₹${annualLakhs} Lakhs / yr`;
-      }
-      document.getElementById("metric-payback-days").innerText = `Payback: ${fin.payback_days.toFixed(1)} days`;
+      document.getElementById("kpi-annual-lakhs").innerText = `₹ ${annualLakhs} Lakhs/yr`;
 
-      // Update Spanwise Blade Graphic & Slider
+      document.getElementById("kpi-payback-days").innerText = `${fin.payback_days.toFixed(1)} Days`;
+
+      const tableBody = document.getElementById("detection-table-body");
+      tableBody.innerHTML = `
+        <tr class="hover:bg-slate-50">
+          <td class="p-3.5 font-bold text-slate-900">${det.detected_class.replace('_', ' ').toUpperCase()}</td>
+          <td class="p-3.5 font-semibold text-blue-600">${det.confidence_pct}</td>
+          <td class="p-3.5">${char.damage_area_pct}%</td>
+          <td class="p-3.5">r/R = ${char.spanwise_position_r_R.toFixed(2)} (${char.blade_region})</td>
+          <td class="p-3.5"><span class="px-2 py-0.5 rounded font-semibold bg-amber-100 text-amber-800">Level ${char.severity_proxy}</span></td>
+        </tr>
+      `;
+
       const r_R = char.spanwise_position_r_R;
       const pinPct = Math.min(98, Math.max(10, r_R * 100));
       document.getElementById("blade-pin-marker").style.left = `${pinPct}%`;
       document.getElementById("cfg-spanwise-slider").value = r_R;
       document.getElementById("spanwise-val-badge").innerText = `r/R = ${r_R.toFixed(2)} (${char.blade_region})`;
 
-      const bladeSpeedKmh = Math.round(r_R * 280);
-      if (document.getElementById("spanwise-speed-badge")) {
-        document.getElementById("spanwise-speed-badge").innerText = `Speed: ~${bladeSpeedKmh} km/h`;
+      const baseKw = phys.baseline_power_kw ?? phys.power_baseline_kw ?? 0;
+      const damKw = phys.damaged_power_kw ?? phys.power_damaged_kw ?? 0;
+      const lossKw = phys.estimated_power_loss_kw ?? phys.power_loss_kw ?? 0;
+
+      document.getElementById("energy-base-kw").innerText = `${Math.round(baseKw).toLocaleString()} kW`;
+      document.getElementById("energy-damaged-kw").innerText = `${Math.round(damKw).toLocaleString()} kW`;
+      document.getElementById("energy-diff-kw").innerText = `${Math.round(lossKw).toLocaleString()} kW Loss`;
+
+      document.getElementById("fin-hero-daily").innerText = `₹ ${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / DAY`;
+      document.getElementById("fin-kwh-day").innerText = `${Math.round(en.daily_energy_loss_kwh).toLocaleString()} kWh/day`;
+      document.getElementById("fin-tariff-val").innerText = `₹ ${parseFloat(document.getElementById("cfg-tariff").value).toFixed(2)} / kWh`;
+      
+      const monthlyLoss = Math.round(fin.daily_financial_loss_inr * 30);
+      document.getElementById("fin-monthly-val").innerText = `₹ ${monthlyLoss.toLocaleString()}`;
+      document.getElementById("fin-annual-val").innerText = `₹ ${annualLakhs} Lakhs`;
+
+      document.getElementById("payback-cost-val").innerText = `₹ ${fin.repair_cost_inr.toLocaleString()}`;
+      document.getElementById("payback-loss-val").innerText = `₹ ${Math.round(fin.daily_financial_loss_inr).toLocaleString()} / day`;
+      document.getElementById("payback-result-days").innerText = `${fin.payback_days.toFixed(1)} Days`;
+
+      // Dynamic Section 9: Damage Progression & Risk Assessment
+      const progCard = document.getElementById("sec-progression-card");
+      const riskIcon = document.getElementById("risk-icon");
+      const riskTitle = document.getElementById("risk-title");
+      const riskDesc = document.getElementById("risk-desc");
+      const riskBadge = document.getElementById("risk-badge");
+
+      const defectClass = (det.detected_class || '').toLowerCase();
+      const sev = char.severity_proxy || 3;
+      const rR = char.spanwise_position_r_R || 0.85;
+
+      if (defectClass === 'crack') {
+        if (progCard) progCard.className = "flex items-center justify-between bg-rose-50 border border-rose-200 p-5 rounded-xl text-xs text-rose-950 transition-all duration-300";
+        if (riskIcon) { riskIcon.className = "material-symbols-outlined text-rose-600 text-2xl"; riskIcon.innerText = "report_problem"; }
+        if (riskTitle) riskTitle.innerText = `Structural Failure Risk: ${sev >= 4 ? 'CRITICAL STRUCTURAL RISK' : 'HIGH FATIGUE RISK'}`;
+        if (riskDesc) riskDesc.innerText = `Cyclic aerodynamic fatigue loading poses severe risk of micro-crack propagation into spar cap delamination at r/R = ${rR.toFixed(2)}.`;
+        if (riskBadge) { riskBadge.className = "px-3.5 py-1.5 rounded-full bg-rose-200 text-rose-900 font-semibold text-xs shrink-0"; riskBadge.innerText = "Immediate NDT Required"; }
+      } else if (defectClass === 'thunderstrike') {
+        if (progCard) progCard.className = "flex items-center justify-between bg-purple-50 border border-purple-200 p-5 rounded-xl text-xs text-purple-950 transition-all duration-300";
+        if (riskIcon) { riskIcon.className = "material-symbols-outlined text-purple-600 text-2xl"; riskIcon.innerText = "bolt"; }
+        if (riskTitle) riskTitle.innerText = "Lightning Arc Damage: CRITICAL STRUCTURAL RISK";
+        if (riskDesc) riskDesc.innerText = "High-voltage arc discharge causes internal composite moisture pyrolization, laminate rupture, and conductor grounding breakdown.";
+        if (riskBadge) { riskBadge.className = "px-3.5 py-1.5 rounded-full bg-purple-200 text-purple-900 font-semibold text-xs shrink-0"; riskBadge.innerText = "Structural Emergency"; }
+      } else if (defectClass === 'surface_injure') {
+        if (progCard) progCard.className = "flex items-center justify-between bg-amber-50 border border-amber-200 p-5 rounded-xl text-xs text-amber-950 transition-all duration-300";
+        if (riskIcon) { riskIcon.className = "material-symbols-outlined text-amber-600 text-2xl"; riskIcon.innerText = "warning"; }
+        if (riskTitle) riskTitle.innerText = `Leading Edge Erosion Risk: ${rR >= 0.75 ? 'HIGH AERODYNAMIC RISK' : 'MODERATE EROSION RISK'}`;
+        if (riskDesc) riskDesc.innerText = `Liquid impingement rain fatigue model indicates progressive gelcoat delamination, boundary layer transition disruption, and profile drag growth at r/R = ${rR.toFixed(2)}.`;
+        if (riskBadge) { riskBadge.className = "px-3.5 py-1.5 rounded-full bg-amber-200 text-amber-900 font-semibold text-xs shrink-0"; riskBadge.innerText = "High Aerodynamic Priority"; }
+      } else if (defectClass === 'corrosion') {
+        if (progCard) progCard.className = "flex items-center justify-between bg-slate-100 border border-slate-300 p-5 rounded-xl text-xs text-slate-900 transition-all duration-300";
+        if (riskIcon) { riskIcon.className = "material-symbols-outlined text-slate-700 text-2xl"; riskIcon.innerText = "water_drop"; }
+        if (riskTitle) riskTitle.innerText = "Environmental Corrosion & Salt Mist Damage: MODERATE RISK";
+        if (riskDesc) riskDesc.innerText = "Marine salt mist humidity causes coating degradation, localized surface oxidation, and joint fitting pitting.";
+        if (riskBadge) { riskBadge.className = "px-3.5 py-1.5 rounded-full bg-slate-200 text-slate-800 font-semibold text-xs shrink-0"; riskBadge.innerText = "Scheduled Maintenance"; }
+      } else { // craze / hide_craze
+        if (progCard) progCard.className = "flex items-center justify-between bg-emerald-50 border border-emerald-200 p-5 rounded-xl text-xs text-emerald-950 transition-all duration-300";
+        if (riskIcon) { riskIcon.className = "material-symbols-outlined text-emerald-600 text-2xl"; riskIcon.innerText = "check_circle"; }
+        if (riskTitle) riskTitle.innerText = "Gelcoat Surface Crazing: LOW PROGRESSION RISK";
+        if (riskDesc) riskDesc.innerText = "Superficial thermal UV resin crazing without structural spar penetration. Monitor for moisture ingress during standard service.";
+        if (riskBadge) { riskBadge.className = "px-3.5 py-1.5 rounded-full bg-emerald-200 text-emerald-900 font-semibold text-xs shrink-0"; riskBadge.innerText = "Monitor at Next Outage"; }
       }
 
       const rated = parseFloat(document.getElementById("cfg-turbine").value);
@@ -612,15 +2284,18 @@
         data: {
           labels: ws.map(v => `${v} m/s`),
           datasets: [
-            { label: 'Baseline Clean Power (kW)', data: baseCurve, borderColor: '#10b981', borderWidth: 2.5, tension: 0.3, fill: false },
-            { label: 'Degraded Operating Power (kW)', data: damCurve, borderColor: '#ef4444', borderWidth: 2, borderDash: [5, 5], tension: 0.3, fill: false }
+            { label: 'Baseline Clean Power (kW)', data: baseCurve, borderColor: '#10b981', borderWidth: 2.5, tension: 0.35, fill: false },
+            { label: 'Degraded Power (kW)', data: damCurve, borderColor: '#ef4444', borderWidth: 2.5, borderDash: [5, 5], tension: 0.35, fill: false }
           ]
         },
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { family: 'Inter', size: 11, weight: 'bold' } } } },
-          scales: { y: { title: { display: true, text: 'Generator Power (kW)' } } }
+          plugins: { legend: { position: 'top', labels: { font: { family: 'Poppins', size: 11, weight: '500' } } } },
+          scales: { 
+            x: { title: { display: true, text: 'Wind Speed (m/s)', font: { family: 'Poppins', size: 11 } } },
+            y: { title: { display: true, text: 'Electrical Power (kW)', font: { family: 'Poppins', size: 11 } } } 
+          }
         }
       });
     }
@@ -639,14 +2314,6 @@
       const lossPoints = steps.map(d => Math.round(d * dailyLoss));
       const repairPoints = steps.map(() => repairCost);
 
-      if (paybackDays > 365) {
-        document.getElementById("crossover-tag").innerText = `Payback: > 1 Year (Monitor)`;
-        document.getElementById("crossover-tag").className = "text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800";
-      } else {
-        document.getElementById("crossover-tag").innerText = `Payback Crossover: Day ${paybackDays.toFixed(1)}`;
-        document.getElementById("crossover-tag").className = "text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800";
-      }
-
       paybackChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -659,90 +2326,128 @@
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          plugins: { legend: { position: 'top', labels: { boxWidth: 10, font: { family: 'Inter', size: 11, weight: 'bold' } } } },
-          scales: { y: { title: { display: true, text: 'Amount (₹)' } } }
+          plugins: { legend: { position: 'top', labels: { font: { family: 'Poppins', size: 11, weight: '500' } } } },
+          scales: { 
+            x: { title: { display: true, text: 'Timeline (Days)', font: { family: 'Poppins', size: 11 } } },
+            y: { title: { display: true, text: 'Financial Amount (₹)', font: { family: 'Poppins', size: 11 } } } 
+          }
         }
       });
     }
 
-    // Interactive Spanwise Slider Live Calculation
-    let sliderDebounce = null;
-    document.getElementById("cfg-spanwise-slider").addEventListener("input", (e) => {
-      const val = parseFloat(e.target.value);
-      const pinPct = Math.min(98, Math.max(10, val * 100));
-      document.getElementById("blade-pin-marker").style.left = `${pinPct}%`;
-      const region = val >= 0.80 ? "Outboard Tip" : (val >= 0.50 ? "Mid-Span" : "Root/Inboard");
-      document.getElementById("spanwise-val-badge").innerText = `r/R = ${val.toFixed(2)} (${region})`;
-      const bladeSpeedKmh = Math.round(val * 280);
-      if (document.getElementById("spanwise-speed-badge")) {
-        document.getElementById("spanwise-speed-badge").innerText = `Speed: ~${bladeSpeedKmh} km/h`;
+    // REAL-TIME DRONE FLYING & IMAGE CAPTURE SIMULATION RUNNER
+    let isSimRunning = false;
+    async function runDroneSimulation() {
+      if (isSimRunning) return;
+      isSimRunning = true;
+
+      const drone = document.getElementById("sim-drone-element");
+      const laser = document.getElementById("sim-laser-beam");
+      const flash = document.getElementById("sim-camera-flash");
+      const patch = document.getElementById("sim-captured-patch");
+      const bbox = document.getElementById("sim-patch-bbox");
+      
+      const nodeYolo = document.getElementById("sim-node-yolo");
+      const nodePhys = document.getElementById("sim-node-physics");
+      const nodeDec = document.getElementById("sim-node-decision");
+
+      const statusYolo = document.getElementById("sim-status-yolo");
+      const statusPhys = document.getElementById("sim-status-physics");
+      const statusDec = document.getElementById("sim-status-decision");
+
+      const msg = document.getElementById("sim-live-message");
+      const badge = document.getElementById("sim-step-badge");
+
+      if (!drone || !msg) {
+        isSimRunning = false;
+        return;
       }
 
-      clearTimeout(sliderDebounce);
-      sliderDebounce = setTimeout(() => {
-        runAnalysis(val);
-      }, 120);
+      // Reset states
+      drone.style.left = "6%";
+      laser.classList.add("hidden");
+      flash.classList.add("hidden");
+      patch.classList.add("hidden");
+      bbox.classList.add("hidden");
+      patch.style.left = "18%";
+      patch.style.top = "4rem";
+
+      nodeYolo.className = "w-32 p-3 rounded-xl border border-slate-700 bg-slate-900/90 text-center space-y-1 transition-all duration-300";
+      nodePhys.className = "w-32 p-3 rounded-xl border border-slate-700 bg-slate-900/90 text-center space-y-1 transition-all duration-300";
+      nodeDec.className = "w-36 p-3 rounded-xl border border-slate-700 bg-slate-900/90 text-center space-y-1 transition-all duration-300";
+
+      statusYolo.innerText = "Waiting...";
+      statusPhys.innerText = "Waiting...";
+      statusDec.innerText = "Waiting...";
+
+      // Step 1: Drone Flies across turbine towards target blade
+      msg.innerText = "[1/4] Drone Flying & Scanning Wind Turbine WTG-04B at r/R = 0.91...";
+      badge.innerText = "DRONE FLIGHT";
+      badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-blue-900/80 text-blue-300 border border-blue-700";
+      
+      drone.style.left = "18%";
+
+      await new Promise(r => setTimeout(r, 1800));
+
+      // Step 2: Camera Shutter Flash & Optical Image Capture
+      laser.classList.remove("hidden");
+      flash.classList.remove("hidden");
+      setTimeout(() => flash.classList.add("hidden"), 300);
+
+      msg.innerText = "[2/4] Optical Camera Flash! RGB Image Patch Captured at r/R = 0.91.";
+      badge.innerText = "IMAGE CAPTURED";
+      badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-cyan-900/80 text-cyan-300 border border-cyan-700";
+
+      patch.classList.remove("hidden");
+
+      await new Promise(r => setTimeout(r, 1200));
+
+      // Step 3: Patch moves into YOLOv8 Box & bounding box is detected
+      msg.innerText = "[3/4] Patch streaming to YOLOv8 AI. Extracting defect bounding box...";
+      badge.innerText = "YOLO AI DETECTION";
+      badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-indigo-900/80 text-indigo-300 border border-indigo-700";
+      
+      patch.style.left = "48%";
+      laser.classList.add("hidden");
+
+      await new Promise(r => setTimeout(r, 1000));
+
+      bbox.classList.remove("hidden");
+      nodeYolo.className = "w-32 p-3 rounded-xl border-2 border-indigo-500 bg-indigo-950/80 text-center space-y-1 shadow-lg shadow-indigo-500/30 scale-105 transition-all duration-300";
+      statusYolo.innerText = "Crack (98.4%)";
+
+      await new Promise(r => setTimeout(r, 1400));
+
+      // Step 4: BEM Physics Calculation
+      msg.innerText = "[4/4] Running BEM Physics Engine on FFA-W3-241 airfoil polars...";
+      badge.innerText = "BEM PHYSICS";
+      badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-emerald-900/80 text-emerald-300 border border-emerald-700";
+
+      nodePhys.className = "w-32 p-3 rounded-xl border-2 border-emerald-500 bg-emerald-950/80 text-center space-y-1 shadow-lg shadow-emerald-500/30 scale-105 transition-all duration-300";
+      statusPhys.innerText = "-3.8% AEP Loss";
+
+      await new Promise(r => setTimeout(r, 1400));
+
+      // Step 5: Financial Loss & Maintenance Action Decision
+      msg.innerText = "✓ Processing Complete! Daily Revenue Loss: ₹ 4,250/day. Action: REPAIR NOW.";
+      badge.innerText = "ACTION: REPAIR NOW";
+      badge.className = "text-[10px] font-semibold px-2.5 py-0.5 rounded bg-rose-900/80 text-rose-300 border border-rose-700 animate-pulse";
+
+      nodeDec.className = "w-36 p-3 rounded-xl border-2 border-rose-500 bg-rose-950/80 text-center space-y-1 shadow-lg shadow-rose-500/30 scale-105 transition-all duration-300";
+      statusDec.innerText = "₹ 4,250/d • REPAIR";
+
+      isSimRunning = false;
+    }
+
+    // DOM Load Initialization
+    window.addEventListener("DOMContentLoaded", () => {
+      renderWindFarmVisualGrid();
+      filterTurbineTable();
+      renderFarmFinancialChart();
+      loadSamples();
+      setupUploadListeners();
+      setTimeout(runDroneSimulation, 1000);
     });
-
-    document.getElementById("cfg-wind").addEventListener("input", (e) => {
-      document.getElementById("cfg-wind-val").innerText = `${e.target.value} m/s`;
-    });
-    document.getElementById("btn-recalculate").addEventListener("click", runAnalysis);
-
-    document.getElementById("btn-export-json").addEventListener("click", () => {
-      if (!activeAnalysisData) return;
-      const blob = new Blob([JSON.stringify(activeAnalysisData, null, 2)], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `aeroloss_inspection_${Date.now()}.json`;
-      a.click();
-    });
-
-    document.getElementById("file-uploader").addEventListener("change", async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const spinner = document.getElementById("img-loading-spinner");
-      spinner.classList.remove("hidden");
-
-      const wind = parseFloat(document.getElementById("cfg-wind").value);
-      const rated = parseFloat(document.getElementById("cfg-turbine").value);
-      const tariff = parseFloat(document.getElementById("cfg-tariff").value);
-      const repair = parseFloat(document.getElementById("cfg-repair").value);
-
-      const reader = new FileReader();
-      reader.onload = async (re) => {
-        const base64Data = re.target.result;
-        document.getElementById("active-blade-img").src = base64Data;
-
-        const payload = {
-          image_base64: base64Data,
-          wind_speed: wind,
-          rated_kw: rated,
-          tariff: tariff,
-          repair_cost: repair
-        };
-
-        try {
-          const res = await fetch("/api/analyze", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          const data = await res.json();
-          activeAnalysisData = data;
-          renderDashboard(data);
-        } catch (err) {
-          console.error("Upload failed", err);
-        } finally {
-          spinner.classList.add("hidden");
-        }
-      };
-      reader.readAsDataURL(file);
-    });
-
-    window.addEventListener("DOMContentLoaded", loadSamples);
   </script>
 </body>
 </html>

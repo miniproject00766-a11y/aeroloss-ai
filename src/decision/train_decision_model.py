@@ -11,8 +11,9 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, f1_score, roc_auc_score
 
-SYNTHETIC_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai\data\synthetic"
-MODELS_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai\models"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SYNTHETIC_DIR = os.path.join(BASE_DIR, "data", "synthetic")
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 os.makedirs(MODELS_DIR, exist_ok=True)
 
 def train_decision_model():
@@ -86,8 +87,10 @@ def train_decision_model():
 
     # Save model
     model_path = os.path.join(MODELS_DIR, "decision_classifier.joblib")
+    realistic_path = os.path.join(MODELS_DIR, "decision_classifier_realistic.joblib")
     joblib.dump(pipeline, model_path)
-    print(f"\nSaved Decision Model to {model_path}")
+    joblib.dump(pipeline, realistic_path)
+    print(f"\nSaved Decision Models to {model_path} and {realistic_path}")
 
     # Save metrics JSON
     metrics = {

@@ -15,7 +15,7 @@ from torchvision import transforms, models
 import torch.nn as nn
 from PIL import Image
 
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
 
 PROCESSED_DIR = os.path.join(BASE_DIR, "data", "processed")

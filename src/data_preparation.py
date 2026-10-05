@@ -5,8 +5,9 @@ import numpy as np
 from PIL import Image
 from sklearn.model_selection import train_test_split
 
-RAW_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai\data\raw"
-PROCESSED_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai\data\processed"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+RAW_DIR = os.path.join(BASE_DIR, "data", "raw")
+PROCESSED_DIR = os.path.join(BASE_DIR, "data", "processed")
 PATCH_DIR = os.path.join(PROCESSED_DIR, "patches")
 
 os.makedirs(PATCH_DIR, exist_ok=True)
