@@ -91,45 +91,46 @@ class AeroLossPipeline:
         Verifies that the uploaded photo exhibits authentic wind turbine blade surface characteristics.
         Prevents non-blade images (fabrics, textiles, household items, nature, food) from generating fake damage numbers.
         """
-        # 1. Semantic Open-Domain Veto (ImageNet Foundation Filter)
-        # Rejects textiles, fabrics, household objects, animals, food, etc.
+        # 1. Universal Ontological Open-Domain Veto (ImageNet Foundation Filter)
+        # Uses WordNet taxonomic super-branches to universally reject:
+        # - All living organisms (birds, mammals, reptiles, insects, plants): WordNet synsets 0..397
+        # - All food, produce, and beverages: WordNet synsets 920..970
+        # - All consumer personal transport / vehicles
+        # - All apparel, garments, and woven textiles
         if self.domain_model is not None and self.domain_transform is not None:
             try:
                 domain_tensor = self.domain_transform(pil_img).unsqueeze(0).to(self.device)
                 with torch.no_grad():
                     domain_logits = self.domain_model(domain_tensor)
                     domain_probs = torch.softmax(domain_logits, dim=1).squeeze()
-                    top5_indices = torch.topk(domain_probs, 5).indices.tolist()
+                    top5 = torch.topk(domain_probs, 5)
 
-                TEXTILE_KEYWORDS = {
-                    'wool', 'dishrag', 'quilt', 'velvet', 'poncho', 'jersey', 'towel',
-                    'doormat', 'bath towel', 'sweatshirt', 'sock', 'cardigan', 'cloak',
-                    'shawl', 'pajama', 'linen', 'apron', 'rug', 'carpet', 'handkerchief',
-                    'fur coat', 'stole', 'bonnet', 'feather boa', 'jean', 'suit',
-                    'swimming trunks', 'diaper', 'trench coat', 'kimono', 'sleeping bag',
-                    'miniskirt', 'sarong', 'brassiere', 'bib', 'pillow', 'curtain', 'mitten'
-                }
-                DOMESTIC_KEYWORDS = {
-                    'cellular telephone', 'coffee mug', 'cup', 'plate', 'dining table',
-                    'pizza', 'cheeseburger', 'hotdog', 'bagel', 'sandwich', 'ice cream',
-                    'refrigerator', 'microwave', 'toaster', 'desk', 'couch', 'studio couch',
-                    'toilet seat', 'wardrobe', 'bookcase'
-                }
+                top_indices = top5.indices.tolist()
+                top_probs = top5.values.tolist()
+                top_idx, top_prob = top_indices[0], top_probs[0]
+                top_name = self.domain_categories[top_idx]
 
-                top_matches = [(self.domain_categories[i].lower(), domain_probs[i].item()) for i in top5_indices]
-                top_cat, top_prob = top_matches[0]
+                # (a) Living Organisms (All Birds, Animals, Insects, Plants: indices 0..397)
+                if 0 <= top_idx <= 397 and top_prob >= 0.20:
+                    return False, f"Domain Guardrail: Biological organism detected ('{top_name}', {top_prob*100:.1f}%). Authentic turbine blades are industrial composite structures."
 
-                # Direct match on top category
-                if any(k in top_cat for k in TEXTILE_KEYWORDS):
-                    return False, f"Semantic Domain Guardrail Veto: Image identified as textile/fabric ('{top_cat}', {top_prob*100:.1f}%). Authentic turbine blades consist of industrial fiberglass/gelcoat composite."
-                
-                if any(k in top_cat for k in DOMESTIC_KEYWORDS):
-                    return False, f"Semantic Domain Guardrail Veto: Image identified as non-blade object ('{top_cat}', {top_prob*100:.1f}%). Model only accepts wind turbine blade surfaces."
+                # (b) Food, Produce & Beverages (indices 920..970)
+                if 920 <= top_idx <= 970 and top_prob >= 0.20:
+                    return False, f"Domain Guardrail: Food/organic matter detected ('{top_name}', {top_prob*100:.1f}%). Authentic turbine blades are non-organic fiberglass composite."
 
-                # Aggregated textile probability
-                textile_hits = [f"{cat} ({prob*100:.1f}%)" for cat, prob in top_matches if any(k in cat for k in TEXTILE_KEYWORDS)]
-                if len(textile_hits) >= 2:
-                    return False, f"Semantic Domain Guardrail Veto: Textile weave pattern detected [{', '.join(textile_hits)}]. Authentic blades exhibit continuous aerodynamic composite surfaces."
+                # (c) Consumer Road Vehicles & Personal Transport
+                VEHICLE_KEYWORDS = {'car', 'automobile', 'wagon', 'minivan', 'truck', 'bus', 'motorcycle', 'bicycle'}
+                if any(k in top_name.lower() for k in VEHICLE_KEYWORDS) and top_prob >= 0.20:
+                    return False, f"Domain Guardrail: Consumer transport/vehicle detected ('{top_name}', {top_prob*100:.1f}%)."
+
+                # (d) Apparel, Garments & Woven Textiles
+                TEXTILE_KEYWORDS = {'wool', 'dishrag', 'quilt', 'velvet', 'poncho', 'jersey', 'towel', 'rug', 'carpet', 'cloth', 'fabric', 'suit', 'jacket', 'coat', 'blanket', 'linen', 'curtain', 'bonnet', 'stole', 'shawl'}
+                textile_hits = [(self.domain_categories[i].lower(), domain_probs[i].item()) for i in top_indices if any(k in self.domain_categories[i].lower() for k in TEXTILE_KEYWORDS)]
+                if textile_hits:
+                    hit_sum = sum(p for _, p in textile_hits)
+                    top_is_textile = any(k in top_name.lower() for k in TEXTILE_KEYWORDS)
+                    if (top_is_textile and top_prob >= 0.15) or hit_sum >= 0.20:
+                        return False, f"Domain Guardrail: Woven textile/fabric detected ('{top_name}', {top_prob*100:.1f}%). Industrial blades exhibit smooth aerodynamic gelcoat."
 
             except Exception as e:
                 pass
