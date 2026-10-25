@@ -6,9 +6,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH = os.path.join(BASE_DIR, "database", "aeroloss.db")
 os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
-def get_db_connection():
-    conn = sqlite3.connect(DB_PATH)
+def get_db_connection(timeout=30.0):
+    conn = sqlite3.connect(DB_PATH, timeout=timeout)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA journal_mode=WAL;")
+    conn.execute("PRAGMA busy_timeout=30000;")
     return conn
 
 def init_db():

@@ -1,8 +1,8 @@
 {
   "vision_model": {
     "architecture": "MobileNetV3-Small (Transfer Learning with Data Augmentation)",
-    "test_accuracy": 0.916,
-    "test_weighted_f1": 0.9175,
+    "test_accuracy": 0.8838,
+    "test_weighted_f1": 0.8794,
     "classes": [
       "corrosion",
       "crack",
@@ -12,12 +12,12 @@
       "thunderstrike"
     ],
     "per_class_f1": {
-      "corrosion": 0.8505747126436781,
-      "crack": 0.9846153846153847,
-      "craze": 0.9230769230769231,
-      "hide_craze": 0.9,
-      "surface_injure": 0.9333333333333333,
-      "thunderstrike": 0.9230769230769231
+      "corrosion": 0.7457627118644068,
+      "crack": 0.925,
+      "craze": 0.8493150684931506,
+      "hide_craze": 0.9298245614035088,
+      "surface_injure": 0.9133858267716536,
+      "thunderstrike": 0.8275862068965517
     }
   },
   "physics_models": {

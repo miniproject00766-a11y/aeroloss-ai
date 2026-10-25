@@ -1,0 +1,13 @@
+label_dimension,label_name,count,share_pct,notes
+Relevance (Dimension A),BLADE,1065,97.26,Blade vs non-blade domain distinction
+Relevance (Dimension A),NON_BLADE,29,2.65,Blade vs non-blade domain distinction
+Relevance (Dimension A),UNCERTAIN,1,0.09,Blade vs non-blade domain distinction
+Quality (Dimension B),UNLABELED,1065,97.26,Technical usability independent of relevance
+Quality (Dimension B),USABLE,18,1.64,Technical usability independent of relevance
+Quality (Dimension B),UNUSABLE,11,1.0,Technical usability independent of relevance
+Quality (Dimension B),REVIEW_REQUIRED,1,0.09,Technical usability independent of relevance
+Review Status,UNREVIEWED,1065,97.26,Human review coverage state
+Review Status,REVIEWED,29,2.65,Human review coverage state
+Review Status,FLAGGED_BORDERLINE,1,0.09,Human review coverage state
+Label Source,EXISTING_VERIFIED_ANNOTATION,1065,97.26,Annotation provenance
+Label Source,HUMAN_REVIEW,30,2.74,Annotation provenance

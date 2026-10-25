@@ -6,25 +6,20 @@
 
 ## 📌 Executive Summary
 
-**AeroLoss AI** bridges the critical gap between drone-based blade visual inspection and physical aerodynamic revenue loss. 
+**AeroLoss AI** is a prototype decision-support application for wind-turbine blade image inspection. It combines image classification and bounding-box detection with transparent frame-coverage metrics, a heuristic blade-area proxy, provisional energy and financial estimates, and rule-based maintenance guidance.
 
-While existing drone inspection tools stop at drawing 2D bounding boxes (e.g. *"Category 3 erosion detected"*), and traditional CFD / BEM solvers take hours to compute energy losses, **AeroLoss AI** directly predicts aerodynamic polar degradation ($\Delta C_l, \Delta C_d$), turbine annual energy production (AEP) loss, daily revenue loss (₹/day), and optimal repair payback timelines in **under 50 milliseconds** on a standard CPU.
+Image-derived spanwise position is an uncalibrated estimate, and the capped blade-area proxy is not a physical surface-area measurement. The aerodynamic calculation uses empirical polar degradation and scaling; it is not a complete BEM/CFD solver and has not been field-calibrated. Energy, revenue-loss, fatigue, and payback outputs are therefore provisional estimates—not guaranteed operating outcomes. An engineering assessment recommendation is a conservative image-based escalation, not confirmation of internal structural failure. No latency or model-performance claim is made here.
 
 ---
 
-## 🚀 Key Innovations & Novelties
+## ⚠️ Capabilities and Limitations
 
-1. **Photo-to-Physics Polar Inference:**  
-   Direct optical mapping from 2D surface erosion photographs to FFA-W3-241 airfoil aerodynamic polars at high Reynolds numbers ($Re \approx 10^7$) without 3D geometric meshing or CFD.
-2. **Defect-Informed Erosion-Safe Mode (ESM):**  
-   Dynamic turbine supervisory derating setpoints ($\Omega_{\text{derated}}$) during precipitation based on optically detected defect spanwise position ($r/R$), eliminating unnecessary power curtailment for inboard defects.
-3. **Droplet-Fatigue "Cost of Inaction" Progression:**  
-   Physics-backed repair countdown combining Springer's liquid impingement fatigue model ($N_c \propto V_{\text{rel}}^{-2}$) with regional rainfall data to forecast damage escalation (e.g. ₹40,000 preventive tape repair vs. ₹3,50,000 structural repair).
-4. **Sub-50ms Edge Physics Surrogate:**  
-   Multi-target Gradient-Boosted Decision Tree (GBDT) surrogate ($R^2 > 0.99$) executing on standard CPUs in $<50\text{ ms}$, enabling real-time browser slider interaction.
-5. **Calibrated Spanwise Sensitivity Scaling Law:**  
-   Empirical-theoretical formulation demonstrating that damage at the blade tip ($r/R = 0.95$) is **over $20\times$ more financially damaging** than the identical defect at mid-span ($r/R = 0.50$):
-   $$\Delta P(r/R) \propto \left(\frac{r}{R}\right)^{6.7}$$
+- The vision pipeline recognizes a fixed set of trained defect labels and localizes candidate regions. A missing detection means “no defect detected,” not that the blade has been confirmed healthy.
+- Uploaded inspection photos pass a technical-quality preflight. Unusable images are stopped before detection; borderline images may be analyzed only as provisional evidence and require operator review.
+- Primary-box and union-box coverage are percentages of the photograph frame. Spanwise position and blade-area values are explicitly provisional image proxies; perspective, framing, and unknown blade boundaries limit their physical interpretation.
+- Large abnormal regions and selected structural-risk cases are escalated for qualified engineering/NDT assessment before financial payback is considered. Image classification alone does not diagnose internal damage.
+- Energy, financial, and fatigue outputs are exploratory estimates. Validate and calibrate them against site-specific geometry, operating data, inspections, and repair records before operational or investment use.
+- Model metrics in the repository are evaluation artifacts; their sample sizes and provenance should be checked before using them as general performance claims.
 
 ---
 
@@ -49,11 +44,11 @@ While existing drone inspection tools stop at drawing 2D bounding boxes (e.g. *"
 
 ### Component Breakdown
 * **`src/vision/train_classifier.py`**: MobileNetV3-Small classifier trained on drone inspection patches (corrosion, crack, craze, hide_craze, surface_injure, thunderstrike).
-* **`src/physics/aero_engine.py`**: Aerodynamic engine implementing IEA Wind Task 46 & Sandia National Labs polar degradation on FFA-W3-241 airfoil ($Re = 10^7$).
+* **`src/physics/aero_engine.py`**: Provisional aerodynamic estimate using bundled polar data and empirical severity/spanwise scaling; not a validated BEM or site-calibrated model.
 * **`src/physics/train_physics_regressor.py`**: GBDT regressor training script predicting power loss, AEP loss, and daily energy loss.
 * **`src/financial/financial_engine.py`**: Financial loss calculator (daily ₹/day, annual ₹ Lakhs/yr, and payback period).
 * **`src/decision/decision_engine.py`**: Operational decision engine recommending `REPAIR`, `MONITOR`, or `ENGINEERING_ASSESSMENT`.
-* **`src/pipeline.py`**: End-to-end inference orchestrator connecting Vision $\to$ Physics $\to$ Financials $\to$ Decision.
+* **`src/pipeline.py`**: End-to-end inference orchestrator connecting vision, provisional characterization, aerodynamic/financial estimates, and safety-first decisions.
 * **`server.py`**: Python HTTP server hosting REST APIs and serving the web dashboard.
 * **`static/index.html`**: Interactive web dashboard featuring real-time $r/R$ slider, preset selection, and dual financial metric cards.
 
@@ -87,7 +82,9 @@ python src/pipeline.py
 
 ---
 
-## 📊 Sample Inference Output
+## 📊 Illustrative Response Shape
+
+The following values only illustrate the response schema; they are not a calibrated or field-validated prediction.
 
 ```json
 {

@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 
 # Ensure parent directory is in path
-sys.path.insert(0, r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai")
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from src.physics.aero_engine import AeroLossPhysicsEngine
 from src.financial.financial_engine import FinancialEngine

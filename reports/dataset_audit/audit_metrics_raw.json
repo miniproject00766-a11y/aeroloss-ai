@@ -1,0 +1,278 @@
+{
+  "primary_benchmark": {
+    "image_count": 1065,
+    "xml_count": 1065,
+    "matched_pairs": 1065,
+    "images_missing_xml": 0,
+    "xml_missing_images": 0,
+    "total_objects": 1584,
+    "class_counts_objects": {
+      "corrosion": 257,
+      "craze": 257,
+      "thunderstrike": 92,
+      "surface_injure": 412,
+      "hide_craze": 342,
+      "crack": 224
+    },
+    "class_counts_images": {
+      "corrosion": 172,
+      "craze": 198,
+      "thunderstrike": 89,
+      "surface_injure": 264,
+      "hide_craze": 249,
+      "crack": 177
+    },
+    "images_with_0_objects": 0,
+    "images_with_1_object": 696,
+    "images_with_multi_objects": 369,
+    "images_with_dim_mismatch": 0,
+    "corrupted_images": 0,
+    "exact_duplicate_groups": 2,
+    "exact_duplicate_files": 4,
+    "resolutions": {
+      "1024x1024": 1064,
+      "788x788": 1
+    }
+  },
+  "external_surface_damage_nord586": {
+    "total_files": 16466,
+    "total_bytes": 2776217772,
+    "image_count": 13470,
+    "label_count": 2996,
+    "sample_resolutions": {
+      "586x371": 200
+    },
+    "label_class_ids_sample": {
+      "1": 2140
+    },
+    "empty_labels_sample": 0
+  },
+  "external_wind_turbine_nord1": {
+    "total_files": 5990,
+    "total_bytes": 555721927,
+    "image_count": 2995,
+    "label_count": 2995,
+    "sample_resolutions": {
+      "586x371": 200
+    },
+    "label_class_ids_sample": {
+      "1": 2140
+    },
+    "empty_labels_sample": 0
+  },
+  "dtu_annotations": {
+    "total_files": 39,
+    "total_bytes": 2039136,
+    "original_xml_count": 0,
+    "reannotation_xml_count": 0,
+    "sample_classes": {},
+    "sample_image_references": 0,
+    "overlap_with_primary_images": 0
+  },
+  "scada_t1": {
+    "size_bytes": 3971851,
+    "row_count": 50530,
+    "col_count": 6,
+    "columns": [
+      "Date/Time",
+      "LV ActivePower (kW)",
+      "Wind Speed (m/s)",
+      "Theoretical_Power_Curve (KWh)",
+      "Wind Direction (\u00b0)",
+      "parsed_time"
+    ],
+    "start_timestamp": "2018-01-01 00:00:00",
+    "end_timestamp": "2018-12-31 23:50:00",
+    "duration_days": 364.99305555555554,
+    "missing_timestamps": 0,
+    "duplicate_timestamps": 0,
+    "duplicate_rows": 0,
+    "primary_sampling_deltas": {
+      "0 days 00:10:00": 50497,
+      "0 days 00:20:00": 11,
+      "0 days 00:40:00": 2,
+      "0 days 03:00:00": 1,
+      "4 days 08:20:00": 1,
+      "0 days 00:50:00": 1,
+      "0 days 01:40:00": 1,
+      "0 days 01:00:00": 1,
+      "0 days 02:10:00": 1,
+      "0 days 06:30:00": 1
+    },
+    "numerical_stats": {
+      "LV ActivePower (kW)": {
+        "count": 50530,
+        "missing": 0,
+        "min": -2.47140502929687,
+        "q25": 50.6778898239135,
+        "median": 825.8380737304685,
+        "mean": 1307.6843318793105,
+        "std": 1312.4592421268148,
+        "q75": 2482.507568359375,
+        "max": 3618.73291015625,
+        "negative_count": 57,
+        "zero_count": 10781
+      },
+      "Wind Speed (m/s)": {
+        "count": 50530,
+        "missing": 0,
+        "min": 0.0,
+        "q25": 4.201395392417902,
+        "median": 7.104593515396115,
+        "mean": 7.557952236083194,
+        "std": 4.227166055611555,
+        "q75": 10.30001997947685,
+        "max": 25.2060108184814,
+        "negative_count": 0,
+        "zero_count": 10
+      },
+      "Theoretical_Power_Curve (KWh)": {
+        "count": 50530,
+        "missing": 0,
+        "min": 0.0,
+        "q25": 161.328167383204,
+        "median": 1063.776282578535,
+        "mean": 1492.175462958337,
+        "std": 1368.0182378726697,
+        "q75": 2964.9724615869272,
+        "max": 3600.0,
+        "negative_count": 0,
+        "zero_count": 7749
+      }
+    },
+    "negative_power_rows": 57,
+    "power_exceeding_theoretical_rows": 7185,
+    "curtailment_suspicious_rows": 370
+  },
+  "airfoil_polar": {
+    "size_bytes": 10631,
+    "row_count": 120,
+    "col_count": 6,
+    "columns": [
+      "Airfoil",
+      "AoA_deg",
+      "Cl",
+      "Cd",
+      "Cm",
+      "Re"
+    ],
+    "aoa_column": "AoA_deg",
+    "aoa_min": -180.0,
+    "aoa_max": 180.0,
+    "aoa_is_monotonic": true,
+    "aoa_duplicates": 0,
+    "missing_values": {
+      "Airfoil": 0,
+      "AoA_deg": 0,
+      "Cl": 0,
+      "Cd": 0,
+      "Cm": 0,
+      "Re": 0
+    },
+    "stats": {
+      "AoA_deg": {
+        "min": -180.0,
+        "max": 180.0,
+        "mean": 0.5249969634399799,
+        "std": 104.99814389748722
+      },
+      "Cl": {
+        "min": -1.1448,
+        "max": 1.92722,
+        "mean": 0.17904272137174895,
+        "std": 0.7948404688606516
+      },
+      "Cd": {
+        "min": 0.00808247,
+        "max": 1.5,
+        "mean": 0.5451935239463339,
+        "std": 0.5518643896506136
+      },
+      "Cm": {
+        "min": -0.4813906307663812,
+        "max": 0.4770470794649723,
+        "mean": -0.028966888940284322,
+        "std": 0.33378184401846406
+      },
+      "Re": {
+        "min": 10000000.0,
+        "max": 10000000.0,
+        "mean": 10000000.0,
+        "std": 0.0
+      }
+    }
+  },
+  "processed_patches": {
+    "total_patches": 1584,
+    "classes": {
+      "corrosion": 257,
+      "crack": 224,
+      "craze": 257,
+      "hide_craze": 342,
+      "surface_injure": 412,
+      "thunderstrike": 92
+    },
+    "sample_resolutions": {
+      "224x224": 300
+    },
+    "exact_duplicate_groups": 0,
+    "traceable_by_stem_prefix": 0,
+    "untraceable_by_stem_prefix": 1584
+  },
+  "cross_dataset": {
+    "patch_raw_exact_image_overlap": 0,
+    "near_duplicate_primary_sample_count": 29,
+    "near_duplicate_primary_sample": [
+      [
+        "1007.jpg",
+        "1008.jpg",
+        2
+      ],
+      [
+        "135.jpg",
+        "175.jpg",
+        1
+      ],
+      [
+        "143.jpg",
+        "174.jpg",
+        2
+      ],
+      [
+        "172.jpg",
+        "189.jpg",
+        0
+      ],
+      [
+        "238.jpg",
+        "263.jpg",
+        0
+      ],
+      [
+        "258.jpg",
+        "296.jpg",
+        0
+      ],
+      [
+        "281.jpg",
+        "285.jpg",
+        1
+      ],
+      [
+        "311.jpg",
+        "328.jpg",
+        0
+      ],
+      [
+        "318.jpg",
+        "355.jpg",
+        0
+      ],
+      [
+        "320.jpg",
+        "341.jpg",
+        0
+      ]
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "images_evaluated": 160,
+  "total_gt_boxes": 241,
+  "total_pred_boxes": 154,
+  "loc_recall_50": 0.0954356846473029,
+  "loc_recall_25": 0.21161825726141079,
+  "e2e_recall_50": 0.04149377593360996,
+  "e2e_recall_25": 0.0912863070539419,
+  "per_class": {
+    "corrosion": {
+      "gt": 36,
+      "loc_tp_50": 7,
+      "loc_tp_25": 12,
+      "e2e_tp_25": 7
+    },
+    "crack": {
+      "gt": 38,
+      "loc_tp_50": 0,
+      "loc_tp_25": 2,
+      "e2e_tp_25": 2
+    },
+    "craze": {
+      "gt": 37,
+      "loc_tp_50": 6,
+      "loc_tp_25": 16,
+      "e2e_tp_25": 0
+    },
+    "hide_craze": {
+      "gt": 54,
+      "loc_tp_50": 2,
+      "loc_tp_25": 5,
+      "e2e_tp_25": 5
+    },
+    "surface_injure": {
+      "gt": 63,
+      "loc_tp_50": 6,
+      "loc_tp_25": 11,
+      "e2e_tp_25": 5
+    },
+    "thunderstrike": {
+      "gt": 13,
+      "loc_tp_50": 2,
+      "loc_tp_25": 5,
+      "e2e_tp_25": 3
+    }
+  }
+}

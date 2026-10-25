@@ -1,0 +1,1096 @@
+image_id,relative_path,source_dataset,quality_decision,relevance_decision,requires_manual_review,reasons_count,reasons_joined
+blade_0,data/raw/images/0.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1,data/raw/images/1.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_10,data/raw/images/10.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_100,data/raw/images/100.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1000,data/raw/images/1000.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1001,data/raw/images/1001.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,3,"Flat dynamic range: std=6.09, entropy=0.12 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.4%, mean_brightness=254.6; Moderate softness / weak focus: blur_score=1.21 (review threshold is 5.0)"
+blade_1002,data/raw/images/1002.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=37.6%, mean=231.0"
+blade_1003,data/raw/images/1003.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1004,data/raw/images/1004.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=68.5%, mean=205.5"
+blade_1005,data/raw/images/1005.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.08 (review threshold is 5.0)
+blade_1006,data/raw/images/1006.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1007,data/raw/images/1007.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=18.87, entropy=0.28 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=98.6%, mean_brightness=252.9"
+blade_1008,data/raw/images/1008.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,3,"Flat dynamic range: std=9.73, entropy=0.19 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.5%, mean_brightness=254.4; Moderate softness / weak focus: blur_score=4.42 (review threshold is 5.0)"
+blade_1009,data/raw/images/1009.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.53 (cutoff is 1.0)
+blade_101,data/raw/images/101.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.23 (review threshold is 5.0)
+blade_1010,data/raw/images/1010.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.53 (review threshold is 5.0)
+blade_1011,data/raw/images/1011.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1012,data/raw/images/1012.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1013,data/raw/images/1013.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=7.73, entropy=4.19 bits"
+blade_1014,data/raw/images/1014.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=30.52, entropy=1.51 bits; Severe overexposure / whiteout: bright_fraction=88.6%, mean_brightness=245.2"
+blade_1015,data/raw/images/1015.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=4.38, entropy=4.03 bits; Moderate softness / weak focus: blur_score=1.36 (review threshold is 5.0)"
+blade_1016,data/raw/images/1016.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1017,data/raw/images/1017.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=70.1%, mean=223.9"
+blade_1018,data/raw/images/1018.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1019,data/raw/images/1019.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=81.2%, mean=241.3"
+blade_102,data/raw/images/102.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1020,data/raw/images/1020.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.23 (review threshold is 5.0)
+blade_1021,data/raw/images/1021.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.46 (review threshold is 5.0)
+blade_1022,data/raw/images/1022.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1023,data/raw/images/1023.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1024,data/raw/images/1024.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1025,data/raw/images/1025.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1026,data/raw/images/1026.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1027,data/raw/images/1027.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=24.83, entropy=1.30 bits; Severe overexposure / whiteout: bright_fraction=92.8%, mean_brightness=249.1"
+blade_1028,data/raw/images/1028.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=12.29, entropy=0.22 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=98.8%, mean_brightness=253.7"
+blade_1029,data/raw/images/1029.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.81 (review threshold is 5.0)
+blade_103,data/raw/images/103.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1030,data/raw/images/1030.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=77.9%, mean=219.0"
+blade_1031,data/raw/images/1031.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1032,data/raw/images/1032.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=49.8%, mean=240.7"
+blade_1033,data/raw/images/1033.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,"Intense solar glint or washed-out sky: bright_fraction=43.0%, mean=161.1; Pasture/landscape vegetation prominent (56.2% green hue); blade not primary foreground"
+blade_1034,data/raw/images/1034.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1035,data/raw/images/1035.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=3.96 (review threshold is 5.0); Pasture/landscape vegetation prominent (71.2% green hue); blade not primary foreground
+blade_1036,data/raw/images/1036.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1037,data/raw/images/1037.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1038,data/raw/images/1038.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1039,data/raw/images/1039.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_104,data/raw/images/104.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.38 (review threshold is 5.0)
+blade_1040,data/raw/images/1040.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1041,data/raw/images/1041.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1042,data/raw/images/1042.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1043,data/raw/images/1043.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1044,data/raw/images/1044.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1045,data/raw/images/1045.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1046,data/raw/images/1046.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=18.27, entropy=1.46 bits; Severe overexposure / whiteout: bright_fraction=93.9%, mean_brightness=250.6"
+blade_1047,data/raw/images/1047.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=39.78, entropy=1.38 bits; Severe overexposure / whiteout: bright_fraction=88.9%, mean_brightness=244.5"
+blade_1048,data/raw/images/1048.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,3,"Low contrast: std=20.43, entropy=1.34 bits; Severe overexposure / whiteout: bright_fraction=90.4%, mean_brightness=248.9; Moderate softness / weak focus: blur_score=2.82 (review threshold is 5.0)"
+blade_1049,data/raw/images/1049.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=79.0%, mean=239.4"
+blade_105,data/raw/images/105.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1050,data/raw/images/1050.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=40.3%, mean=225.0"
+blade_1051,data/raw/images/1051.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=57.6%, mean=234.3"
+blade_1052,data/raw/images/1052.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1053,data/raw/images/1053.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=37.43, entropy=1.72 bits; Severe overexposure / whiteout: bright_fraction=89.4%, mean_brightness=244.2"
+blade_1054,data/raw/images/1054.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,3,"Low contrast: std=24.79, entropy=0.70 bits; Severe overexposure / whiteout: bright_fraction=95.6%, mean_brightness=250.2; Moderate softness / weak focus: blur_score=1.94 (review threshold is 5.0)"
+blade_1055,data/raw/images/1055.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1056,data/raw/images/1056.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=10.44, entropy=0.16 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.2%, mean_brightness=254.1"
+blade_1057,data/raw/images/1057.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.28 (review threshold is 5.0)
+blade_1058,data/raw/images/1058.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=42.1%, mean=209.8"
+blade_1059,data/raw/images/1059.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=80.2%, mean=240.6"
+blade_106,data/raw/images/106.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1060,data/raw/images/1060.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=79.8%, mean=233.4"
+blade_1061,data/raw/images/1061.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=3.71 (review threshold is 5.0); Pasture/landscape vegetation prominent (40.4% green hue); blade not primary foreground
+blade_1062,data/raw/images/1062.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_1063,data/raw/images/1063.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,4,"Low contrast: std=9.06, entropy=4.29 bits; Heavy shadow / low illumination: dark_fraction=13.9%, mean=24.9; Moderate softness / weak focus: blur_score=1.11 (review threshold is 5.0); Pasture/landscape vegetation prominent (25.9% green hue); blade not primary foreground"
+blade_1064,data/raw/images/1064.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_107,data/raw/images/107.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_108,data/raw/images/108.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_109,data/raw/images/109.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_11,data/raw/images/11.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.21 (review threshold is 5.0)
+blade_110,data/raw/images/110.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_111,data/raw/images/111.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_112,data/raw/images/112.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_113,data/raw/images/113.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=69.1%, mean=214.5"
+blade_114,data/raw/images/114.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_115,data/raw/images/115.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_116,data/raw/images/116.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_117,data/raw/images/117.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_118,data/raw/images/118.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_119,data/raw/images/119.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (26.9% green hue); blade not primary foreground
+blade_12,data/raw/images/12.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_120,data/raw/images/120.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_121,data/raw/images/121.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_122,data/raw/images/122.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_123,data/raw/images/123.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=52.4%, mean=195.0"
+blade_124,data/raw/images/124.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_125,data/raw/images/125.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_126,data/raw/images/126.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_127,data/raw/images/127.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_128,data/raw/images/128.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.61 (review threshold is 5.0)
+blade_129,data/raw/images/129.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_13,data/raw/images/13.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_130,data/raw/images/130.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_131,data/raw/images/131.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_132,data/raw/images/132.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_133,data/raw/images/133.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=67.7%, mean=239.2"
+blade_134,data/raw/images/134.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_135,data/raw/images/135.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_136,data/raw/images/136.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_137,data/raw/images/137.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_138,data/raw/images/138.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_139,data/raw/images/139.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_14,data/raw/images/14.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.31 (review threshold is 5.0)
+blade_140,data/raw/images/140.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_141,data/raw/images/141.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_142,data/raw/images/142.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_143,data/raw/images/143.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_144,data/raw/images/144.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.54 (review threshold is 5.0)
+blade_145,data/raw/images/145.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.26 (review threshold is 5.0)
+blade_146,data/raw/images/146.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.22 (review threshold is 5.0)
+blade_147,data/raw/images/147.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.88 (review threshold is 5.0)
+blade_148,data/raw/images/148.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.87 (review threshold is 5.0)
+blade_149,data/raw/images/149.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.35 (review threshold is 5.0)
+blade_15,data/raw/images/15.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.73 (review threshold is 5.0)
+blade_150,data/raw/images/150.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_151,data/raw/images/151.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.84 (review threshold is 5.0)
+blade_152,data/raw/images/152.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_153,data/raw/images/153.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_154,data/raw/images/154.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_155,data/raw/images/155.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.22 (review threshold is 5.0)
+blade_156,data/raw/images/156.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_157,data/raw/images/157.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_158,data/raw/images/158.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (24.6% green hue); blade not primary foreground
+blade_159,data/raw/images/159.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_16,data/raw/images/16.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_160,data/raw/images/160.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_161,data/raw/images/161.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_162,data/raw/images/162.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_163,data/raw/images/163.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_164,data/raw/images/164.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_165,data/raw/images/165.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.95 (review threshold is 5.0)
+blade_166,data/raw/images/166.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_167,data/raw/images/167.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_168,data/raw/images/168.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,"Severe overexposure / whiteout: bright_fraction=94.6%, mean_brightness=249.5"
+blade_169,data/raw/images/169.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_17,data/raw/images/17.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_170,data/raw/images/170.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_171,data/raw/images/171.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=8.14, entropy=3.28 bits; Severe optical defocus / motion blur: blur_score=0.93 (cutoff is 1.0)"
+blade_172,data/raw/images/172.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_173,data/raw/images/173.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_174,data/raw/images/174.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_175,data/raw/images/175.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_176,data/raw/images/176.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=39.8%, mean=211.8"
+blade_177,data/raw/images/177.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_178,data/raw/images/178.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.52 (review threshold is 5.0)
+blade_179,data/raw/images/179.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_18,data/raw/images/18.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.60 (review threshold is 5.0)
+blade_180,data/raw/images/180.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_181,data/raw/images/181.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_182,data/raw/images/182.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=51.8%, mean=226.6"
+blade_183,data/raw/images/183.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=75.2%, mean=226.6"
+blade_184,data/raw/images/184.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_185,data/raw/images/185.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_186,data/raw/images/186.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_187,data/raw/images/187.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_188,data/raw/images/188.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_189,data/raw/images/189.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_19,data/raw/images/19.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_190,data/raw/images/190.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_191,data/raw/images/191.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_192,data/raw/images/192.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_193,data/raw/images/193.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_194,data/raw/images/194.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.06 (review threshold is 5.0)
+blade_195,data/raw/images/195.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_196,data/raw/images/196.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_197,data/raw/images/197.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=47.6%, mean=207.4"
+blade_198,data/raw/images/198.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_199,data/raw/images/199.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_2,data/raw/images/2.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_20,data/raw/images/20.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_200,data/raw/images/200.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.69 (review threshold is 5.0)
+blade_201,data/raw/images/201.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_202,data/raw/images/202.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=47.6%, mean=218.4"
+blade_203,data/raw/images/203.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_204,data/raw/images/204.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (28.4% green hue); blade not primary foreground
+blade_205,data/raw/images/205.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_206,data/raw/images/206.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_207,data/raw/images/207.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_208,data/raw/images/208.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.20 (review threshold is 5.0)
+blade_209,data/raw/images/209.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_21,data/raw/images/21.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_210,data/raw/images/210.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_211,data/raw/images/211.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_212,data/raw/images/212.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_213,data/raw/images/213.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_214,data/raw/images/214.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_215,data/raw/images/215.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_216,data/raw/images/216.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_217,data/raw/images/217.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_218,data/raw/images/218.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_219,data/raw/images/219.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_22,data/raw/images/22.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.53 (review threshold is 5.0)
+blade_220,data/raw/images/220.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.84 (review threshold is 5.0)
+blade_221,data/raw/images/221.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_222,data/raw/images/222.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_223,data/raw/images/223.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_224,data/raw/images/224.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_225,data/raw/images/225.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_226,data/raw/images/226.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_227,data/raw/images/227.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_228,data/raw/images/228.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_229,data/raw/images/229.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_23,data/raw/images/23.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_230,data/raw/images/230.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=2.56 (review threshold is 5.0); Pasture/landscape vegetation prominent (24.0% green hue); blade not primary foreground
+blade_231,data/raw/images/231.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_232,data/raw/images/232.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_233,data/raw/images/233.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_234,data/raw/images/234.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_235,data/raw/images/235.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_236,data/raw/images/236.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=43.7%, mean=202.1"
+blade_237,data/raw/images/237.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.59, line_angle_std=55.7 deg); routed to manual review"
+blade_238,data/raw/images/238.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.45 (review threshold is 5.0)
+blade_239,data/raw/images/239.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_24,data/raw/images/24.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_240,data/raw/images/240.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_241,data/raw/images/241.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.22 (review threshold is 5.0)
+blade_242,data/raw/images/242.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_243,data/raw/images/243.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_244,data/raw/images/244.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=4.95, entropy=2.97 bits; Severe optical defocus / motion blur: blur_score=0.16 (cutoff is 1.0)"
+blade_245,data/raw/images/245.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_246,data/raw/images/246.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_247,data/raw/images/247.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.53 (review threshold is 5.0)
+blade_248,data/raw/images/248.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_249,data/raw/images/249.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=63.8%, mean=237.5"
+blade_25,data/raw/images/25.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=62.5%, mean=222.3"
+blade_250,data/raw/images/250.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_251,data/raw/images/251.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_252,data/raw/images/252.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_253,data/raw/images/253.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_254,data/raw/images/254.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_255,data/raw/images/255.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_256,data/raw/images/256.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_257,data/raw/images/257.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_258,data/raw/images/258.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_259,data/raw/images/259.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_26,data/raw/images/26.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_260,data/raw/images/260.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_261,data/raw/images/261.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_262,data/raw/images/262.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_263,data/raw/images/263.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_264,data/raw/images/264.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_265,data/raw/images/265.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_266,data/raw/images/266.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.76 (review threshold is 5.0)
+blade_267,data/raw/images/267.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_268,data/raw/images/268.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_269,data/raw/images/269.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=83.6%, mean=232.6"
+blade_27,data/raw/images/27.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_270,data/raw/images/270.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_271,data/raw/images/271.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_272,data/raw/images/272.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_273,data/raw/images/273.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_274,data/raw/images/274.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_275,data/raw/images/275.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_276,data/raw/images/276.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (45.7% green hue); blade not primary foreground
+blade_277,data/raw/images/277.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_278,data/raw/images/278.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_279,data/raw/images/279.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_28,data/raw/images/28.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_280,data/raw/images/280.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_281,data/raw/images/281.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_282,data/raw/images/282.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_283,data/raw/images/283.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_284,data/raw/images/284.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_285,data/raw/images/285.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_286,data/raw/images/286.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_287,data/raw/images/287.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_288,data/raw/images/288.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_289,data/raw/images/289.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_29,data/raw/images/29.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_290,data/raw/images/290.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.48 (review threshold is 5.0)
+blade_291,data/raw/images/291.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_292,data/raw/images/292.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_293,data/raw/images/293.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.62 (review threshold is 5.0)
+blade_294,data/raw/images/294.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_295,data/raw/images/295.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_296,data/raw/images/296.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_297,data/raw/images/297.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_298,data/raw/images/298.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_299,data/raw/images/299.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_3,data/raw/images/3.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_30,data/raw/images/30.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_300,data/raw/images/300.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_301,data/raw/images/301.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_302,data/raw/images/302.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_303,data/raw/images/303.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_304,data/raw/images/304.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.16 (review threshold is 5.0)
+blade_305,data/raw/images/305.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_306,data/raw/images/306.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_307,data/raw/images/307.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_308,data/raw/images/308.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_309,data/raw/images/309.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.79 (review threshold is 5.0)
+blade_31,data/raw/images/31.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_310,data/raw/images/310.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_311,data/raw/images/311.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_312,data/raw/images/312.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_313,data/raw/images/313.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (33.8% green hue); blade not primary foreground
+blade_314,data/raw/images/314.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.24 (review threshold is 5.0)
+blade_315,data/raw/images/315.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_316,data/raw/images/316.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_317,data/raw/images/317.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.05 (review threshold is 5.0)
+blade_318,data/raw/images/318.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_319,data/raw/images/319.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_32,data/raw/images/32.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.85 (review threshold is 5.0)
+blade_320,data/raw/images/320.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_321,data/raw/images/321.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_322,data/raw/images/322.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_323,data/raw/images/323.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_324,data/raw/images/324.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.89 (review threshold is 5.0)
+blade_325,data/raw/images/325.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_326,data/raw/images/326.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_327,data/raw/images/327.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_328,data/raw/images/328.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_329,data/raw/images/329.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.85 (review threshold is 5.0)
+blade_33,data/raw/images/33.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_330,data/raw/images/330.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_331,data/raw/images/331.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.26 (review threshold is 5.0)
+blade_332,data/raw/images/332.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.26 (review threshold is 5.0)
+blade_333,data/raw/images/333.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.45 (review threshold is 5.0)
+blade_334,data/raw/images/334.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.87 (review threshold is 5.0)
+blade_335,data/raw/images/335.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_336,data/raw/images/336.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_337,data/raw/images/337.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_338,data/raw/images/338.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_339,data/raw/images/339.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_34,data/raw/images/34.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (79.3% green hue); blade not primary foreground
+blade_340,data/raw/images/340.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_341,data/raw/images/341.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_342,data/raw/images/342.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_343,data/raw/images/343.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_344,data/raw/images/344.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_345,data/raw/images/345.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_346,data/raw/images/346.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_347,data/raw/images/347.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_348,data/raw/images/348.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_349,data/raw/images/349.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=42.13, entropy=1.59 bits; Severe overexposure / whiteout: bright_fraction=91.1%, mean_brightness=243.6"
+blade_35,data/raw/images/35.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_350,data/raw/images/350.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_351,data/raw/images/351.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_352,data/raw/images/352.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.62 (review threshold is 5.0)
+blade_353,data/raw/images/353.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=51.8%, mean=163.0"
+blade_354,data/raw/images/354.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_355,data/raw/images/355.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.16 (review threshold is 5.0)
+blade_356,data/raw/images/356.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=54.2%, mean=242.4"
+blade_357,data/raw/images/357.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_358,data/raw/images/358.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_359,data/raw/images/359.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=77.0%, mean=234.6; Moderate softness / weak focus: blur_score=4.62 (review threshold is 5.0)"
+blade_36,data/raw/images/36.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_360,data/raw/images/360.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_361,data/raw/images/361.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_362,data/raw/images/362.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_363,data/raw/images/363.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_364,data/raw/images/364.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_365,data/raw/images/365.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_366,data/raw/images/366.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.25 (review threshold is 5.0)
+blade_367,data/raw/images/367.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_368,data/raw/images/368.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_369,data/raw/images/369.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_37,data/raw/images/37.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_370,data/raw/images/370.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_371,data/raw/images/371.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_372,data/raw/images/372.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_373,data/raw/images/373.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_374,data/raw/images/374.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_375,data/raw/images/375.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_376,data/raw/images/376.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_377,data/raw/images/377.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_378,data/raw/images/378.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=74.8%, mean=234.7; Moderate softness / weak focus: blur_score=1.85 (review threshold is 5.0)"
+blade_379,data/raw/images/379.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_38,data/raw/images/38.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_380,data/raw/images/380.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_381,data/raw/images/381.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.92 (review threshold is 5.0)
+blade_382,data/raw/images/382.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Heavy shadow / low illumination: dark_fraction=31.9%, mean=119.2"
+blade_383,data/raw/images/383.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=54.1%, mean=198.3"
+blade_384,data/raw/images/384.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_385,data/raw/images/385.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_386,data/raw/images/386.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_387,data/raw/images/387.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_388,data/raw/images/388.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_389,data/raw/images/389.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_39,data/raw/images/39.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_390,data/raw/images/390.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.21 (review threshold is 5.0)
+blade_391,data/raw/images/391.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_392,data/raw/images/392.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_393,data/raw/images/393.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (52.1% green hue); blade not primary foreground
+blade_394,data/raw/images/394.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_395,data/raw/images/395.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_396,data/raw/images/396.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_397,data/raw/images/397.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.91 (review threshold is 5.0)
+blade_398,data/raw/images/398.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_399,data/raw/images/399.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.35 (review threshold is 5.0)
+blade_4,data/raw/images/4.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_40,data/raw/images/40.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_400,data/raw/images/400.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_401,data/raw/images/401.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_402,data/raw/images/402.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_403,data/raw/images/403.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_404,data/raw/images/404.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_405,data/raw/images/405.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_406,data/raw/images/406.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=58.7%, mean=221.8"
+blade_407,data/raw/images/407.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.83 (review threshold is 5.0)
+blade_408,data/raw/images/408.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_409,data/raw/images/409.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=2.20 (review threshold is 5.0); Pasture/landscape vegetation prominent (29.0% green hue); blade not primary foreground
+blade_41,data/raw/images/41.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_410,data/raw/images/410.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_411,data/raw/images/411.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_412,data/raw/images/412.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_413,data/raw/images/413.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_414,data/raw/images/414.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_415,data/raw/images/415.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_416,data/raw/images/416.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_417,data/raw/images/417.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.57 (review threshold is 5.0)
+blade_418,data/raw/images/418.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_419,data/raw/images/419.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_42,data/raw/images/42.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_420,data/raw/images/420.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_421,data/raw/images/421.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.94 (review threshold is 5.0)
+blade_422,data/raw/images/422.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_423,data/raw/images/423.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_424,data/raw/images/424.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_425,data/raw/images/425.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_426,data/raw/images/426.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.63 (review threshold is 5.0)
+blade_427,data/raw/images/427.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_428,data/raw/images/428.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=2.29 (review threshold is 5.0); Pasture/landscape vegetation prominent (60.4% green hue); blade not primary foreground
+blade_429,data/raw/images/429.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_43,data/raw/images/43.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,"Intense solar glint or washed-out sky: bright_fraction=39.2%, mean=184.2; Pasture/landscape vegetation prominent (23.9% green hue); blade not primary foreground"
+blade_430,data/raw/images/430.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_431,data/raw/images/431.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.49 (review threshold is 5.0)
+blade_432,data/raw/images/432.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_433,data/raw/images/433.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_434,data/raw/images/434.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (60.2% green hue); blade not primary foreground
+blade_435,data/raw/images/435.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_436,data/raw/images/436.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_437,data/raw/images/437.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_438,data/raw/images/438.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_439,data/raw/images/439.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.50 (review threshold is 5.0)
+blade_44,data/raw/images/44.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_440,data/raw/images/440.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.27 (review threshold is 5.0)
+blade_441,data/raw/images/441.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_442,data/raw/images/442.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_443,data/raw/images/443.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=77.2%, mean=226.6"
+blade_444,data/raw/images/444.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_445,data/raw/images/445.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_446,data/raw/images/446.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_447,data/raw/images/447.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_448,data/raw/images/448.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.48 (review threshold is 5.0)
+blade_449,data/raw/images/449.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=3.94 (review threshold is 5.0); Pasture/landscape vegetation prominent (38.8% green hue); blade not primary foreground
+blade_45,data/raw/images/45.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.31 (review threshold is 5.0)
+blade_450,data/raw/images/450.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.53 (review threshold is 5.0)
+blade_451,data/raw/images/451.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_452,data/raw/images/452.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_453,data/raw/images/453.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.05 (review threshold is 5.0)
+blade_454,data/raw/images/454.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_455,data/raw/images/455.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.04 (review threshold is 5.0)
+blade_456,data/raw/images/456.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_457,data/raw/images/457.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_458,data/raw/images/458.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_459,data/raw/images/459.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_46,data/raw/images/46.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_460,data/raw/images/460.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_461,data/raw/images/461.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_462,data/raw/images/462.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_463,data/raw/images/463.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=3.85 (review threshold is 5.0); Pasture/landscape vegetation prominent (39.8% green hue); blade not primary foreground
+blade_464,data/raw/images/464.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_465,data/raw/images/465.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_466,data/raw/images/466.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_467,data/raw/images/467.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_468,data/raw/images/468.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_469,data/raw/images/469.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_47,data/raw/images/47.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_470,data/raw/images/470.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_471,data/raw/images/471.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_472,data/raw/images/472.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_473,data/raw/images/473.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_474,data/raw/images/474.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.97 (cutoff is 1.0)
+blade_475,data/raw/images/475.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (38.0% green hue); blade not primary foreground
+blade_476,data/raw/images/476.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_477,data/raw/images/477.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_478,data/raw/images/478.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_479,data/raw/images/479.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (26.5% green hue); blade not primary foreground
+blade_48,data/raw/images/48.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_480,data/raw/images/480.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_481,data/raw/images/481.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_482,data/raw/images/482.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_483,data/raw/images/483.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_484,data/raw/images/484.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.98 (review threshold is 5.0)
+blade_485,data/raw/images/485.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_486,data/raw/images/486.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_487,data/raw/images/487.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_488,data/raw/images/488.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=39.7%, mean=180.2"
+blade_489,data/raw/images/489.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_49,data/raw/images/49.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.67 (review threshold is 5.0)
+blade_490,data/raw/images/490.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_491,data/raw/images/491.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_492,data/raw/images/492.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.69 (cutoff is 1.0)
+blade_493,data/raw/images/493.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_494,data/raw/images/494.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_495,data/raw/images/495.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.21 (review threshold is 5.0)
+blade_496,data/raw/images/496.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.18 (review threshold is 5.0)
+blade_497,data/raw/images/497.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_498,data/raw/images/498.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_499,data/raw/images/499.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=44.1%, mean=186.1"
+blade_5,data/raw/images/5.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_50,data/raw/images/50.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_500,data/raw/images/500.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.87 (review threshold is 5.0)
+blade_501,data/raw/images/501.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_502,data/raw/images/502.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_503,data/raw/images/503.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_504,data/raw/images/504.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_505,data/raw/images/505.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_506,data/raw/images/506.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_507,data/raw/images/507.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_508,data/raw/images/508.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=9.99, entropy=4.61 bits"
+blade_509,data/raw/images/509.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_51,data/raw/images/51.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_510,data/raw/images/510.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_511,data/raw/images/511.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=7.84, entropy=3.75 bits; Severe optical defocus / motion blur: blur_score=0.63 (cutoff is 1.0)"
+blade_512,data/raw/images/512.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.87 (review threshold is 5.0)
+blade_513,data/raw/images/513.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_514,data/raw/images/514.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_515,data/raw/images/515.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_516,data/raw/images/516.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_517,data/raw/images/517.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_518,data/raw/images/518.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_519,data/raw/images/519.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_52,data/raw/images/52.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_520,data/raw/images/520.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_521,data/raw/images/521.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=8.24, entropy=5.03 bits; Moderate softness / weak focus: blur_score=3.77 (review threshold is 5.0)"
+blade_522,data/raw/images/522.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_523,data/raw/images/523.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_524,data/raw/images/524.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_525,data/raw/images/525.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=79.2%, mean=227.2; Moderate softness / weak focus: blur_score=3.92 (review threshold is 5.0)"
+blade_526,data/raw/images/526.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.79 (review threshold is 5.0)
+blade_527,data/raw/images/527.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_528,data/raw/images/528.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (79.5% green hue); blade not primary foreground
+blade_529,data/raw/images/529.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_53,data/raw/images/53.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_530,data/raw/images/530.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_531,data/raw/images/531.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_532,data/raw/images/532.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_533,data/raw/images/533.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_534,data/raw/images/534.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_535,data/raw/images/535.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_536,data/raw/images/536.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_537,data/raw/images/537.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_538,data/raw/images/538.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_539,data/raw/images/539.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_54,data/raw/images/54.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_540,data/raw/images/540.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_541,data/raw/images/541.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.78 (review threshold is 5.0)
+blade_542,data/raw/images/542.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_543,data/raw/images/543.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_544,data/raw/images/544.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_545,data/raw/images/545.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_546,data/raw/images/546.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_547,data/raw/images/547.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_548,data/raw/images/548.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_549,data/raw/images/549.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_55,data/raw/images/55.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.25 (review threshold is 5.0)
+blade_550,data/raw/images/550.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_551,data/raw/images/551.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_552,data/raw/images/552.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.87 (review threshold is 5.0)
+blade_553,data/raw/images/553.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_554,data/raw/images/554.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_555,data/raw/images/555.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_556,data/raw/images/556.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_557,data/raw/images/557.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_558,data/raw/images/558.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=83.4%, mean=241.1; Moderate softness / weak focus: blur_score=3.67 (review threshold is 5.0)"
+blade_559,data/raw/images/559.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_56,data/raw/images/56.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_560,data/raw/images/560.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_561,data/raw/images/561.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_562,data/raw/images/562.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_563,data/raw/images/563.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_564,data/raw/images/564.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=63.1%, mean=206.6"
+blade_565,data/raw/images/565.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_566,data/raw/images/566.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_567,data/raw/images/567.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.42 (review threshold is 5.0)
+blade_568,data/raw/images/568.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.34 (review threshold is 5.0)
+blade_569,data/raw/images/569.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_57,data/raw/images/57.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_570,data/raw/images/570.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_571,data/raw/images/571.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_572,data/raw/images/572.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=61.8%, mean=208.8"
+blade_573,data/raw/images/573.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_574,data/raw/images/574.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_575,data/raw/images/575.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_576,data/raw/images/576.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.76 (review threshold is 5.0)
+blade_577,data/raw/images/577.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.45 (review threshold is 5.0)
+blade_578,data/raw/images/578.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.63 (cutoff is 1.0)
+blade_579,data/raw/images/579.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_58,data/raw/images/58.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_580,data/raw/images/580.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_581,data/raw/images/581.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_582,data/raw/images/582.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.75 (review threshold is 5.0)
+blade_583,data/raw/images/583.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.68 (review threshold is 5.0)
+blade_584,data/raw/images/584.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_585,data/raw/images/585.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_586,data/raw/images/586.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.71 (review threshold is 5.0)
+blade_587,data/raw/images/587.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_588,data/raw/images/588.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_589,data/raw/images/589.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.16 (review threshold is 5.0)
+blade_59,data/raw/images/59.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=67.6%, mean=242.0"
+blade_590,data/raw/images/590.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.52 (review threshold is 5.0)
+blade_591,data/raw/images/591.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_592,data/raw/images/592.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_593,data/raw/images/593.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=78.7%, mean=237.7"
+blade_594,data/raw/images/594.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_595,data/raw/images/595.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_596,data/raw/images/596.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=77.1%, mean=234.6"
+blade_597,data/raw/images/597.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_598,data/raw/images/598.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_599,data/raw/images/599.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_6,data/raw/images/6.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_60,data/raw/images/60.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_600,data/raw/images/600.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.72 (review threshold is 5.0)
+blade_601,data/raw/images/601.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_602,data/raw/images/602.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.21 (review threshold is 5.0)
+blade_603,data/raw/images/603.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_604,data/raw/images/604.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_605,data/raw/images/605.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_606,data/raw/images/606.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_607,data/raw/images/607.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=37.3%, mean=188.2"
+blade_608,data/raw/images/608.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.05 (review threshold is 5.0)
+blade_609,data/raw/images/609.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_61,data/raw/images/61.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_610,data/raw/images/610.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.56 (cutoff is 1.0)
+blade_611,data/raw/images/611.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.69 (review threshold is 5.0)
+blade_612,data/raw/images/612.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_613,data/raw/images/613.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_614,data/raw/images/614.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=4.97, entropy=4.26 bits; Severe optical defocus / motion blur: blur_score=0.41 (cutoff is 1.0)"
+blade_615,data/raw/images/615.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_616,data/raw/images/616.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_617,data/raw/images/617.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_618,data/raw/images/618.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_619,data/raw/images/619.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.60 (review threshold is 5.0)
+blade_62,data/raw/images/62.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_620,data/raw/images/620.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_621,data/raw/images/621.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_622,data/raw/images/622.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_623,data/raw/images/623.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.71 (review threshold is 5.0)
+blade_624,data/raw/images/624.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.51 (review threshold is 5.0)
+blade_625,data/raw/images/625.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_626,data/raw/images/626.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.63 (review threshold is 5.0)
+blade_627,data/raw/images/627.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_628,data/raw/images/628.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_629,data/raw/images/629.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_63,data/raw/images/63.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_630,data/raw/images/630.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_631,data/raw/images/631.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=5.94, entropy=4.23 bits; Severe optical defocus / motion blur: blur_score=0.58 (cutoff is 1.0)"
+blade_632,data/raw/images/632.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_633,data/raw/images/633.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,3,"Low contrast: std=63.58, entropy=2.22 bits; Intense solar glint or washed-out sky: bright_fraction=60.7%, mean=204.1; Moderate softness / weak focus: blur_score=4.02 (review threshold is 5.0)"
+blade_634,data/raw/images/634.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.97 (review threshold is 5.0)
+blade_635,data/raw/images/635.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_636,data/raw/images/636.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_637,data/raw/images/637.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_638,data/raw/images/638.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_639,data/raw/images/639.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_64,data/raw/images/64.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_640,data/raw/images/640.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_641,data/raw/images/641.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_642,data/raw/images/642.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_643,data/raw/images/643.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.77 (review threshold is 5.0)
+blade_644,data/raw/images/644.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_645,data/raw/images/645.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=9.26, entropy=4.28 bits; Moderate softness / weak focus: blur_score=1.87 (review threshold is 5.0)"
+blade_646,data/raw/images/646.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.34 (review threshold is 5.0)
+blade_647,data/raw/images/647.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.84 (review threshold is 5.0)
+blade_648,data/raw/images/648.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_649,data/raw/images/649.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_65,data/raw/images/65.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.44 (review threshold is 5.0)
+blade_650,data/raw/images/650.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_651,data/raw/images/651.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_652,data/raw/images/652.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=50.4%, mean=183.7"
+blade_653,data/raw/images/653.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_654,data/raw/images/654.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.98 (cutoff is 1.0)
+blade_655,data/raw/images/655.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.12 (review threshold is 5.0)
+blade_656,data/raw/images/656.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.80 (review threshold is 5.0)
+blade_657,data/raw/images/657.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_658,data/raw/images/658.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_659,data/raw/images/659.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_66,data/raw/images/66.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.31 (review threshold is 5.0)
+blade_660,data/raw/images/660.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.58 (review threshold is 5.0)
+blade_661,data/raw/images/661.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_662,data/raw/images/662.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_663,data/raw/images/663.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_664,data/raw/images/664.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.71 (cutoff is 1.0)
+blade_665,data/raw/images/665.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.78 (cutoff is 1.0)
+blade_666,data/raw/images/666.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_667,data/raw/images/667.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_668,data/raw/images/668.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_669,data/raw/images/669.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_67,data/raw/images/67.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_670,data/raw/images/670.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_671,data/raw/images/671.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.60 (review threshold is 5.0)
+blade_672,data/raw/images/672.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_673,data/raw/images/673.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_674,data/raw/images/674.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=7.25, entropy=4.02 bits"
+blade_675,data/raw/images/675.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_676,data/raw/images/676.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_677,data/raw/images/677.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_678,data/raw/images/678.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_679,data/raw/images/679.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.91 (review threshold is 5.0)
+blade_68,data/raw/images/68.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_680,data/raw/images/680.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_681,data/raw/images/681.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_682,data/raw/images/682.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_683,data/raw/images/683.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_684,data/raw/images/684.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_685,data/raw/images/685.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_686,data/raw/images/686.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_687,data/raw/images/687.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=9.51, entropy=3.61 bits; Moderate softness / weak focus: blur_score=1.84 (review threshold is 5.0)"
+blade_688,data/raw/images/688.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_689,data/raw/images/689.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_69,data/raw/images/69.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_690,data/raw/images/690.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_691,data/raw/images/691.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_692,data/raw/images/692.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_693,data/raw/images/693.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_694,data/raw/images/694.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_695,data/raw/images/695.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_696,data/raw/images/696.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_697,data/raw/images/697.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_698,data/raw/images/698.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_699,data/raw/images/699.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.79 (review threshold is 5.0)
+blade_7,data/raw/images/7.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_70,data/raw/images/70.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_700,data/raw/images/700.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.29 (review threshold is 5.0)
+blade_701,data/raw/images/701.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_702,data/raw/images/702.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_703,data/raw/images/703.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_704,data/raw/images/704.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_705,data/raw/images/705.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_706,data/raw/images/706.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_707,data/raw/images/707.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_708,data/raw/images/708.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (55.3% green hue); blade not primary foreground
+blade_709,data/raw/images/709.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_71,data/raw/images/71.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_710,data/raw/images/710.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_711,data/raw/images/711.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.32 (review threshold is 5.0)
+blade_712,data/raw/images/712.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_713,data/raw/images/713.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_714,data/raw/images/714.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_715,data/raw/images/715.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_716,data/raw/images/716.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_717,data/raw/images/717.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.41, line_angle_std=70.1 deg); routed to manual review"
+blade_718,data/raw/images/718.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_719,data/raw/images/719.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_72,data/raw/images/72.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_720,data/raw/images/720.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_721,data/raw/images/721.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.11 (review threshold is 5.0)
+blade_722,data/raw/images/722.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_723,data/raw/images/723.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.46 (review threshold is 5.0)
+blade_724,data/raw/images/724.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_725,data/raw/images/725.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=9.83, entropy=4.46 bits; Moderate softness / weak focus: blur_score=3.14 (review threshold is 5.0)"
+blade_726,data/raw/images/726.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.82 (review threshold is 5.0)
+blade_727,data/raw/images/727.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_728,data/raw/images/728.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_729,data/raw/images/729.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_73,data/raw/images/73.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_730,data/raw/images/730.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.67 (review threshold is 5.0)
+blade_731,data/raw/images/731.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.44 (review threshold is 5.0)
+blade_732,data/raw/images/732.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.62 (review threshold is 5.0)
+blade_733,data/raw/images/733.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.97 (review threshold is 5.0)
+blade_734,data/raw/images/734.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_735,data/raw/images/735.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_736,data/raw/images/736.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_737,data/raw/images/737.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.00 (review threshold is 5.0)
+blade_738,data/raw/images/738.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_739,data/raw/images/739.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_74,data/raw/images/74.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_740,data/raw/images/740.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_741,data/raw/images/741.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_742,data/raw/images/742.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (93.1% green hue); blade not primary foreground
+blade_743,data/raw/images/743.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=17.80, entropy=2.22 bits; Intense solar glint or washed-out sky: bright_fraction=84.7%, mean=248.6"
+blade_744,data/raw/images/744.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (52.7% green hue); blade not primary foreground
+blade_745,data/raw/images/745.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.24 (review threshold is 5.0)
+blade_746,data/raw/images/746.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=66.9%, mean=224.3"
+blade_747,data/raw/images/747.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_748,data/raw/images/748.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=59.3%, mean=219.4"
+blade_749,data/raw/images/749.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=52.60, entropy=2.14 bits; Intense solar glint or washed-out sky: bright_fraction=84.1%, mean=234.2"
+blade_75,data/raw/images/75.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=77.2%, mean=241.7"
+blade_750,data/raw/images/750.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=14.50, entropy=0.52 bits; Severe overexposure / whiteout: bright_fraction=98.5%, mean_brightness=253.3"
+blade_751,data/raw/images/751.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_752,data/raw/images/752.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=65.4%, mean=228.2"
+blade_753,data/raw/images/753.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_754,data/raw/images/754.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=3.88 (review threshold is 5.0); Pasture/landscape vegetation prominent (29.4% green hue); blade not primary foreground
+blade_755,data/raw/images/755.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=37.38, entropy=2.33 bits; Intense solar glint or washed-out sky: bright_fraction=84.6%, mean=241.6"
+blade_756,data/raw/images/756.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_757,data/raw/images/757.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_758,data/raw/images/758.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=64.5%, mean=220.6"
+blade_759,data/raw/images/759.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.56 (review threshold is 5.0)
+blade_76,data/raw/images/76.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=48.7%, mean=204.1"
+blade_760,data/raw/images/760.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_761,data/raw/images/761.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_762,data/raw/images/762.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_763,data/raw/images/763.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_764,data/raw/images/764.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=7.37, entropy=4.34 bits; Severe optical defocus / motion blur: blur_score=0.88 (cutoff is 1.0)"
+blade_765,data/raw/images/765.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=20.64, entropy=0.66 bits; Severe overexposure / whiteout: bright_fraction=96.2%, mean_brightness=251.7"
+blade_766,data/raw/images/766.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.69 (review threshold is 5.0)
+blade_767,data/raw/images/767.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=72.2%, mean=223.9; Moderate softness / weak focus: blur_score=3.63 (review threshold is 5.0)"
+blade_768,data/raw/images/768.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_769,data/raw/images/769.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=49.2%, mean=208.2"
+blade_77,data/raw/images/77.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.08 (review threshold is 5.0)
+blade_770,data/raw/images/770.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=72.4%, mean=246.0"
+blade_771,data/raw/images/771.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=40.2%, mean=174.1"
+blade_772,data/raw/images/772.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=84.1%, mean=244.6"
+blade_773,data/raw/images/773.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=37.8%, mean=196.8"
+blade_774,data/raw/images/774.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.43 (review threshold is 5.0)
+blade_775,data/raw/images/775.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=57.8%, mean=206.5"
+blade_776,data/raw/images/776.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=80.8%, mean=244.7"
+blade_777,data/raw/images/777.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_778,data/raw/images/778.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_779,data/raw/images/779.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_78,data/raw/images/78.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.27 (review threshold is 5.0)
+blade_780,data/raw/images/780.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_781,data/raw/images/781.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=71.2%, mean=209.0"
+blade_782,data/raw/images/782.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=39.9%, mean=217.8"
+blade_783,data/raw/images/783.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=36.87, entropy=1.86 bits; Severe overexposure / whiteout: bright_fraction=88.7%, mean_brightness=244.0"
+blade_784,data/raw/images/784.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=42.1%, mean=217.8"
+blade_785,data/raw/images/785.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=48.9%, mean=205.9"
+blade_786,data/raw/images/786.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=39.0%, mean=217.0"
+blade_787,data/raw/images/787.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,3,"Low contrast: std=4.31, entropy=3.74 bits; Heavy shadow / low illumination: dark_fraction=0.4%, mean=27.7; Moderate softness / weak focus: blur_score=1.14 (review threshold is 5.0)"
+blade_788,data/raw/images/788.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_789,data/raw/images/789.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=65.6%, mean=232.4"
+blade_79,data/raw/images/79.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_790,data/raw/images/790.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_791,data/raw/images/791.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=73.8%, mean=235.6"
+blade_792,data/raw/images/792.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_793,data/raw/images/793.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=51.2%, mean=206.8"
+blade_794,data/raw/images/794.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (64.5% green hue); blade not primary foreground
+blade_795,data/raw/images/795.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_796,data/raw/images/796.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=9.27, entropy=4.08 bits"
+blade_797,data/raw/images/797.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=17.44, entropy=0.72 bits; Severe overexposure / whiteout: bright_fraction=96.9%, mean_brightness=252.6"
+blade_798,data/raw/images/798.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_799,data/raw/images/799.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_8,data/raw/images/8.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_80,data/raw/images/80.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_800,data/raw/images/800.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=52.5%, mean=242.6"
+blade_801,data/raw/images/801.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=45.4%, mean=217.0"
+blade_802,data/raw/images/802.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=55.4%, mean=221.0; Moderate softness / weak focus: blur_score=3.67 (review threshold is 5.0)"
+blade_803,data/raw/images/803.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_804,data/raw/images/804.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=67.8%, mean=225.1"
+blade_805,data/raw/images/805.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=66.9%, mean=223.7"
+blade_806,data/raw/images/806.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=52.2%, mean=213.3"
+blade_807,data/raw/images/807.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=40.5%, mean=167.7"
+blade_808,data/raw/images/808.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_809,data/raw/images/809.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.58 (cutoff is 1.0)
+blade_81,data/raw/images/81.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_810,data/raw/images/810.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_811,data/raw/images/811.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_812,data/raw/images/812.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=17.03, entropy=2.42 bits; Intense solar glint or washed-out sky: bright_fraction=76.1%, mean=249.4"
+blade_813,data/raw/images/813.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=67.9%, mean=240.3"
+blade_814,data/raw/images/814.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_815,data/raw/images/815.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,"Intense solar glint or washed-out sky: bright_fraction=76.6%, mean=240.7; Pasture/landscape vegetation prominent (26.5% green hue); blade not primary foreground"
+blade_816,data/raw/images/816.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=110.56, entropy=2.29 bits; Intense solar glint or washed-out sky: bright_fraction=65.1%, mean=178.7"
+blade_817,data/raw/images/817.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_818,data/raw/images/818.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=63.7%, mean=242.9"
+blade_819,data/raw/images/819.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=80.0%, mean=234.5"
+blade_82,data/raw/images/82.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_820,data/raw/images/820.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.62, line_angle_std=66.6 deg); routed to manual review"
+blade_821,data/raw/images/821.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.41 (review threshold is 5.0)
+blade_822,data/raw/images/822.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=74.0%, mean=229.8"
+blade_823,data/raw/images/823.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.06 (review threshold is 5.0)
+blade_824,data/raw/images/824.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_825,data/raw/images/825.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=4.89, entropy=3.04 bits; Severe optical defocus / motion blur: blur_score=0.16 (cutoff is 1.0)"
+blade_826,data/raw/images/826.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_827,data/raw/images/827.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=6.47, entropy=4.46 bits; Moderate softness / weak focus: blur_score=4.44 (review threshold is 5.0)"
+blade_828,data/raw/images/828.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=55.1%, mean=199.9"
+blade_829,data/raw/images/829.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,"Severe overexposure / whiteout: bright_fraction=87.2%, mean_brightness=233.1"
+blade_83,data/raw/images/83.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=7.47, entropy=4.88 bits; Moderate softness / weak focus: blur_score=3.53 (review threshold is 5.0)"
+blade_830,data/raw/images/830.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=46.9%, mean=209.0"
+blade_831,data/raw/images/831.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_832,data/raw/images/832.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_833,data/raw/images/833.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=54.7%, mean=230.2"
+blade_834,data/raw/images/834.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=72.4%, mean=240.7"
+blade_835,data/raw/images/835.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=18.13, entropy=0.22 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.2%, mean_brightness=253.5"
+blade_836,data/raw/images/836.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=65.5%, mean=198.8"
+blade_837,data/raw/images/837.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=107.37, entropy=0.90 bits; Intense solar glint or washed-out sky: bright_fraction=76.8%, mean=196.1"
+blade_838,data/raw/images/838.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_839,data/raw/images/839.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=15.55, entropy=0.53 bits; Severe overexposure / whiteout: bright_fraction=97.2%, mean_brightness=252.4"
+blade_84,data/raw/images/84.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.38 (review threshold is 5.0)
+blade_840,data/raw/images/840.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_841,data/raw/images/841.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,3,"Low contrast: std=3.02, entropy=2.49 bits; Heavy shadow / low illumination: dark_fraction=7.2%, mean=22.6; Moderate softness / weak focus: blur_score=2.85 (review threshold is 5.0)"
+blade_842,data/raw/images/842.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=35.79, entropy=0.63 bits; Severe overexposure / whiteout: bright_fraction=95.0%, mean_brightness=246.9"
+blade_843,data/raw/images/843.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_844,data/raw/images/844.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=54.8%, mean=205.2"
+blade_845,data/raw/images/845.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.64 (review threshold is 5.0)
+blade_846,data/raw/images/846.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_847,data/raw/images/847.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_848,data/raw/images/848.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=4.75, entropy=3.10 bits; Severe optical defocus / motion blur: blur_score=0.84 (cutoff is 1.0)"
+blade_849,data/raw/images/849.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=70.1%, mean=229.5"
+blade_85,data/raw/images/85.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_850,data/raw/images/850.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=62.6%, mean=198.6"
+blade_851,data/raw/images/851.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_852,data/raw/images/852.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=52.5%, mean=219.4"
+blade_853,data/raw/images/853.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=48.0%, mean=223.1"
+blade_854,data/raw/images/854.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_855,data/raw/images/855.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_856,data/raw/images/856.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_857,data/raw/images/857.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=77.3%, mean=230.8"
+blade_858,data/raw/images/858.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_859,data/raw/images/859.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_86,data/raw/images/86.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=7.87, entropy=4.85 bits"
+blade_860,data/raw/images/860.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.24 (review threshold is 5.0)
+blade_861,data/raw/images/861.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=7.22, entropy=3.86 bits; Moderate softness / weak focus: blur_score=2.55 (review threshold is 5.0)"
+blade_862,data/raw/images/862.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Intense solar glint or washed-out sky: bright_fraction=72.1%, mean=228.9; Moderate softness / weak focus: blur_score=4.79 (review threshold is 5.0)"
+blade_863,data/raw/images/863.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=10.03, entropy=0.17 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.1%, mean_brightness=254.1"
+blade_864,data/raw/images/864.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,3,"Low contrast: std=5.18, entropy=3.11 bits; Heavy shadow / low illumination: dark_fraction=13.1%, mean=22.6; Severe optical defocus / motion blur: blur_score=0.99 (cutoff is 1.0)"
+blade_865,data/raw/images/865.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=45.6%, mean=212.8"
+blade_866,data/raw/images/866.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_867,data/raw/images/867.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=74.6%, mean=231.1"
+blade_868,data/raw/images/868.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=56.2%, mean=199.7"
+blade_869,data/raw/images/869.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=70.7%, mean=216.8"
+blade_87,data/raw/images/87.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_870,data/raw/images/870.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=2.01 (review threshold is 5.0); Pasture/landscape vegetation prominent (30.9% green hue); blade not primary foreground
+blade_871,data/raw/images/871.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=79.0%, mean=218.9"
+blade_872,data/raw/images/872.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.87 (review threshold is 5.0)
+blade_873,data/raw/images/873.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=54.6%, mean=182.8"
+blade_874,data/raw/images/874.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=9.95, entropy=0.16 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.2%, mean_brightness=254.1"
+blade_875,data/raw/images/875.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=19.99, entropy=0.73 bits; Severe overexposure / whiteout: bright_fraction=98.8%, mean_brightness=253.0"
+blade_876,data/raw/images/876.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_877,data/raw/images/877.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_878,data/raw/images/878.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=65.1%, mean=215.0"
+blade_879,data/raw/images/879.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=30.24, entropy=1.30 bits; Severe overexposure / whiteout: bright_fraction=94.6%, mean_brightness=247.8"
+blade_88,data/raw/images/88.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_880,data/raw/images/880.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=37.75, entropy=2.39 bits; Intense solar glint or washed-out sky: bright_fraction=82.9%, mean=239.7"
+blade_881,data/raw/images/881.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.43 (review threshold is 5.0)
+blade_882,data/raw/images/882.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_883,data/raw/images/883.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=68.23, entropy=2.28 bits; Intense solar glint or washed-out sky: bright_fraction=72.9%, mean=213.6"
+blade_884,data/raw/images/884.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_885,data/raw/images/885.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=67.9%, mean=178.9"
+blade_886,data/raw/images/886.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_887,data/raw/images/887.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=79.1%, mean=232.4"
+blade_888,data/raw/images/888.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_889,data/raw/images/889.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_89,data/raw/images/89.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_890,data/raw/images/890.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_891,data/raw/images/891.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=47.2%, mean=230.0"
+blade_892,data/raw/images/892.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_893,data/raw/images/893.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_894,data/raw/images/894.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,"Intense solar glint or washed-out sky: bright_fraction=46.7%, mean=173.9; Pasture/landscape vegetation prominent (52.7% green hue); blade not primary foreground"
+blade_895,data/raw/images/895.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=68.4%, mean=204.0"
+blade_896,data/raw/images/896.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=24.52, entropy=1.87 bits; Severe overexposure / whiteout: bright_fraction=85.7%, mean_brightness=247.9"
+blade_897,data/raw/images/897.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=23.76, entropy=2.11 bits; Severe overexposure / whiteout: bright_fraction=85.7%, mean_brightness=247.1"
+blade_898,data/raw/images/898.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=78.5%, mean=228.1"
+blade_899,data/raw/images/899.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=55.9%, mean=229.0"
+blade_9,data/raw/images/9.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_90,data/raw/images/90.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_900,data/raw/images/900.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_901,data/raw/images/901.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=39.70, entropy=1.27 bits; Severe overexposure / whiteout: bright_fraction=90.1%, mean_brightness=242.1"
+blade_902,data/raw/images/902.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=61.9%, mean=212.6"
+blade_903,data/raw/images/903.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=5.28, entropy=4.14 bits; Moderate softness / weak focus: blur_score=4.46 (review threshold is 5.0)"
+blade_904,data/raw/images/904.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=2.83 (review threshold is 5.0)
+blade_905,data/raw/images/905.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_906,data/raw/images/906.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.56 (review threshold is 5.0)
+blade_907,data/raw/images/907.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=55.6%, mean=227.5"
+blade_908,data/raw/images/908.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_909,data/raw/images/909.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_91,data/raw/images/91.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_910,data/raw/images/910.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,2,Moderate softness / weak focus: blur_score=2.41 (review threshold is 5.0); Pasture/landscape vegetation prominent (24.1% green hue); blade not primary foreground
+blade_911,data/raw/images/911.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=4.87, entropy=3.84 bits; Severe optical defocus / motion blur: blur_score=0.39 (cutoff is 1.0)"
+blade_912,data/raw/images/912.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=56.6%, mean=212.9"
+blade_913,data/raw/images/913.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=68.2%, mean=225.3"
+blade_914,data/raw/images/914.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.91 (cutoff is 1.0)
+blade_915,data/raw/images/915.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_916,data/raw/images/916.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_917,data/raw/images/917.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (31.7% green hue); blade not primary foreground
+blade_918,data/raw/images/918.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_919,data/raw/images/919.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=59.1%, mean=199.5"
+blade_92,data/raw/images/92.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.86 (review threshold is 5.0)
+blade_920,data/raw/images/920.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=58.0%, mean=239.7"
+blade_921,data/raw/images/921.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=44.6%, mean=212.9"
+blade_922,data/raw/images/922.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_923,data/raw/images/923.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_924,data/raw/images/924.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_925,data/raw/images/925.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.53, line_angle_std=46.0 deg); routed to manual review"
+blade_926,data/raw/images/926.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.85 (review threshold is 5.0)
+blade_927,data/raw/images/927.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,3,"Low contrast: std=8.21, entropy=4.27 bits; Moderate softness / weak focus: blur_score=1.80 (review threshold is 5.0); Pasture/landscape vegetation prominent (29.6% green hue); blade not primary foreground"
+blade_928,data/raw/images/928.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_929,data/raw/images/929.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_93,data/raw/images/93.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_930,data/raw/images/930.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_931,data/raw/images/931.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_932,data/raw/images/932.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=66.3%, mean=216.8"
+blade_933,data/raw/images/933.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,Severe optical defocus / motion blur: blur_score=0.39 (cutoff is 1.0)
+blade_934,data/raw/images/934.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=1.18 (review threshold is 5.0)
+blade_935,data/raw/images/935.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_936,data/raw/images/936.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_937,data/raw/images/937.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=49.1%, mean=205.4"
+blade_938,data/raw/images/938.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=43.6%, mean=201.3"
+blade_939,data/raw/images/939.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_94,data/raw/images/94.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_940,data/raw/images/940.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=5.76, entropy=4.18 bits"
+blade_941,data/raw/images/941.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=51.2%, mean=169.3"
+blade_942,data/raw/images/942.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.44, line_angle_std=59.4 deg); routed to manual review"
+blade_943,data/raw/images/943.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=63.4%, mean=217.7"
+blade_944,data/raw/images/944.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_945,data/raw/images/945.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=74.6%, mean=231.9"
+blade_946,data/raw/images/946.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_947,data/raw/images/947.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=3.50 (review threshold is 5.0)
+blade_948,data/raw/images/948.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.44 (review threshold is 5.0)
+blade_949,data/raw/images/949.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=9.84, entropy=4.34 bits; Moderate softness / weak focus: blur_score=1.91 (review threshold is 5.0)"
+blade_95,data/raw/images/95.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (21.9% green hue); blade not primary foreground
+blade_950,data/raw/images/950.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_951,data/raw/images/951.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_952,data/raw/images/952.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=61.4%, mean=216.8"
+blade_953,data/raw/images/953.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_954,data/raw/images/954.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=8.86, entropy=0.46 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=97.4%, mean_brightness=253.7"
+blade_955,data/raw/images/955.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_956,data/raw/images/956.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_957,data/raw/images/957.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_958,data/raw/images/958.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=61.5%, mean=223.8"
+blade_959,data/raw/images/959.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_96,data/raw/images/96.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_960,data/raw/images/960.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=42.84, entropy=0.91 bits; Severe overexposure / whiteout: bright_fraction=94.0%, mean_brightness=244.9"
+blade_961,data/raw/images/961.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=21.34, entropy=0.82 bits; Severe overexposure / whiteout: bright_fraction=96.4%, mean_brightness=251.5"
+blade_962,data/raw/images/962.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=35.3%, mean=173.3"
+blade_963,data/raw/images/963.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=8.55, entropy=0.08 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.8%, mean_brightness=254.6"
+blade_964,data/raw/images/964.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Low contrast: std=31.11, entropy=1.29 bits; Severe overexposure / whiteout: bright_fraction=89.8%, mean_brightness=246.3"
+blade_965,data/raw/images/965.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=78.20, entropy=2.23 bits; Intense solar glint or washed-out sky: bright_fraction=80.8%, mean=219.2"
+blade_966,data/raw/images/966.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,"Severe overexposure / whiteout: bright_fraction=86.1%, mean_brightness=247.4"
+blade_967,data/raw/images/967.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=38.5%, mean=226.3"
+blade_968,data/raw/images/968.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=65.8%, mean=229.1"
+blade_969,data/raw/images/969.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=7.38, entropy=0.18 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=99.8%, mean_brightness=254.7"
+blade_97,data/raw/images/97.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_970,data/raw/images/970.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_971,data/raw/images/971.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=56.0%, mean=224.7"
+blade_972,data/raw/images/972.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (27.1% green hue); blade not primary foreground
+blade_973,data/raw/images/973.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,Moderate softness / weak focus: blur_score=4.73 (review threshold is 5.0)
+blade_974,data/raw/images/974.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_975,data/raw/images/975.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Low contrast: std=7.03, entropy=4.24 bits"
+blade_976,data/raw/images/976.jpg,primary_benchmark_images,UNUSABLE,UNCERTAIN,True,4,"Low contrast: std=5.75, entropy=2.27 bits; Heavy shadow / low illumination: dark_fraction=6.6%, mean=28.5; Severe optical defocus / motion blur: blur_score=0.45 (cutoff is 1.0); Pasture/landscape vegetation prominent (42.6% green hue); blade not primary foreground"
+blade_977,data/raw/images/977.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=43.1%, mean=214.1"
+blade_978,data/raw/images/978.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=78.0%, mean=233.5"
+blade_979,data/raw/images/979.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_98,data/raw/images/98.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_980,data/raw/images/980.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_981,data/raw/images/981.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=47.1%, mean=208.8"
+blade_982,data/raw/images/982.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_983,data/raw/images/983.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,2,"Low contrast: std=4.78, entropy=4.11 bits; Moderate softness / weak focus: blur_score=1.32 (review threshold is 5.0)"
+blade_984,data/raw/images/984.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=9.15, entropy=0.36 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=98.5%, mean_brightness=254.0"
+blade_985,data/raw/images/985.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_986,data/raw/images/986.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_987,data/raw/images/987.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,1,"Severe overexposure / whiteout: bright_fraction=92.6%, mean_brightness=250.2"
+blade_988,data/raw/images/988.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_989,data/raw/images/989.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,3,"Low contrast: std=3.71, entropy=2.81 bits; Heavy shadow / low illumination: dark_fraction=2.3%, mean=25.3; Severe optical defocus / motion blur: blur_score=0.63 (cutoff is 1.0)"
+blade_99,data/raw/images/99.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,1,Pasture/landscape vegetation prominent (23.4% green hue); blade not primary foreground
+blade_990,data/raw/images/990.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_991,data/raw/images/991.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=44.5%, mean=231.6"
+blade_992,data/raw/images/992.jpg,primary_benchmark_images,REVIEW_REQUIRED,UNCERTAIN,True,3,"Low contrast: std=9.56, entropy=4.74 bits; Heavy shadow / low illumination: dark_fraction=19.7%, mean=28.3; Pasture/landscape vegetation prominent (31.9% green hue); blade not primary foreground"
+blade_993,data/raw/images/993.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=52.0%, mean=208.2"
+blade_994,data/raw/images/994.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_995,data/raw/images/995.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=68.4%, mean=226.1"
+blade_996,data/raw/images/996.jpg,primary_benchmark_images,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+blade_997,data/raw/images/997.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=79.8%, mean=239.6"
+blade_998,data/raw/images/998.jpg,primary_benchmark_images,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=73.7%, mean=245.6"
+blade_999,data/raw/images/999.jpg,primary_benchmark_images,UNUSABLE,BLADE,False,2,"Flat dynamic range: std=11.66, entropy=0.47 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=97.1%, mean_brightness=253.1"
+neg_ambiguous_pasture_cow_distant_turbine_01,data/negative_evaluation_samples/ambiguous_pasture_cow_distant_turbine_01.jpg,negative_evaluation_samples,REVIEW_REQUIRED,UNCERTAIN,True,3,"Borderline resolution: 400x400 (target is at least 512x512); Low contrast: std=76.96, entropy=1.74 bits; Pasture/landscape vegetation prominent (24.9% green hue); blade not primary foreground"
+neg_animal_bird_01,data/negative_evaluation_samples/animal_bird_01.jpg,negative_evaluation_samples,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+neg_animal_bird_brambling_03,data/negative_evaluation_samples/animal_bird_brambling_03.jpg,negative_evaluation_samples,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+neg_animal_bird_coucal_02,data/negative_evaluation_samples/animal_bird_coucal_02.jpg,negative_evaluation_samples,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+neg_apparel_labcoat_02,data/negative_evaluation_samples/apparel_labcoat_02.jpg,negative_evaluation_samples,USABLE,BLADE,False,1,Image passes all technical usability criteria; valid blade inspection framing
+neg_blurred_low_quality_indoor_01,data/negative_evaluation_samples/blurred_low_quality_indoor_01.jpg,negative_evaluation_samples,UNUSABLE,BLADE,False,2,Sub-critical resolution: 250x250 (minimum usable is 256x256); Severe optical defocus / motion blur: blur_score=0.31 (cutoff is 1.0)
+neg_building_facade_architecture_01,data/negative_evaluation_samples/building_facade_architecture_01.jpg,negative_evaluation_samples,REVIEW_REQUIRED,BLADE,True,2,"Borderline resolution: 350x350 (target is at least 512x512); Low contrast: std=48.01, entropy=1.62 bits"
+neg_chart_airfoil_polar_02,data/negative_evaluation_samples/chart_airfoil_polar_02.png,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,3,"Low contrast: std=40.77, entropy=0.82 bits; Severe overexposure / whiteout: bright_fraction=93.1%, mean_brightness=246.4; Subject exhibits digital document / chart properties (bright_fraction=0.93, entropy=0.82, blur=1708.0, lines=242)"
+neg_chart_confusion_matrix_03,data/negative_evaluation_samples/chart_confusion_matrix_03.png,negative_evaluation_samples,REVIEW_REQUIRED,NON_BLADE,True,3,"Low contrast: std=69.67, entropy=2.06 bits; Intense solar glint or washed-out sky: bright_fraction=81.9%, mean=222.3; Subject exhibits digital document / chart properties (bright_fraction=0.82, entropy=2.06, blur=1663.6, lines=88)"
+neg_chart_decision_matrix_04,data/negative_evaluation_samples/chart_decision_matrix_04.png,negative_evaluation_samples,REVIEW_REQUIRED,NON_BLADE,True,3,"Low contrast: std=69.67, entropy=2.06 bits; Intense solar glint or washed-out sky: bright_fraction=81.9%, mean=222.3; Subject exhibits digital document / chart properties (bright_fraction=0.82, entropy=2.06, blur=1663.6, lines=88)"
+neg_chart_feature_importance_01,data/negative_evaluation_samples/chart_feature_importance_01.png,negative_evaluation_samples,REVIEW_REQUIRED,NON_BLADE,True,3,"Low contrast: std=62.20, entropy=1.14 bits; Intense solar glint or washed-out sky: bright_fraction=76.3%, mean=222.4; Subject exhibits digital document / chart properties (bright_fraction=0.76, entropy=1.14, blur=1719.0, lines=94)"
+neg_chart_feature_importance_02,data/negative_evaluation_samples/chart_feature_importance_02.png,negative_evaluation_samples,REVIEW_REQUIRED,NON_BLADE,True,3,"Low contrast: std=62.20, entropy=1.14 bits; Intense solar glint or washed-out sky: bright_fraction=76.3%, mean=222.4; Subject exhibits digital document / chart properties (bright_fraction=0.76, entropy=1.14, blur=1719.0, lines=94)"
+neg_diagram_infographic_02,data/negative_evaluation_samples/diagram_infographic_02.jpg,negative_evaluation_samples,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.47, line_angle_std=69.6 deg); routed to manual review"
+neg_diagram_workflow_01,data/negative_evaluation_samples/diagram_workflow_01.jpg,negative_evaluation_samples,REVIEW_REQUIRED,UNCERTAIN,True,1,"Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.42, line_angle_std=71.5 deg); routed to manual review"
+neg_food_pizza_01,data/negative_evaluation_samples/food_pizza_01.jpg,negative_evaluation_samples,REVIEW_REQUIRED,UNCERTAIN,True,2,"Borderline resolution: 500x375 (target is at least 512x512); Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.49, line_angle_std=72.8 deg); routed to manual review"
+neg_industrial_solar_panels_01,data/negative_evaluation_samples/industrial_solar_panels_01.jpg,negative_evaluation_samples,REVIEW_REQUIRED,UNCERTAIN,True,3,"Borderline resolution: 400x300 (target is at least 512x512); Low contrast: std=30.13, entropy=1.85 bits; Atypical surface chromaticity or multi-directional edge texture (mean_saturation=0.59, line_angle_std=44.8 deg); routed to manual review"
+neg_industrial_transmission_substation_02,data/negative_evaluation_samples/industrial_transmission_substation_02.jpg,negative_evaluation_samples,REVIEW_REQUIRED,BLADE,True,2,"Borderline resolution: 300x400 (target is at least 512x512); Low contrast: std=33.08, entropy=1.34 bits"
+neg_screenshot_metrics_dashboard_01,data/negative_evaluation_samples/screenshot_metrics_dashboard_01.png,negative_evaluation_samples,REVIEW_REQUIRED,BLADE,True,1,"Intense solar glint or washed-out sky: bright_fraction=65.0%, mean=212.5"
+neg_synthetic_blank_black,data/negative_evaluation_samples/synthetic_blank_black.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,5,"Sub-critical resolution: 224x224 (minimum usable is 256x256); Flat dynamic range: std=0.00, entropy=-0.00 bits (solid/uniform content); Severe underexposure: dark_fraction=100.0%, mean_brightness=0.0; Severe optical defocus / motion blur: blur_score=0.00 (cutoff is 1.0); Subject has zero discernible visual structure (solid/blank)"
+neg_synthetic_blank_gray,data/negative_evaluation_samples/synthetic_blank_gray.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,4,"Sub-critical resolution: 224x224 (minimum usable is 256x256); Flat dynamic range: std=0.00, entropy=-0.00 bits (solid/uniform content); Severe optical defocus / motion blur: blur_score=0.00 (cutoff is 1.0); Subject has zero discernible visual structure (solid/blank)"
+neg_synthetic_blank_white,data/negative_evaluation_samples/synthetic_blank_white.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,5,"Sub-critical resolution: 224x224 (minimum usable is 256x256); Flat dynamic range: std=0.00, entropy=-0.00 bits (solid/uniform content); Severe overexposure / whiteout: bright_fraction=100.0%, mean_brightness=255.0; Severe optical defocus / motion blur: blur_score=0.00 (cutoff is 1.0); Subject has zero discernible visual structure (solid/blank)"
+neg_synthetic_checkerboard,data/negative_evaluation_samples/synthetic_checkerboard.jpg,negative_evaluation_samples,UNUSABLE,BLADE,False,4,"Sub-critical resolution: 224x224 (minimum usable is 256x256); Low contrast: std=82.14, entropy=2.15 bits; Severe underexposure: dark_fraction=86.7%, mean_brightness=31.6; Anomalous high-frequency variance: blur_score=45492.3 (indicates synthetic/sensor noise)"
+neg_synthetic_colored_random_noise,data/negative_evaluation_samples/synthetic_colored_random_noise.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,3,Borderline resolution: 256x256 (target is at least 512x512); Anomalous high-frequency variance: blur_score=48541.3 (indicates synthetic/sensor noise); Subject classified as synthetic noise artifact
+neg_synthetic_diagram_shapes,data/negative_evaluation_samples/synthetic_diagram_shapes.jpg,negative_evaluation_samples,UNUSABLE,BLADE,False,3,"Sub-critical resolution: 224x224 (minimum usable is 256x256); Low contrast: std=93.70, entropy=1.67 bits; Intense solar glint or washed-out sky: bright_fraction=74.4%, mean=203.4"
+neg_synthetic_gaussian_noise,data/negative_evaluation_samples/synthetic_gaussian_noise.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,3,Sub-critical resolution: 224x224 (minimum usable is 256x256); Anomalous high-frequency variance: blur_score=17106.6 (indicates synthetic/sensor noise); Subject classified as synthetic noise artifact
+neg_synthetic_neon_banner,data/negative_evaluation_samples/synthetic_neon_banner.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,4,"Sub-critical resolution: 224x224 (minimum usable is 256x256); Flat dynamic range: std=0.00, entropy=-0.00 bits (solid/uniform content); Severe optical defocus / motion blur: blur_score=0.00 (cutoff is 1.0); Subject has zero discernible visual structure (solid/blank)"
+neg_synthetic_salt_pepper_noise,data/negative_evaluation_samples/synthetic_salt_pepper_noise.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,3,Borderline resolution: 256x256 (target is at least 512x512); Anomalous high-frequency variance: blur_score=14742.1 (indicates synthetic/sensor noise); Subject classified as synthetic noise artifact
+neg_synthetic_uniform_noise,data/negative_evaluation_samples/synthetic_uniform_noise.jpg,negative_evaluation_samples,UNUSABLE,NON_BLADE,False,3,Sub-critical resolution: 224x224 (minimum usable is 256x256); Anomalous high-frequency variance: blur_score=51509.2 (indicates synthetic/sensor noise); Subject classified as synthetic noise artifact
+neg_textile_fabric_01,data/negative_evaluation_samples/textile_fabric_01.jpg,negative_evaluation_samples,UNUSABLE,BLADE,False,1,Sub-critical resolution: 553x210 (minimum usable is 256x256)
+neg_vehicle_car_01,data/negative_evaluation_samples/vehicle_car_01.jpg,negative_evaluation_samples,REVIEW_REQUIRED,BLADE,True,1,Borderline resolution: 500x263 (target is at least 512x512)

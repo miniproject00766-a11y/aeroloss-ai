@@ -1,0 +1,84 @@
+{
+  "timestamp": 1791726105.2450094,
+  "splits": {
+    "dev": 70,
+    "val": 70,
+    "test": 70
+  },
+  "validation": {
+    "guardrail": {
+      "pos_accept": 58,
+      "pos_review": 1,
+      "pos_fn": 1,
+      "neg_tn": 9,
+      "neg_review": 0,
+      "neg_fp": 1
+    },
+    "linear_probe": {
+      "TP": 58,
+      "FP": 3,
+      "TN": 7,
+      "FN": 2,
+      "Precision": 0.9508,
+      "Recall": 0.9667,
+      "F1": 0.9587,
+      "FAR": 0.3,
+      "FRR": 0.0333,
+      "AUROC": 0.965,
+      "AUPRC": 0.9936,
+      "Brier": 0.0421
+    },
+    "finetuned_mobilenet": {
+      "TP": 60,
+      "FP": 7,
+      "TN": 3,
+      "FN": 0,
+      "Precision": 0.8955,
+      "Recall": 1.0,
+      "F1": 0.9449,
+      "FAR": 0.7,
+      "FRR": 0.0,
+      "AUROC": 0.915,
+      "AUPRC": 0.9806,
+      "Brier": 0.0861
+    }
+  },
+  "test": {
+    "guardrail": {
+      "pos_accept": 57,
+      "pos_review": 3,
+      "pos_fn": 0,
+      "neg_tn": 8,
+      "neg_review": 1,
+      "neg_fp": 1
+    },
+    "linear_probe": {
+      "TP": 59,
+      "FP": 1,
+      "TN": 9,
+      "FN": 1,
+      "Precision": 0.9833,
+      "Recall": 0.9833,
+      "F1": 0.9833,
+      "FAR": 0.1,
+      "FRR": 0.0167,
+      "AUROC": 0.9833,
+      "AUPRC": 0.9972,
+      "Brier": 0.0317
+    },
+    "finetuned_mobilenet": {
+      "TP": 60,
+      "FP": 6,
+      "TN": 4,
+      "FN": 0,
+      "Precision": 0.9091,
+      "Recall": 1.0,
+      "F1": 0.9524,
+      "FAR": 0.6,
+      "FRR": 0.0,
+      "AUROC": 0.9283,
+      "AUPRC": 0.9865,
+      "Brier": 0.0753
+    }
+  }
+}

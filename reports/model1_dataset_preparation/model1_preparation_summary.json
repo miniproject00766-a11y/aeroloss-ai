@@ -1,0 +1,60 @@
+{
+  "audit_timestamp": "2026-10-20T16:45:00",
+  "project_root": "C:\\Users\\akhil\\.gemini\\antigravity\\scratch\\aeroloss_ai",
+  "total_images_processed": 1095,
+  "sources_inspected": {
+    "primary_benchmark_images": 1065,
+    "negative_evaluation_samples": 30
+  },
+  "relevance_distribution": {
+    "BLADE": 1065,
+    "NON_BLADE": 29,
+    "UNCERTAIN": 1
+  },
+  "quality_distribution": {
+    "UNLABELED": 1065,
+    "USABLE": 18,
+    "UNUSABLE": 11,
+    "REVIEW_REQUIRED": 1
+  },
+  "review_status_distribution": {
+    "UNREVIEWED": 1065,
+    "REVIEWED": 29,
+    "FLAGGED_BORDERLINE": 1
+  },
+  "label_source_distribution": {
+    "EXISTING_VERIFIED_ANNOTATION": 1065,
+    "HUMAN_REVIEW": 30
+  },
+  "duplicate_findings": {
+    "exact_duplicate_groups": 5,
+    "exact_duplicate_total_files": 10,
+    "near_duplicate_groups": 105,
+    "near_duplicate_total_files": 263,
+    "exact_duplicates_in_primary": 2,
+    "exact_duplicates_in_negative": 3
+  },
+  "quality_metrics_summary": {
+    "laplacian_blur": {
+      "min": 0.0,
+      "median": 22.99,
+      "mean": 257.8,
+      "max": 51509.25
+    },
+    "zero_corrupt_files": true
+  },
+  "benchmark_readiness": {
+    "status": "CONDITIONALLY_READY",
+    "primary_bottleneck": "Severe shortage of verified negative OOD images (only 30 exist in repo; initial target is 175) and unreviewed blade quality labels (1065 blade images need sample quality review).",
+    "recommended_next_step": "Curate a formal Model 1 quality calibration benchmark and establish empirical blur/exposure thresholds."
+  },
+  "deliverable_paths": {
+    "audit_report": "reports/model1_dataset_preparation/model1_dataset_audit.md",
+    "manifest": "reports/model1_dataset_preparation/model1_image_manifest.csv",
+    "labeling_guidelines": "reports/model1_dataset_preparation/model1_labeling_guidelines.md",
+    "class_distribution": "reports/model1_dataset_preparation/model1_class_distribution.csv",
+    "duplicate_groups": "reports/model1_dataset_preparation/model1_duplicate_groups.csv",
+    "benchmark_plan": "reports/model1_dataset_preparation/model1_benchmark_plan.md",
+    "summary_json": "reports/model1_dataset_preparation/model1_preparation_summary.json"
+  }
+}

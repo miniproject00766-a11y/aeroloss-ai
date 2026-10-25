@@ -13,7 +13,7 @@ from sklearn.metrics import (
 )
 from imblearn.over_sampling import SMOTE
 
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PROCESSED_DIR = os.path.join(DATA_DIR, "processed")
 MODELS_DIR = os.path.join(BASE_DIR, "models")

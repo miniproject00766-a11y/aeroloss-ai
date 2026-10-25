@@ -15,11 +15,12 @@ class FinancialService:
     def __init__(self):
         self.engine = FinancialEngine()
 
-    def compute_financials(self, daily_energy_loss_kwh, tariff=4.50, repair_cost=40000.0):
+    def compute_financials(self, daily_energy_loss_kwh, tariff=4.50, repair_cost=40000.0, capacity_factor=0.36):
         res = self.engine.calculate_losses(
             daily_energy_loss_kwh=daily_energy_loss_kwh,
             tariff=tariff,
-            repair_cost=repair_cost
+            repair_cost=repair_cost,
+            capacity_factor=capacity_factor
         )
         res['daily_financial_loss_inr'] = res['daily_loss_inr']
         res['monthly_financial_loss_inr'] = res['monthly_loss_inr']

@@ -1,0 +1,14 @@
+dataset,class_name,object_count,image_count,notes
+primary_benchmark_defect,corrosion,257,172,Verified from Pascal VOC XML annotations
+primary_benchmark_defect,crack,224,177,Verified from Pascal VOC XML annotations
+primary_benchmark_defect,craze,257,198,Verified from Pascal VOC XML annotations
+primary_benchmark_defect,hide_craze,342,249,Verified from Pascal VOC XML annotations
+primary_benchmark_defect,surface_injure,412,264,Verified from Pascal VOC XML annotations
+primary_benchmark_defect,thunderstrike,92,89,Verified from Pascal VOC XML annotations
+primary_benchmark_defect,unlabeled_background_clean,0,0,Images with valid XML but 0 annotated objects
+processed_patches,corrosion,257,257,1 crop patch per image file
+processed_patches,crack,224,224,1 crop patch per image file
+processed_patches,craze,257,257,1 crop patch per image file
+processed_patches,hide_craze,342,342,1 crop patch per image file
+processed_patches,surface_injure,412,412,1 crop patch per image file
+processed_patches,thunderstrike,92,92,1 crop patch per image file

@@ -15,7 +15,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 # Optimize CPU multi-threading
 torch.set_num_threads(8)
 
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PROCESSED_DIR = os.path.join(DATA_DIR, "processed")
 MODELS_DIR = os.path.join(BASE_DIR, "models")

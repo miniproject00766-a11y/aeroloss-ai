@@ -149,15 +149,29 @@ def parse_annotations():
     print(f"Extracted {len(df)} defect patches across {len(CLASS_MAP)} classes.")
     print("Class breakdown:\n", df['defect_class'].value_counts())
 
-    # Stratified Train/Val/Test Split (70/15/15)
-    train_df, test_df = train_test_split(df, test_size=0.30, random_state=42, stratify=df['defect_class'])
-    val_df, test_df = train_test_split(test_df, test_size=0.50, random_state=42, stratify=test_df['defect_class'])
+    # Leakage-Free Image-Grouped Stratified Train/Val/Test Split (70/15/15)
+    # Patches from the same physical photo/blade are grouped strictly within a single split.
+    priority = {'thunderstrike': 0, 'crack': 1, 'corrosion': 2, 'craze': 3, 'hide_craze': 4, 'surface_injure': 5}
+    img_classes = df.groupby('image_id')['defect_class'].apply(
+        lambda s: sorted(s, key=lambda c: priority.get(c, 99))[0]
+    ).reset_index()
+
+    img_tr, img_te = train_test_split(img_classes, test_size=0.30, random_state=42, stratify=img_classes['defect_class'])
+    img_val, img_te = train_test_split(img_te, test_size=0.50, random_state=42, stratify=img_te['defect_class'])
+
+    tr_ids = set(img_tr['image_id'])
+    val_ids = set(img_val['image_id'])
+    te_ids = set(img_te['image_id'])
+
+    train_df = df[df['image_id'].isin(tr_ids)].copy()
+    val_df = df[df['image_id'].isin(val_ids)].copy()
+    test_df = df[df['image_id'].isin(te_ids)].copy()
 
     train_df.to_csv(os.path.join(PROCESSED_DIR, "train_patches.csv"), index=False)
     val_df.to_csv(os.path.join(PROCESSED_DIR, "val_patches.csv"), index=False)
     test_df.to_csv(os.path.join(PROCESSED_DIR, "test_patches.csv"), index=False)
 
-    print(f"Data split: Train={len(train_df)}, Val={len(val_df)}, Test={len(test_df)}")
+    print(f"Leakage-Free Grouped Split: Train={len(train_df)} ({len(tr_ids)} imgs), Val={len(val_df)} ({len(val_ids)} imgs), Test={len(test_df)} ({len(te_ids)} imgs)")
 
 if __name__ == "__main__":
     parse_annotations()

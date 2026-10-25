@@ -52,3 +52,7 @@ runs/
 # Python cache
 __pycache__/
 *.py[cod]
+artifacts/*.zip
+models/*_backup*
+models/*_candidate*
+models/baseline_backup/

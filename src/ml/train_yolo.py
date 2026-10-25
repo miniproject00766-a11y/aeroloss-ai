@@ -38,7 +38,7 @@ def train_and_evaluate_yolo():
     map5095 = float(metrics.box.map)# mAP@0.5:0.95
     f1 = 2 * (mp * mr) / (mp + mr + 1e-16)
 
-    class_names = ['surface_injure', 'hide_craze', 'corrosion', 'craze', 'crack', 'thunderstrike']
+    class_names = [model.names[idx] for idx in sorted(model.names)]
     per_class_ap = {}
     if hasattr(metrics.box, 'maps') and len(metrics.box.maps) == len(class_names):
         for idx, cname in enumerate(class_names):

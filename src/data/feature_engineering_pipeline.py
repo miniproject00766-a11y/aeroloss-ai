@@ -10,7 +10,7 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error, classification_report, accuracy_score, f1_score
 from imblearn.over_sampling import SMOTE
 
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PROCESSED_DIR = os.path.join(DATA_DIR, "processed")
 MODELS_DIR = os.path.join(BASE_DIR, "models")

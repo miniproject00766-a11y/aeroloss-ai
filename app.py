@@ -9,10 +9,11 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 # Project base paths
-BASE_DIR = r"C:\Users\akhil\.gemini\antigravity\scratch\aeroloss_ai"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BASE_DIR)
 
 from src.pipeline import AeroLossPipeline
+from src.image_io import load_rgb_image
 from src.physics.aero_engine import AeroLossPhysicsEngine
 
 # Page configuration
@@ -173,8 +174,21 @@ with tab_inspect:
         else:
             uploaded = st.file_uploader("Upload Drone Blade Inspection Image (JPG/PNG)", type=["jpg", "jpeg", "png"])
             if uploaded:
-                current_img = Image.open(uploaded)
-                st.image(current_img, caption="Uploaded Drone Inspection Frame", use_container_width=True)
+                current_img = load_rgb_image(uploaded.getvalue())
+                display_img = current_img
+                upload_quality = pipeline.image_quality_validator.validate(current_img)
+                if upload_quality['quality_decision'] == 'UNUSABLE':
+                    st.error(
+                        "Image quality is insufficient for automated damage analysis. "
+                        + "; ".join(upload_quality['reasons'])
+                    )
+                    current_img = None
+                elif upload_quality['requires_manual_review']:
+                    st.warning(
+                        "Image requires operator review; any analysis from it is provisional. "
+                        + "; ".join(upload_quality['reasons'])
+                    )
+                st.image(display_img, caption="Uploaded Drone Inspection Frame", use_container_width=True)
 
         if current_img is not None:
             st.info(f"Target: **{turbine_id}** | **{blade_id}** | Pilot: **{inspector_name}**")
@@ -224,24 +238,41 @@ with tab_inspect:
             with m1:
                 st.metric("Detected Defect", det['detected_class'].title(), f"{det['confidence_pct']} confidence")
             with m2:
-                st.metric("Severity & Location", f"Level {char['severity_proxy']}/5", f"r/R = {char['spanwise_position_r_R']}")
+                if char.get('spanwise_position_available', True):
+                    location_detail = f"r/R = {char['spanwise_position_r_R']}"
+                else:
+                    location_detail = "Spanwise location unavailable"
+                st.metric("Severity & Location", f"Level {char['severity_proxy']}/5", location_detail)
             with m3:
                 st.metric("Daily Energy Loss", f"{en['daily_energy_loss_kwh']:,.1f} kWh", f"-{en['aep_loss_pct']:.2f}% AEP")
             with m4:
                 st.metric("Daily Financial Loss", f"₹{fin['daily_financial_loss_inr']:,.0f} / day", f"Payback: {fin['payback_days']:.1f} days")
 
+            st.caption(
+                "Image-frame box coverage (primary / union): "
+                f"{char.get('primary_bbox_frame_coverage_pct', 0.0):.2f}% / "
+                f"{char.get('union_frame_coverage_pct', 0.0):.2f}% · "
+                "Blade-area proxy: "
+                f"{char.get('blade_damage_area_proxy_pct', char.get('damage_area_pct', 0.0)):.3f}% · "
+                f"Geometry: {char.get('geometry_status', 'PROVISIONAL')}. "
+                "Energy, financial loss, and payback are provisional model estimates."
+            )
+
             # Spanwise Location Diagram
             st.markdown("#### Blade Radial Spanwise Position (r/R)")
-            r_val = char['spanwise_position_r_R']
+            r_val = char.get('spanwise_position_r_R')
             fig_span = go.Figure()
             fig_span.add_shape(type="rect", x0=0, y0=-0.15, x1=0.50, y1=0.15, fillcolor="#94a3b8", opacity=0.4, line_width=0)
             fig_span.add_shape(type="rect", x0=0.50, y0=-0.15, x1=0.80, y1=0.15, fillcolor="#fde047", opacity=0.4, line_width=0)
             fig_span.add_shape(type="rect", x0=0.80, y0=-0.15, x1=1.0, y1=0.15, fillcolor="#f87171", opacity=0.4, line_width=0)
-            fig_span.add_trace(go.Scatter(
-                x=[r_val], y=[0], mode="markers+text",
-                marker=dict(color="#1e293b", size=18, symbol="diamond"),
-                text=[f"Damage: r/R = {r_val:.2f}"], textposition="top center", name="Damage Location"
-            ))
+            if char.get('spanwise_position_available', True) and r_val is not None:
+                fig_span.add_trace(go.Scatter(
+                    x=[r_val], y=[0], mode="markers+text",
+                    marker=dict(color="#1e293b", size=18, symbol="diamond"),
+                    text=[f"Damage: r/R = {r_val:.2f}"], textposition="top center", name="Damage Location"
+                ))
+            else:
+                st.caption("No measured spanwise position; the nominal computational value is not plotted as geometry.")
             fig_span.update_layout(
                 xaxis=dict(title="Normalized Blade Span r/R (0.0 = Root, 1.0 = Tip)", range=[0, 1.02]),
                 yaxis=dict(showticklabels=False, range=[-0.35, 0.35]),
@@ -297,7 +328,9 @@ with tab_power:
     damaged_powers = []
     
     active_sev = 3 if 'char' not in locals() else char['severity_proxy']
-    active_r = 0.90 if 'char' not in locals() else char['spanwise_position_r_R']
+    active_r = 0.90 if 'char' not in locals() else char.get('model_inputs', {}).get(
+        'spanwise_position_r_R', char['spanwise_position_r_R']
+    )
     active_area = 4.5 if 'char' not in locals() else char['damage_area_pct']
     
     for v in ws_range:

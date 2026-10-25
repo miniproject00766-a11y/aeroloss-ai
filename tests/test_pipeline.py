@@ -2,6 +2,7 @@ import unittest
 import os
 import sys
 import numpy as np
+from PIL import Image
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, BASE_DIR)
@@ -73,8 +74,124 @@ class TestAeroLossPipeline(unittest.TestCase):
         self.assertIn('physics_aerodynamics', res)
         self.assertIn('energy_impact', res)
         self.assertIn('financial_impact', res)
+        self.assertIn('fatigue_prognostics', res)
+        self.assertIn('erosion_safe_mode', res)
         self.assertIn('maintenance_decision', res)
+        self.assertIn('scada_validation', res['physics_aerodynamics'])
         self.assertIn(res['maintenance_decision']['recommended_action'], ['REPAIR', 'MONITOR', 'ENGINEERING_ASSESSMENT'])
+
+    def test_pipeline_without_localized_damage_keeps_zero_loss_and_marks_geometry_unavailable(self):
+        class NoDetectionService:
+            def detect_defects(self, image):
+                return [], image.copy(), True, "No reliable defect detected.", "ACCEPT"
+
+        self.pipeline.yolo_service = NoDetectionService()
+        res = self.pipeline.analyze_image(Image.new('RGB', (64, 64), color='white'))
+        char = res['characterization']
+
+        self.assertEqual(char['geometry_status'], 'UNAVAILABLE_NO_DETECTIONS')
+        self.assertFalse(char['spanwise_position_available'])
+        self.assertEqual(char['primary_bbox_frame_coverage_pct'], 0.0)
+        self.assertEqual(char['union_frame_coverage_pct'], 0.0)
+        self.assertEqual(char['blade_damage_area_proxy_pct'], 0.0)
+        self.assertEqual(res['energy_impact']['daily_energy_loss_kwh'], 0.0)
+        self.assertEqual(res['financial_impact']['daily_financial_loss_inr'], 0.0)
+        self.assertEqual(res['visual_detection']['detection_status'], 'NO_DEFECT_DETECTED')
+        self.assertIsNone(res['visual_detection']['confidence'])
+        self.assertEqual(res['visual_detection']['confidence_pct'], 'N/A')
+        self.assertFalse(char['health_confirmed'])
+        self.assertEqual(res['maintenance_decision']['recommended_action'], 'MONITOR')
+        self.assertEqual(res['maintenance_decision']['urgency'], 'LOW')
+
+    def test_extensive_low_confidence_damage_requires_engineering_assessment(self):
+        image_path = os.path.join(BASE_DIR, "test_uploads", "01_drone_blade_erosion_crack.jpg")
+        if not os.path.isfile(image_path):
+            self.skipTest("Extensive blade damage regression image is not available")
+
+        result = self.pipeline.analyze_image(image_path)
+        char = result['characterization']
+        decision = result['maintenance_decision']
+
+        self.assertTrue(result['visual_detection']['detections'])
+        self.assertLess(result['visual_detection']['confidence'], 0.20)
+        self.assertGreaterEqual(char['union_frame_coverage_pct'], 20.0)
+        self.assertTrue(char['structural_safety_override'])
+        self.assertEqual(decision['recommended_action'], 'ENGINEERING_ASSESSMENT')
+        self.assertEqual(decision['urgency'], 'HIGH')
+        self.assertTrue(decision['safety_override_active'])
+        self.assertIn(
+            'does not confirm internal structural failure',
+            ' '.join(decision['reasoning'])
+        )
+
+    def test_exact_lightning_image_uses_dashboard_geometry_and_safety_override(self):
+        image_path = os.environ.get(
+            'AEROLOSS_LIGHTNING_IMAGE',
+            r'C:\Users\akhil\Downloads\lightning-damage-wind-turbine_1.webp'
+        )
+        if not os.path.isfile(image_path):
+            self.skipTest("Exact lightning-damage-wind-turbine_1.webp is not available")
+
+        res = self.pipeline.analyze_image(image_path)
+        char = res['characterization']
+        decision = res['maintenance_decision']
+        detections = res['visual_detection']['detections']
+
+        self.assertTrue(detections)
+        self.assertIsNotNone(detections[0].get('yolo_class'))
+        self.assertIsNotNone(detections[0].get('mobilenet_class'))
+        self.assertGreaterEqual(char['union_frame_coverage_pct'], 20.0)
+        self.assertEqual(
+            char['primary_bbox_frame_coverage_pct'],
+            char['union_frame_coverage_pct']
+        )
+        self.assertEqual(
+            char['blade_damage_area_proxy_pct'],
+            char['damage_area_pct']
+        )
+        self.assertTrue(char['structural_safety_override'])
+        self.assertTrue(decision['safety_override_active'])
+        self.assertEqual(decision['recommended_action'], 'ENGINEERING_ASSESSMENT')
+        self.assertEqual(decision['urgency'], 'CRITICAL')
+        self.assertEqual(
+            decision['metrics_snapshot']['image_frame_coverage_pct'],
+            char['union_frame_coverage_pct']
+        )
+        self.assertIn('NDT', ' '.join(decision['reasoning']))
+        self.assertIn('does not confirm internal structural failure', ' '.join(decision['reasoning']))
+        self.assertEqual(res['energy_impact']['estimate_status'], 'PROVISIONAL_UNCALIBRATED_ESTIMATE')
+        self.assertEqual(res['financial_impact']['estimate_status'], 'PROVISIONAL_UNCALIBRATED_ESTIMATE')
+
+    def test_known_clean_blade_stays_monitor_with_zero_loss(self):
+        image_path = os.path.join(BASE_DIR, "data", "raw", "images", "1042.jpg")
+        if not os.path.isfile(image_path):
+            self.skipTest("Known clean blade sample 1042.jpg is not available")
+
+        result = self.pipeline.analyze_image(image_path)
+
+        self.assertTrue(result['is_valid_blade_image'])
+        self.assertEqual(result['visual_detection']['detection_status'], 'NO_DEFECT_DETECTED')
+        self.assertIsNone(result['visual_detection']['confidence'])
+        self.assertEqual(result['visual_detection']['confidence_pct'], 'N/A')
+        self.assertEqual(result['characterization']['severity_proxy'], 0)
+        self.assertEqual(result['energy_impact']['daily_energy_loss_kwh'], 0.0)
+        self.assertEqual(result['financial_impact']['daily_financial_loss_inr'], 0.0)
+        self.assertEqual(result['maintenance_decision']['recommended_action'], 'MONITOR')
+        self.assertEqual(result['maintenance_decision']['urgency'], 'LOW')
+
+    def test_unsupported_detected_class_requires_engineering_review(self):
+        result = self.decision.evaluate_action(
+            defect_class='unmapped_detector_label',
+            severity=3,
+            r_R=0.50,
+            area_pct=1.0,
+            daily_loss_inr=0.0,
+            payback_days=999.0,
+            unsupported_class=True
+        )
+        self.assertEqual(result['decision'], 'ENGINEERING_ASSESSMENT')
+        self.assertEqual(result['urgency'], 'HIGH')
+        self.assertTrue(result['classification_review_required'])
 
 if __name__ == '__main__':
     unittest.main()
